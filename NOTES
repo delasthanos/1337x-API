@@ -1,9 +1,7 @@
-/*
+Development Notes:
 
-NOTES:
-
-2000 saved movies results =~ 500mb
-
+Files on disk:
+2000 saved movies search results =~ 500mb
 
 [!] You must add a delay between each request on 1337x, otherwise ip is going to be banned. If you are banned you have to get a new ip/server. 
 	Banned IP seems irreversable.
@@ -14,6 +12,10 @@ NOTES:
 [!] Issues & Problems:
 
 	Folders to save html files should be named by imdb codes to ensure data integrity.There are movies like 1994, or so which have more than one results in database
+
+[!] Refactor the app to keep track on database for search and downloaded html pages, to save disk space and easier manipulation
+
+
 
 [*] Steps to collect and import torrents from 1337x
 
@@ -47,9 +49,10 @@ STEPS:
 
 Thoughts:
 
-Maybe seperate the first 2 steps to an independent solution available for public release
+Issues with Movies from 1337x:
 
-NOTES on Movies according to 1337x.
-There are some movie names like "1964", "1959", "2006". You moght consider add a match with the year of the movie when retrieving Search Results Pages
+	-There are some movie names like "1964", "1959", "2006". You might consider add a match with the year of the movie when retrieving Search Results Pages
 
-*/
+Issues with Tvshows from 1337x:
+
+	-Tvshow Daredevil has Marvel in front of it. Take that into consideration when doing a match of imdb

@@ -25,7 +25,7 @@ class ImdbList extends dbhandler{
 		if ( $stmt->execute() ) { 
 			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($rows as $r ) { array_push( $this->rootList, $r); }
-			//print ("\nFound: ".count($rows)." movies.\n");
+			print ("Movies fecthed from database: ".count($this->rootList).n);
 			return $this->rootList;
 		}
 	}
@@ -43,7 +43,7 @@ class ImdbList extends dbhandler{
 		if ( $stmt->execute() ) { 
 			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($rows as $r ) { array_push( $this->rootList, $r); }
-			//print ("\nFound: ".count($rows)." movies.\n");
+			print ("TvShows fecthed from database: ".count($this->rootList).n);
 			return $this->rootList;
 		}	
 	}

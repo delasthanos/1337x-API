@@ -19,25 +19,19 @@ spl_autoload_register(function ($class_name) {
     require_once 'src/'.$class_name.'.class.php';
 });
 
-
-//$url="https://1337x.to/category-search/A Good Day to Die Hard/Movies/1/";
-//$url="https://1337x.to/category-search/A Good Day to Die Hard/Movies/1/";
-//$url="https://1337x.to/category-search/A%20Good%20Day%20to%20Die%20Hard/Movies/1/";
-//testCurl($url);
-
 if (CLI) system('clear');
 ///////////////////////////////
 // Parse command line arguments
 if (CLI):
-$allowedArgs=['search'=>false, 'html-stats'=>false, 'parse-torrent'=>false];
+$allowedArgs=['search'=>false, 'save-html-torrents'=>false, 'parse-torrent'=>false];
 //if (!array_key_exists($argv[1], $allowedArgs)) commandLineHelp();
 if ( count($argv)===2 ){
 	switch($argv[1]):
 		case "search":
 			$allowedArgs['search']=true;
 			break;
-		case "html-stats":
-			$allowedArgs['html-stats']=true;
+		case "save-html-torrents":
+			$allowedArgs['save-html-torrents']=true;
 			break;
 		case "parse-torrent":
 			$allowedArgs['parse-torrent']=true;
@@ -57,34 +51,37 @@ endif; //CLI
  */
 if (CLI):
 if ($allowedArgs['search']):
+
+	// Search1337x | Find how many results pages exist for each movie and save them to its own folder, named with imdb code
+	// Maybe reset the variables inside the class Search1337x rather than destroying it with unset(). Check for memory usage.
+	// Main Loop | Might take a while according to results from ImdbList class | 
+
 	printColor (n."Searching ... ".n, "white+bold");
 	printColor (CATEGORY.n, "white+bold");
 	
 	$ImdbList = new ImdbList();
-	if (CATEGORY=="Movies"):
-		$titles = $ImdbList->getMoviesList();
-		print ("Titles fecthed from database: ".count($titles).n);
-	elseif (CATEGORY=="TV"):
-		$titles = $ImdbList->getTvshowsList();
-		print ("Titles fecthed from database: ".count($titles).n);
-	endif;
-	// Search1337x | Find how many results pages exist for each movie and save them to its own folder, named after moviename
-	// Maybe reset the variables inside the class Search1337x rather than destroying it with unset(). Check for memory usage.
-	// Main Loop | Might take a while according to results from ImdbList class | 
 
-	foreach ( $titles as $title ){
+	if (CATEGORY=="Movies"): $titles = $ImdbList->getMoviesList();
+	elseif (CATEGORY=="TV"): $titles = $ImdbList->getTvshowsList();
+	endif;
+
+	foreach ( $titles as $title ):
+
 		$search = new Search1337x();
 		$search->searchForTitles($title);
 		sleep(WAIT_SECONDS);
 		unset($search);
-	}
+
+	endforeach; // Foreach titles
+
 endif; //search
 endif; //CLI
+
 /*
  *	Collect and Parse search results from above
  */
 if (CLI):
-if ($allowedArgs['html-stats']):
+if ($allowedArgs['save-html-torrents']):
 	
 	if (!file_exists(HTML_SEARCH_FILES_PATH)){
 		printColor (n."[!]Directory does not exist: ".HTML_SEARCH_FILES_PATH,"white+bold");
@@ -130,7 +127,7 @@ if ($allowedArgs['html-stats']):
 
 	endforeach; // Foreach folder
 
-endif; //html-stats
+endif; //save-html-torrents
 endif; //CLI
 
 if (CLI):

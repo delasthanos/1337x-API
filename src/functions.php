@@ -45,6 +45,11 @@ $html = curl_exec($ch);
 	else { return true; }
 } 
 
+
+//$url="https://1337x.to/category-search/A Good Day to Die Hard/Movies/1/";
+//$url="https://1337x.to/category-search/A Good Day to Die Hard/Movies/1/";
+//$url="https://1337x.to/category-search/A%20Good%20Day%20to%20Die%20Hard/Movies/1/";
+//testCurl($url);
 function testCurl($url){
 	$ch = curl_init( $url );
 	//curl_setopt($ch, CURLOPT_HTTPHEADER, $headers); 
