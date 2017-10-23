@@ -94,7 +94,7 @@ if ($allowedArgs['search']):
 		
 		// Save Search Results
 		// $imdb,$totalPages,$activePages,$totalTorrents,$activeTorrents
-		$saveResults=new SaveSearchResults( $title['imdb'], $search->getActivePages(), $search->getTotalPages(), $findTorrents->findTotalTorrents(), $findTorrents->findActiveTorrents() );
+		$saveResults=new SearchResults( $title['imdb'], $search->getActivePages(), $search->getTotalPages(), $findTorrents->findTotalTorrents(), $findTorrents->findActiveTorrents() );
 		$saveResults->save();
 
 		unset($search);
