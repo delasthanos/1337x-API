@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Download The MATRIX Trilogy (1999-2003) - Movie, Reloaded, Revolutions, and ANIMATRIX - 720p BluRay x264 Torrent | 1337x</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/jquery-ui.css">
+<link rel="stylesheet" href="/css/icons.css">
+<link rel="stylesheet" href="/css/modal.css">
+<link rel="stylesheet" href="/css/scrollbar.css">
+<link rel="stylesheet" href="/css/style.css?ver=2.5">
+<link rel="shortcut icon" href="/favicon.ico">
+<!--[if lt IE 9]><script src = "/js/html5shiv.js"></script><![endif]-->
+</head>
+<body>
+<div class="mobile-menu"></div>
+<div class="top-bar">
+<div class="container">
+<ul class="top-bar-nav">
+<li><a href="/register">Register</a></li>
+<li class="active"><a href="/login">Login</a></li>
+</ul>
+</div>
+</div>
+<header>
+<div class="container">
+<div class="clearfix">
+<div class="logo"><a href="/home/"><img alt="logo" src="/images/logo.svg"></a></div>
+<a href="#" class="navbar-menu"><span></span><span></span><span></span></a>
+<div class="search-box">
+<form id="search-form" method="get" action="/srch">
+<input type="search" placeholder="Search for torrents.." id="autocomplete" name="search" class="ui-autocomplete-input form-control" autocomplete="off">
+<button type="submit" class="btn btn-search"><i class="flaticon-search"></i><span>Search</span></button>
+</form>
+</div>
+</div>
+<nav>
+<ul class="main-navigation">
+<li class="active"><a href="/home/" title="Go to Home">Home</a></li>
+<li><a href="/upload" title="Upload Torrent File">Upload</a></li>
+<li><a href="/rules" title="Rules">Rules</a></li>
+<li><a href="/contact" title="Contact 1337x">Contact</a></li>
+<li><a href="/about" title="About us">About us</a></li>
+</ul>
+</nav>
+</div>
+</header>
+<main class="container">
+<div class="row">
+<aside class="col-3 pull-right">
+<div class="list-box">
+<h2>Browse torrents</h2>
+<ul>
+<li><a href="/trending" title="Trending Torrents"><i class="flaticon-trending"></i> Trending Torrents</a></li>
+<li><a href="/movie-library/1/" title="Movie Liabrary"><i class="flaticon-movie-library"></i> Movie library</a></li>
+<li><a href="/series-library/a/1/" title="TV Liabrary"><i class="flaticon-tv-library"></i> TV library</a></li>
+<li><a href="/new-episodes/day/1/" title="New TV Episodes"><i class="flaticon-tv"></i> New TV Episodes</a></li>
+<li><a href="/top-100" title="Top 100 Torrents"><i class="flaticon-top"></i> Top 100 Torrents</a></li>
+<li><a href="/cat/Anime/1/" title="Anime"><i class="flaticon-ninja-portrait"></i> Anime</a></li>
+<li><a href="/cat/Apps/1/" title="Applications"><i class="flaticon-apps"></i> Applications</a></li>
+<li><a href="/cat/Documentaries/1/" title="Documentaries"><i class="flaticon-documentary"></i> Documentaries</a></li>
+<li><a href="/cat/Games/1/" title="Games"><i class="flaticon-games"></i> Games</a></li>
+<li><a href="/cat/Movies/1/" title="Movies"><i class="flaticon-movies"></i> Movies</a></li>
+<li><a href="/cat/Music/1/" title="Movies"><i class="flaticon-music"></i> Music</a></li>
+<li><a href="/cat/Other/1/" title="Others"><i class="flaticon-other"></i> Other</a></li>
+<li><a href="/cat/TV/1/" title="Television"><i class="flaticon-tv"></i> Television</a></li>
+<li><a href="/cat/XXX/1/" title="XXX"><i class="flaticon-xxx"></i> XXX</a></li>
+</ul>
+</div>
+<div class="list-box hidden-sm">
+<h2>1337x Links</h2>
+ <ul class="list">
+<li><a target="_blank" href="https://chat.1337x.to"> 1337x Chat</a></li>
+<li><a target="_blank" href="https://bitsnoop.com"> BitSnoop</a></li>
+<li><a target="_blank" href="https://www.limetorrents.cc"> Limetorrents</a></li>
+<li><a target="_blank" href="https://www.torrentfunk.com"> TorrentFunk</a></li>
+<li><a target="_blank" href="http://www.torrentbit.net"> TorrentBit</a></li>
+<li><a target="_blank" href="https://www.torlock.com"> Torlock</a></li>
+<li><a target="_blank" href="https://torrentproject.se"> TorrentProject</a></li>
+</ul>
+</div>
+</aside>
+<script>
+function count(t){return $.ajax({async:!1,type:"POST",url:"/dltrack/1956369/",data:{dst:t.href,src:document.location.href,torid:"1956369"}}),!1}
+</script>
+<style>
+.torrent-category-detail ul.dropdown-menu .btn.acdcebee {
+  padding: 0 4px 0 50px;
+  box-shadow: none;
+}
+ul.dropdown-menu .btn.acdcebee .icon i {
+  line-height: 1;
+}
+.btn.acdcebee{
+  position: relative;
+  padding: 4px 4px 4px 50px;
+  font-size: 15px;
+  width: 100%;
+  font-family: 'Oswald Bold', sans-serif;
+  text-transform: uppercase;
+  box-shadow: 0 5px 0 rgba(0,0,0,0.5);
+  border-radius: 3px;
+}
+.movie-torrent .torrent-download .acdcebee{
+  min-width: 200px;
+}
+.movie-torrent .torrent-download .left .acdcebee {
+  width: inherit;
+}
+.movie-torrent .torrent-download .right .btn.acdcebee{
+width: auto;
+}
+/* STREAM */
+.btn-adefadaa {
+    background-color: #e00000;
+    color: #fff;
+}
+.btn-adefadaa .icon {
+    background-color: #980404;
+}
+.btn-adefadaa .icon::after {
+    border-left-color: #980404;
+}
+.btn-adefadaa:hover {
+    background-color: #cd0303;
+    color: #fff;
+}
+.btn-adefadaa:focus, .btn-adefadaa:active:focus {
+    background-color: #8d0808;
+    color: #fff;
+}
+/* DIRECT */
+.btn-fbcafbfc {
+    background-color: #00ceed;
+    color: #fff;
+}
+.btn-fbcafbfc .icon {
+    background-color: #0f8091;
+}
+.btn-fbcafbfc .icon::after {
+    border-left-color: #0f8091;
+}
+.btn-fbcafbfc:hover {
+    background-color: #02bbd7;
+    color: #fff;
+}
+.btn-fbcafbfc:focus, .btn-fbcafbfc:active:focus {
+    background-color: #0f7584;
+    color: #fff;
+}
+/*  MAGNET  */
+.btn-beeedeab {
+  color: #fff;
+  background-color: #89ad19;
+}
+.btn-beeedeab .icon {
+  background-color: #6a8616;
+}
+.btn-beeedeab .icon:after {
+  border-left-color: #6a8616;
+}
+.btn-beeedeab:hover {
+  color: #fff;
+  background-color: #7fa01a;
+}
+.btn-beeedeab:focus,
+.btn-beeedeab:active:focus {
+  color: #fff;
+  background-color: #637d18;
+}
+/*  BUTTON TORRENT DOWNLOAD  */
+.btn-cbfcbbaa {
+  color: #fff;
+  background-color: #da3a04;
+}
+.btn-cbfcbbaa .icon {
+  background-color: #962e08;
+}
+.btn-cbfcbbaa .icon:after {
+  border-left-color: #962e08;
+}
+.btn-cbfcbbaa:hover {
+  color: #fff;
+  background-color: #c73707;
+}
+.btn-cbfcbbaa:focus,
+.btn-cbfcbbaa:active:focus {
+  color: #fff;
+  background-color: #962e08;
+}
+
+/*  BUTTON TORRENT MIRROR DOWNLOAD  */
+.btn-dedcddbd {
+  color: #fff;
+  background-color: #f34104;
+}
+.btn-dedcddbd .icon {
+  background-color: #c13403;
+}
+.btn-dedcddbd .icon:after {
+  border-left-color: #c13403;
+}
+.btn-dedcddbd:hover {
+  color: #fff;
+  background-color: #c73707;
+}
+.btn-dedcddbd:focus,
+.btn-dedcddbd:active:focus {
+  color: #fff;
+  background-color: #c13403;
+}
+/* VPN LINK */
+.aecffeba {
+  position: relative;
+  top: -6px;
+  color: #fff;
+  font-size: 12px;
+  border-radius: 0 0 5px 5px;
+  background:url('/css/images/notfication-bg.png') repeat 0 0;
+  background-color: #5fa2d7;
+  transition: all .2s ease;
+}
+.aecffeba:hover {
+  background:url('/css/images/notfication-bg.png') repeat 0 0;
+  background-color: #5795c4;
+}
+.aecffeba a:hover {
+  text-decoration: underline;
+}
+.aecffeba:active {
+  background:url('/css/images/notfication-bg.png') repeat 0 0;
+  background-color: #236597;
+}
+.aecffeba .icon {
+  color: #fff;
+  display: block;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  padding-top: 4px;
+  width: 40px;
+  text-align: center;
+  border-radius: 0 0 0 5px;
+  background:url('/css/images/notfication-bg.png') repeat 0 0;
+  background-color:#236597;
+}
+.aecffeba .icon i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -24%;
+  margin-top: -30%;
+}
+.aecffeba a{
+  color: #fff;
+  display: inline-block;
+  padding: 18px 0 11px 66px;
+}
+</style>
+<div class="col-9 page-content">
+<div class="box-info torrent-detail-page  vpn-info-wrap">
+<div class="box-info-heading clearfix"><h1> The MATRIX Trilogy (1999-2003) - Movie, Reloaded, Revolutions, an... </h1>
+</div>
+<div class="box-info-detail no-top-radius">
+<div class="torrent-category-detail clearfix">
+<ul class="download-links-dontblock btn-wrap-list">
+<li><a class="acdcebee btn btn-beeedeab" href="magnet:?xt=urn:btih:E97D6246F9420F1B927DDF9579FA2C84F05AEF1D&dn=The+MATRIX+Trilogy+%281999-2003%29+-+Movie%2C+Reloaded%2C+Revolutions%2C+and+ANIMATRIX+-+720p+BluRay+x264&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.ch%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.piratepublic.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.vanitycore.co%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Finferno.demonoid.pw%3A3393%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=http%3A%2F%2Fmgtracker.org%3A2710%2Fannounce&tr=http%3A%2F%2Fretracker.krs-ix.ru%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce" onclick="javascript: count(this);"><span class="icon"><i class="flaticon-magnet"></i></span>Magnet Download</a> </li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li class="dropdown">
+<a data-toggle="dropdown" class="acdcebee btn btn-cbfcbbaa" onclick="javascript: count(this);" href="#"><span class="icon"><i class="flaticon-two-down-arrows"></i></span>Torrent Download</a>
+<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+<li><a class="acdcebee btn btn-dedcddbd" target="_blank" href="http://itorrents.org/torrent/E97D6246F9420F1B927DDF9579FA2C84F05AEF1D.torrent"><span class="icon"><i class="flaticon-torrent-download"></i></span>ITORRENTS MIRROR</a> </li>
+<li><a class="acdcebee btn btn-dedcddbd" target="_blank" href="http://torrage.info/torrent.php?h=E97D6246F9420F1B927DDF9579FA2C84F05AEF1D"><span class="icon"><i class="flaticon-torrent-download"></i></span>TORRAGE MIRROR</a></li>
+<li><a class="acdcebee btn btn-dedcddbd" target="_blank" href="http://btcache.me/torrent/E97D6246F9420F1B927DDF9579FA2C84F05AEF1D"><span class="icon"><i class="flaticon-torrent-download"></i></span>BTCACHE MIRROR</a></li>
+<li><a class="acdcebee btn btn-beeedeab" href="magnet:?xt=urn:btih:E97D6246F9420F1B927DDF9579FA2C84F05AEF1D&dn=The+MATRIX+Trilogy+%281999-2003%29+-+Movie%2C+Reloaded%2C+Revolutions%2C+and+ANIMATRIX+-+720p+BluRay+x264&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2F9.rarbg.com%3A2710%2Fannounce&tr=udp%3A%2F%2Fexplodie.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fp4p.arenabg.ch%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.piratepublic.com%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.vanitycore.co%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce&tr=udp%3A%2F%2Finferno.demonoid.pw%3A3393%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=http%3A%2F%2Fmgtracker.org%3A2710%2Fannounce&tr=http%3A%2F%2Fretracker.krs-ix.ru%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce"><span class="icon"><i class="flaticon-magnet"></i></span>None Working? Use Magnet</a></li>
+</ul>
+</li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li><a id="adefadaa" class="acdcebee btn btn-adefadaa" href="/streamredirect.php?q=The MATRIX Trilogy (1999-2003) - Movie, Reloaded, Revolutions, and ANIMATRIX - 720p BluRay x264"><span class="icon"><i class="flaticon-stream"></i></span>Play Now (Stream)</a></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li><a id="fbcafbfc" class="acdcebee btn btn-fbcafbfc" href="/ghostvpn.php"><span class="icon"><i class="flaticon-shield-sat"></i></span>Anonymous Download</a> </li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+<li style="margin-top:0px;"></li>
+</ul>
+<ul class="list">
+<li> <strong>Category</strong> <span>Movies</span> </li>
+<li> <strong>Type</strong> <span>HD</span> </li>
+<li> <strong>Language</strong> <span>English</span> </li>
+<li> <strong>Total size</strong> <span>9.1 GB</span> </li>
+<li> <strong>Uploaded By</strong> <span><small class="uploader"></small> <a href="/user/g01ngf0rward/">g01ngf0rward</a></span> </li>
+</ul>
+<ul class="list">
+<li> <strong>Downloads</strong> <span>927</span> </li>
+<li> <strong>Last checked</strong> <span>2 days ago</span> </li>
+<li> <strong>Date uploaded</strong> <span>10 months ago</span> </li>
+<li> <strong>Seeders</strong> <span class="seeds">13</span> </li>
+<li> <strong>Leechers</strong> <span class="leeches">4</span> </li>
+</ul>
+</div>
+<div class="aecffeba"><a id="aecffeba" href="/ghostvpn.php"><span class="icon"><i class="flaticon-shield-sat"></i></span>Your IP Address is <strong class="vpn-ip"></strong> Location is <strong class="vpn-country"></strong> - Your ISP and Government can track your torrent activity! Hide your IP with a VPN!</a></div>
+<div class="manage-box">
+<ul class="category-name">
+<li><a href="/search/the+matrix/1/">the matrix</a></li>
+<li><a href="/search/matrix+reloaded/1/">matrix reloaded</a></li>
+<li><a href="/search/the+animatrix/1/">the animatrix</a></li>
+<li><a href="/search/revolutions/1/">revolutions</a></li>
+<li><a href="/search/keanu+reeves/1/">keanu reeves</a></li>
+<li><a href="/search/movie+series/1/">movie series</a></li>
+<li><a href="/search/matrix+series/1/">matrix series</a></li>
+<li><a href="/search/matrix+trilogy/1/">matrix trilogy</a></li>
+</ul>
+<div class="infohash-box">
+<p> <strong>Infohash :</strong> <span>E97D6246F9420F1B927DDF9579FA2C84F05AEF1D</span></p>
+</div>
+</div>
+<div class="torrent-tabs">
+<ul class="tab-nav clearfix">
+<li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
+<li role="presentation"><a href="#files" aria-controls="files" role="tab" data-toggle="tab">Files</a></li>
+<li role="presentation"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">Comments<span class="active">0</span></a></li>
+<li role="presentation" class="hidden-xs"><a href="#tracker-list" aria-controls="tracker-list" role="tab" data-toggle="tab">Tracker list</a></li>
+</ul>
+<div class="tab-content">
+<div role="tabpanel" class="tab-pane active" id="description">
+<p><span style="font-size: 18px"><span style="color:Green;"><strong>Hey everybody, this torrent pack of &quot;The ULTIMATE Matrix Collection&quot; contains ALL of the movies from the series; including the ANIME called the &quot;Animatrix&quot;, too! It also contains THREE &quot;Documentaries&quot; basically DECODING the films (for those of you who don't ALREADY know what the films are truly ABOUT)! Everything is in 720p Resolution, too! </strong></span></span> <br /><br /><span style="color:Blue;"></p><p><span class="underline"><strong>Plot Synopsis: </strong></span></p><p></span> <br /><br /><span style="color:Green;"></p><p><span class="underline"><strong>The MATRIX (1999) </strong></span></p><p></span> <span style="color:Blue;">- &quot;A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.&quot;</span> <br /><br /><span style="color:Green;"></p><p><span class="underline"><strong>The Matrix: RELOADED (2003) </strong></span></p><p></span> <span style="color:Blue;">- &quot;Neo and the rebel leaders estimate that they have 72 hours until 250,000 probes discover Zion and destroy it and its inhabitants. During this, Neo must decide how he can save Trinity from a dark fate in his dreams.&quot;</span> <br /><br /><span style="color:Green;"></p><p><span class="underline"><strong>The Matrix: REVOLUTIONS (2003) </strong></span></p><p></span> <span style="color:Blue;">- &quot;The human city of Zion defends itself against the massive invasion of the machines as Neo fights to end the war at another front while also opposing the rogue Agent Smith.&quot;</span> <br /><br /><span style="color:Green;"></p><p><span class="underline"><strong>The ANIMATRIX (2003) </strong></span></p><p></span> <span style="color:Blue;">- &quot;The human city of Zion defends itself against the massive invasion of the machines as Neo fights to end the war at another front while also opposing the rogue Agent Smith.&quot;</span> <br /><br /><span style="color:Green;"></p><p><span class="underline"><strong>RETURN to Source (Documentary): PHILOSOPHY and The Matrix (2004) </strong></span></p><p></span> <span style="color:Blue;">- &quot;This documentary goes over many philosophical concepts that inspired, and are presented in, the trilogy. They spend the first half on the original film, and the rest of the time then goes over parts 2 and 3, with a couple of things on the Animatrix shorts.&quot;</span> <br /><br />_____________________________<br /><br /><br /><span style="color:Blue;">Name (Title): The Ultimate MATRIX Collection (1999-2003) - Movie, Reloaded, Revolutions, ANIMATRIX, and Documentary - 720p BluRay Trilogy x264.<br /><br />Category Type: Movies.<br /><br />Length (Duration): 2+ Hours per Film, typically.<br /><br />Year(s): 1999-2003.<br /><br />Starring: Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving, etc...<br /><br />Genre(s): Sci-Fi, Action, Thriller, Fantasy, Mystery, Martial Arts.<br /><br />Resolution: 720p.<br /><br />Rip Type (Source): BluRay -&gt; &quot;The.Ul<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="64100d090510014a290510160d1c4a270b08080107100d0b0a4a270b0914080110014a26081116051d4a55545c54144a301611012c204a1c5652504923161d0924">[email&#160;protected]</a>BTNET&quot;.<br /><br />Codec Type: x264.<br /><br />Format of File(s): MP4(s) for everything.<br /><br />Audio Format &amp; Language(s): ENGLISH in AC3 Format (6-Channel 640 KBPs Audio). <br /><br />Subtitles: YES: for each film, too.<br /><br />Chapters: YES: for every film, too.<br /><br />IMDB Link(s): <br /><br />http://www.imdb.com/title/tt0133093/<br /><br />http://www.imdb.com/title/tt0234215/<br /><br />http://www.imdb.com/title/tt0242653/<br /><br />http://www.imdb.com/title/tt0328832/<br /><br />https://en.wikipedia.org/wiki/The_Matrix_(franchise)</span></p>
+</div>
+<div role="tabpanel" class="tab-pane file-content" id="files">
+<h2>Files: </h2>
+<span class="head"><i class="flaticon-folder"></i>The Ultimate MATRIX Collection (1999-2003) - Movie, Reloaded, Revolutions, and ANIMATRIX - 720p BluRay Trilogy x264</span>
+<span class="head"><i class="flaticon-folder"></i>Torrents - DOWNLOAD Other ACTION Movie Packs, HERE</span>
+<ul>
+<li><i class="flaticon-book"></i>CRYING Freeman (1988-1995) - Anime OVA and LIVE-Action Movies Pack - 480p-720p x264 .txt (4.0 KB)</li>
+<li><i class="flaticon-book"></i>GOLGO 13 (1973-2009) - Anime Series, OVAs, LIVE-Action Movies - 480p-720p x264.txt (3.8 KB)</li>
+<li><i class="flaticon-book"></i>SNIPER Series (1993-2016) - 1, 2, 3, Reloaded, Legacy, Ghost Shooter - 720p x264.txt (4.1 KB)</li>
+<li><i class="flaticon-book"></i>The BOURNE Identity Series (1988-2016) - 720p BluRay x264.txt (3.9 KB)</li>
+<li><i class="flaticon-book"></i>The PUNISHER - Complete Movie TRILOGY - 720p BrRip x264.txt (3.2 KB)</li>
+</ul>
+<span class="head"><i class="flaticon-folder"></i>Torrents - DOWNLOAD Other MARTIAL ARTS Movies, HERE</span>
+<ul>
+<li><i class="flaticon-book"></i>Best of the Best 1, 2, 3, 4 - Complete Movie Series - 720p x264.txt (3.1 KB)</li>
+<li><i class="flaticon-book"></i>BLADE - Movie Trilogy, The Series, Marvel Anime - 720p + 480p.txt (4.2 KB)</li>
+<li><i class="flaticon-book"></i>BloodSport 1, 2, 3, 4 - Complete Movie Series - 480p-720p.txt (2.8 KB)</li>
+<li><i class="flaticon-book"></i>IP Man - Complete 2008-2015 Movie Series - 720p BluRay x264.txt (3.6 KB)</li>
+<li><i class="flaticon-book"></i>Legendary Assassin (2008) - Martial Arts Film - 720p HC BluRay.txt (2.1 KB)</li>
+<li><i class="flaticon-book"></i>MORTAL KOMBAT (1995-2013) - Complete Movies, Cartoons, TV Series - 480p-720p x264.txt (5.1 KB)</li>
+<li><i class="flaticon-book"></i>RUSH HOUR - Movie Trilogy and Series - 720p x264.txt (3.8 KB)</li>
+<li><i class="flaticon-book"></i>TEKKEN (1997-2014) - Movie and Anime Collection - 480p-720p x264.txt (3.4 KB)</li>
+<li><i class="flaticon-book"></i>The PROTECTOR 1 and 2 (Tom Yum Goong) - Tony Jaa - 720p BrRip HC.txt (2.4 KB)</li>
+</ul>
+<span class="head"><i class="flaticon-folder"></i>Torrents - DOWNLOAD Other Movie COLLECTIONS, Here</span>
+<ul>
+<li><i class="flaticon-book"></i>Atlas Shrugged - Complete Movie Trilogy - 720p BrRip x264.txt (2.6 KB)</li>
+<li><i class="flaticon-book"></i>BARBERSHOP - Movie Series Collection - 720p Web-DL x264.txt (3.8 KB)</li>
+<li><i class="flaticon-book"></i>Beverly Hills Cop - Movie Trilogy - 720p BrRip x264.txt (3.0 KB)</li>
+<li><i class="flaticon-book"></i>CHRIS TUCKER Movie Pack - 1995-2015 Collection - 720p BrRip x264.txt (1.9 KB)</li>
+<li><i class="flaticon-book"></i>DUMB and DUMBER - Complete Movie TRILOGY - 720p x264.txt (3.1 KB)</li>
+<li><i class="flaticon-book"></i>House Party 1-5 - Complete Movie Series - 720p WebRip x264.txt (2.1 KB)</li>
+<li><i class="flaticon-book"></i>The GODFATHER Trilogy - Parts I,II,III 1,2,3 - 720p BluRay x264.txt (3.3 KB)</li>
+</ul>
+<span class="head"><i class="flaticon-folder"></i>Torrents - DOWNLOAD Related SCI-FI Movies and Shows, HERE</span>
+<ul>
+<li><i class="flaticon-book"></i>Continuum - Complete TV Series (Season 1-2-3-4) - 720p HDTV x264.txt (2.3 KB)</li>
+<li><i class="flaticon-book"></i>Defiance - Complete Series - 720p HDTV.txt (2.3 KB)</li>
+<li><i class="flaticon-book"></i>Extant - Complete TV Series (Season 1 & 2) - 720p HDTV x264.txt (1.9 KB)</li>
+<li><i class="flaticon-book"></i>Kyle XY - Complete 2006-09 Series - 720p Web-DL.txt (3.1 KB)</li>
+<li><i class="flaticon-book"></i>SHADOWHUNTERS T.M.I - Season 1 S01 and Movie - 720p x264.txt (2.3 KB)</li>
+<li><i class="flaticon-book"></i>The Expanse - Complete Season 1 S01 - 720p HDTV.txt (1.9 KB)</li>
+<li><i class="flaticon-book"></i>The TOMORROW People - Complete 1973, 1992, 2013 Series - 480p-720p x264.txt (3.9 KB)</li>
+<li><i class="flaticon-book"></i>TRON - 1982 Film, Legacy, and Uprising - 720p x264.txt (3.4 KB)</li>
+</ul>
+<span class="head"><i class="flaticon-folder"></i>Torrents - DOWNLOAD Related SUPERHERO Shows and Movies, HERE</span>
+<ul>
+<li><i class="flaticon-book"></i>AVATAR (2005-14) - Complete Movie and TWO Series - 720p x264.txt (4.1 KB)</li>
+<li><i class="flaticon-book"></i>CLASS of the TITANS - Complete Animated SUPERHERO Series - 720p WebRip x264.txt (2.2 KB)</li>
+<li><i class="flaticon-book"></i>Green Lantern - 720p Series - 1 Film, 2 Cartoon Movies & 1 Show - 720p x264.txt (2.1 KB)</li>
+<li><i class="flaticon-book"></i>JUSTICE LEAGUE (2008-2016) - Cartoon MOVIES Pack - 720p x264.txt (4.6 KB)</li>
+<li><i class="flaticon-book"></i>JUSTICE LEAGUE Cartoon Series - JL, JL UNLIMITED, and YOUNG Justice - 720p Web-DL x264.txt (3.0 KB)</li>
+<li><i class="flaticon-book"></i>MARVEL Anime - Wolverine, X-Men, Iron Man, Blade - 480p-720p x264.txt (2.3 KB)</li>
+<li><i class="flaticon-book"></i>SILVER SURFER - The Complete ANIMATED Series (1998) - 720p Web-DL.txt (2.8 KB)</li>
+<li><i class="flaticon-book"></i>SONIC the Hedgehog (1993-2014) - Adventures of, SatAM, Movie OVA, X, Underground - 480p-720p x264.txt (4.0 KB)</li>
+<li><i class="flaticon-book"></i>SUPERGIRL - Complete Season 1 S01 and 1984 Movie - 720p HDTV x264.txt (2.4 KB)</li>
+<li><i class="flaticon-book"></i>SUPERMAN - 1978-2016 Movies Pack - 720p BrRip x264.txt (3.4 KB)</li>
+<li><i class="flaticon-book"></i>SUPERMAN (2006-2013) - Cartoon MOVIES Pack - 720p BrRip x264.txt (3.9 KB)</li>
+<li><i class="flaticon-book"></i>SUPERMAN and the LEGION of Super Heroes - 480p x264.txt (1.9 KB)</li>
+<li><i class="flaticon-book"></i>X-MEN - The ANIMATED Series, Evolution, Wolverine, Marvel ANIME - 480p-720p.txt (2.5 KB)</li>
+</ul>
+<span class="head"><i class="flaticon-folder"></i>Torrents - DOWNLOAD Sci-Fi ANIME Packs, Here</span>
+<ul>
+<li><i class="flaticon-book"></i>APPLESEED (1988-2014) - Complete OVA, Movies, Series - 480p-720p x264.txt (4.1 KB)</li>
+<li><i class="flaticon-book"></i>CASSHERN (1973-2008) - Complete Series, OVA, and Film - 480p-720p x264.txt (3.9 KB)</li>
+<li><i class="flaticon-book"></i>DarkStalkers - Night Warriors Revenge ANIME and The ANIMATED Series - 480p DVDRip x264.txt (2.7 KB)</li>
+<li><i class="flaticon-book"></i>MASAMUNE Shirow - 1987-2006 OVA Collection (480p - DUAL Audio).txt (5.1 KB)</li>
+<li><i class="flaticon-book"></i>SPACE Adventure COBRA (1982-2010) - The Movie, Series, Animation, OVA, OST - 720p x264.txt (4.2 KB)</li>
+</ul>
+<ul>
+<li><i class="flaticon-movies"></i>01. The MATRIX - Movie (1999 - 720p BluRay).mp4 (1.7 GB)</li>
+<li><i class="flaticon-movies"></i>01. The MATRIX - Movie (1999 - 720p BluRay).srt (97.0 KB)</li>
+<li><i class="flaticon-movies"></i>02. The Matrix - RELOADED (2003 - 720p BluRay).mp4 (1.8 GB)</li>
+<li><i class="flaticon-movies"></i>02. The Matrix - RELOADED (2003 - 720p BluRay).srt (96.2 KB)</li>
+<li><i class="flaticon-movies"></i>03. The Matrix - REVOLUTIONS (2003 - 720p BluRay).mp4 (1.9 GB)</li>
+<li><i class="flaticon-movies"></i>03. The Matrix - REVOLUTIONS (2003 - 720p BluRay).srt (79.8 KB)</li>
+<li><i class="flaticon-movies"></i>04. The ANIMATRIX (2003 - 720p BluRay).mp4 (1.5 GB)</li>
+<li><i class="flaticon-movies"></i>04. The ANIMATRIX (2003 - 720p BluRay).srt (43.9 KB)</li>
+<li><i class="flaticon-movies"></i>05a. RETURN to Source (Documentary) - PHILOSOPHY and The Matrix (2004 - 480p DVDRip).mp4 (769.6 MB)</li>
+<li><i class="flaticon-movies"></i>05b. Mark Passio - The MATRIX Trilogy DECODED (720p WebRip).mp4 (1.1 GB)</li>
+<li><i class="flaticon-movies"></i>05c. The Matrix DECRYPTED - Going BEYOND the Movie, Part 1 of 3 (720p WebRip).mp4 (169.1 MB)</li>
+<li><i class="flaticon-movies"></i>05c. The Matrix DECRYPTED - Going BEYOND the Movie, Part 2 of 3 (720p WebRip).mp4 (182.4 MB)</li>
+<li><i class="flaticon-movies"></i>05c. The Matrix DECRYPTED - Going BEYOND the Movie, Part 3 of 3 (720p WebRip).mp4 (77.8 MB)</li>
+<li><i class="flaticon-book"></i>Torrent Description (READ Me).txt (2.7 KB)</li>
+<li><i class="flaticon-book"></i>Torrent downloaded from btsone.cc.txt (0.1 KB)</li>
+<li><i class="flaticon-book"></i>Torrent Downloaded From ExtraTorrent.cc.txt (0.3 KB)</li>
+<li><i class="flaticon-book"></i>Torrent Downloaded from Limetorrents.cc.txt (0.0 KB)</li>
+<li><i class="flaticon-book"></i>Torrent downloaded from www.Demonoid.cc.txt (0.0 KB)</li>
+</div>
+<div role="tabpanel" class="tab-pane" id="comments">
+<h2>There are currently no comments. Feel free to leave one :)</h2>
+</div>
+<div role="tabpanel" class="tab-pane" id="tracker-list">
+<h3>Code: </h3>
+<ul>
+<li><span class="icon"><i class="flaticon-href-link"></i></span> udp://tracker.coppersurfer.tk:6969/announce</li>
+<li><span class="icon"><i class="flaticon-href-link"></i></span> udp://tracker.opentrackr.org:1337/announce</li>
+<li><span class="icon"><i class="flaticon-href-link"></i></span> udp://9.rarbg.com:2710/announce</li>
+<li><span class="icon"><i class="flaticon-href-link"></i></span> udp://explodie.org:6969/announce</li>
+<li><span class="icon"><i class="flaticon-href-link"></i></span> udp://p4p.arenabg.ch:1337/announce</li>
+<li><span class="icon"><i class="flaticon-href-link"></i></span> udp://tracker.piratepublic.com:1337/announce</li>
+<li><span class="icon"><i class="flaticon-href-link"></i></span> udp://tracker.leechers-paradise.org:6969/announce</li>
+<li><span class="icon"><i class="flaticon-href-link"></i></span> udp://tracker.zer0day.to:1337/announce</li>
+<li><span class="icon"><i class="flaticon-href-link"></i></span> udp://tracker.vanitycore.co:6969/announce</li>
+<li><span class="icon"><i class="flaticon-href-link"></i></span> udp://tracker.torrent.eu.org:451/announce</li>
+<li><span class="icon"><i class="flaticon-href-link"></i></span> udp://inferno.demonoid.pw:3393/announce</li>
+<li><span class="icon"><i class="flaticon-href-link"></i></span> udp://tracker.internetwarriors.net:1337/announce</li>
+<li><span class="icon"><i class="flaticon-href-link"></i></span> http://mgtracker.org:2710/announce</li>
+<li><span class="icon"><i class="flaticon-href-link"></i></span> http://retracker.krs-ix.ru/announce</li>
+<li><span class="icon"><i class="flaticon-href-link"></i></span> http://tracker1.wasabii.com.tw:6969/announce</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+ </div>
+</div>
+</div>
+</main>
+<footer>
+<div class="bitcoin">
+<div class="bitcoin-icon-wrap">
+<span class="bitcoin-icon"><i class="flaticon-bitcoin red"></i></span>
+</div>
+<span class="bitcoin-text"><span>Bitcoin Donate: </span><a href="bitcoin:3Qpdm4ckJ64irx1Nuyw9ZCCvc2qxoqkuBY">3Qpdm4ckJ64irx1Nuyw9ZCCvc2qxoqkuBY</a></span>
+</div>
+<a class="scroll-top" href="#"><i class="flaticon-up"></i></a>
+<ul>
+<li><a href="/">Home</a></li>
+<li class="active"><a href="/home/">Full Home Page</a></li>
+<li><a href="/contact">Dmca</a></li>
+<li><a href="/contact">Contact</a></li>
+</ul>
+<p class="info">1337x 2007 - 2017</p>
+</footer>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/78d64697/cloudflare-static/email-decode.min.js"></script><script src="/js/jquery-1.11.0.min.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/auto-searchv2.js"></script>
+<div class="modal fade modal-custom align-center" id="alert-popup" tabindex="-1" role="dialog" aria-labelledby="AlertPopup">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<a href="#" class="close" data-dismiss="modal" aria-label="Close"><i class="flaticon-logout"></i></a>
+<h4 class="modal-title" id="AlertPopup">You will be redirected in 3 seconds.</h4>
+</div>
+<div class="modal-body">
+<p>You are leaving 1337x to a website that is not affiliated with us in any way.</p>
+<p>We cannot guarantee for security of a linked website.</p>
+</div>
+</div>
+</div>
+</div>
+<script src="/js/equalheight.js"></script>
+<script src="/js/scrollbar.js"></script>
+<script src="/js/tab.js"></script>
+<script src="/js/lazyload.min.js"></script>
+<script src="/js/comment.js"></script>
+<script src="/js/pagination.js"></script>
+<script src="/js/modal.js"></script>
+<script src="/js/main.js"></script>
+<script>
+function vpn_height(){
+  vpn_info_height = $('.vpn-info').outerHeight() - 6 + 29;
+  $('.vpn-info-wrap .torrent-detail .shadow').css('bottom', - vpn_info_height)
+}
+  function resizeHeight() {
+    jQuery('.js-height .js-col').maxHeight();
+  }
+  resizeHeight();
+  $(window).resize(function(){
+    vpn_height();
+    resizeHeight();
+  })
+
+  function torrent_desc_width(){
+    torrent_wrap_width = $('.torrent-detail-page .torrent-detail').width();
+    torrent_image_width = $('.torrent-image-wrap').outerWidth();
+    torrent_detail_width = $('.torrent-detail-info').outerWidth();
+    torrent_total_width = torrent_wrap_width - torrent_image_width - 1;
+    $('.torrent-detail-info').css('min-width', torrent_total_width);
+  }
+
+  function  modal_resize(){
+    window_height = $(window).height();
+    modal_height = $('.modal.in .modal-dialog').outerHeight();
+    total_height = window_height - modal_height;
+    $('.modal.in .modal-dialog').css('margin-top', total_height / 2);
+  }
+  
+  $('.modal').on('shown.bs.modal', function (e) {
+    modal_resize();
+  })
+  modal_resize();
+  
+  $(window).resize(function(){
+    torrent_desc_width();
+  });
+
+  $('a[data-toggle="tab"]').tab();
+
+  $(window).load(function() {
+    vpn_height();
+    torrent_desc_width();
+    $(".content-row").mCustomScrollbar();
+  });
+
+  $("img.lazy").lazyload({
+    effect : "fadeIn",
+    placeholder : '/images/profile-load.svg'
+  });
+  
+  $('a[href="#comments"]').on('shown.bs.tab', function () {
+    $("img.lazy").lazyload({
+      effect : "fadeIn",
+      placeholder : '/images/profile-load.svg'
+    });
+  });
+  
+
+  var modal_url;
+  $('.js-modal-url').click(function(){
+    modal_url = $(this).attr('href')
+  });
+  
+  $('#alert-popup').on('shown.bs.modal', function (e) {
+    setTimeout(function() {
+       window.location.href = modal_url;
+    }, 3000); // Chnage location Time
+  })
+  
+
+  
+var members;
+$(window).load(function() {
+        $.ajax({
+       type: "GET",
+        crossDomain: true,
+        url: "//cdn.1337x.to/ip.php",
+        dataType: "json",
+        success: function(data) {
+          $('.vpn-country').html(data.country);
+          $('.vpn-ip').html(data.ip);
+          vpn_height();
+        }
+    });
+    
+      var url = "/comments.php?torrentid=1956369" ;
+    $.getJSON(url, function(result) {
+        console.log(result);
+        members = result;
+        buildComment(result);
+
+    }).done(function(){
+    });
+});  
+  
+</script>
+<script src="/js/babaebcdfafefcac.js"></script>
+<script>
+if (top != self) {top.location.replace(self.location.href);}
+</script>
+</body>
+</html>

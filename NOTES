@@ -1,0 +1,53 @@
+/*
+
+NOTES:
+
+2000 saved movies results =~ 500mb
+
+
+[!] You must add a delay between each request on 1337x, otherwise ip is going to be banned. If you are banned you have to get a new ip/server. 
+	Banned IP seems irreversable.
+    Currently delay is set to 5 seconds between each search and 3 seconds to browse through results pages ( page 1,2,3 .. last )
+
+[!] Issues & Problems:
+
+	Folders to save html files should be named by imdb codes to ensure data integrity.There are movies like 1994, or so which have more than one results in database
+
+[*] Steps to collect and import torrents from 1337x
+
+STEPS (summary):
+
+	1. Search 1337x and save results pages for each movie
+	2. Parse search results and save them, or start downloading HTML files for ech torrent
+	3. ...
+
+STEPS:	
+
+	1. You need a movies list to start searching for results at 1337x. 
+	   Search for imdb-movies-list php script on github or check movies_list table in tm database
+	   Get the list and start searching with Search1337x class.
+	   Folders are created for each movie and results pages are saved in them.
+	   example: 
+			moviename: Independence Day: Resurgence
+			folder: Independence_Day_Resurgence
+			html file: Independence_Day_Resurgence_1, Independence_Day_Resurgence_2 , etc for each results pages
+
+	2. Iterate through results pages, and download or parse HTML files for each torrent. 
+	   You shuld match at least imdb and or year of the movie.
+	   
+	   There are 2 options here:
+	   
+			1. Collect all required data ( hash, torrent name, seeders/leechers, imdb codes , screenshots, torrent files, magnet links , etc... )
+			or
+			2. Collect information about the above and download later in another script/server 
+
+	3. Import torrents into tm db. 
+
+Thoughts:
+
+Maybe seperate the first 2 steps to an independent solution available for public release
+
+NOTES on Movies according to 1337x.
+There are some movie names like "1964", "1959", "2006". You moght consider add a match with the year of the movie when retrieving Search Results Pages
+
+*/
