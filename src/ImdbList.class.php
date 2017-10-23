@@ -1,6 +1,10 @@
 <?php
 class ImdbList extends dbhandler{
 
+	// TESTS: test movies with name like Love (2015) or Room (2015) Legend (2015)
+	
+	// TESTS: Daredevil append Marvel on search
+
 	private $rootList=[];
 	
 	function __construct() {
@@ -17,6 +21,11 @@ class ImdbList extends dbhandler{
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`=2014 OR yearmovie=2015";
 		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Lord of the Rings%'";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%A Good Day to Die Hard%'";
+
+		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' limit 100";
+
+		$selectquery = "SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' AND moviename='Love'";
+		
 		printColor(n.$selectquery.n, "green");
 		$dbh = $this->getInstance(); 
 		if ( !$stmt = $dbh->dbh->prepare($selectquery) ) { 

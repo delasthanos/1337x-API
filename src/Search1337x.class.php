@@ -20,6 +20,7 @@ class Search1337x extends Search1337xHelperFunctions{
 		return $this->activePages;
 	}
 
+	// Main Search Operation | Saves resutls HTML files | Stops on MIN_SEEDS or MAX_RESULTS_PAGES
 	public function searchForTitles($title){
 
 		if (!is_array($title)){
@@ -34,12 +35,12 @@ class Search1337x extends Search1337xHelperFunctions{
 		switch (CATEGORY):
 			case ('Movies'):
 				$this->titlenameOriginal = $title['moviename'];
-				$this->settitlename($title['moviename']);
+				$this->setTitleName($title['moviename']." ".$title['yearmovie']);
 				$this->setFilename($title['imdb']);
 				break;
 			case ('TV'):
 				$this->titlenameOriginal = $title['tvshowname'];
-				$this->settitlename($title['tvshowname']);
+				$this->setTitleName($title['tvshowname']);
 				$this->setFilename($title['imdb']);
 				break;
 		endswitch;
@@ -68,6 +69,7 @@ class Search1337x extends Search1337xHelperFunctions{
 
 				// Break: Stop saving HTML pages on MIN_SEEDS or MAX_RESULTS_PAGES
 				if ( !$this->checkResultsForSeeds($this->HTML) ){ break; }
+				//if ( !$this->checkResultsForTitleYearMatch($this->HTML) ){ break; }
 				if ( $this->page > MAX_RESULTS_PAGES ){ printColor (n."[!]Reached MAX_RESULTS_PAGES: ".MAX_RESULTS_PAGES.". Break.".n, "red+bold"); break; }
 			}
 		}
@@ -204,7 +206,8 @@ class Search1337x extends Search1337xHelperFunctions{
 		}
 	}
 
-	private function settitlename($title){ $this->titlename=removeSpecialChars($title); }
+	private function setTitleName($title){ $this->titlename=removeSpecialChars($title); }
+	private function setTitleNameWithYear($title){ $this->titlename=removeSpecialChars($title); }
 	private function setFilename($title){ $this->filename=spacesToUnderscores(removeSpecialChars($title)); }
 }
 ?>

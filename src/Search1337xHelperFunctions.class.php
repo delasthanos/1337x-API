@@ -31,6 +31,12 @@ abstract class Search1337xHelperFunctions{
 			//if ( array_key_exists('seeds', $currentTorrent ) && ($currentTorrent['seeds'] > 1) ):
 			if ( array_key_exists('seeds', $currentTorrent ) ):
 
+
+				$torrentName = $xPath->query('td[contains(@class,"name")]/a', $element);
+				foreach ( $torrentName as $tname ){ 
+					$currentTorrent['name']=$tname->nodeValue;
+				}
+
 				$torrentLink = $xPath->query('td[contains(@class,"name")]/a/@href', $element);
 				foreach ( $torrentLink as $tlink ){ 
 
@@ -42,7 +48,6 @@ abstract class Search1337xHelperFunctions{
 						//print n."Torrent link: ".$tlink->nodeValue;
 						$currentTorrent['link']=$tlink->nodeValue;
 					}
-
 				}
 			
 				$leeches = $xPath->query('td[contains(@class,"leeches")]', $element);
@@ -68,13 +73,14 @@ abstract class Search1337xHelperFunctions{
 		return $torrents;
 	}
 
-	protected function checkResultsForSeeds($htmlFilePath){
+	// Stop retrieving results pages if all seeds are 0 or 1
+	protected function checkResultsForSeeds($html){
 	
 		// Accepts only HTML file.
 	
 		//This is a helper function to check for seeds at results pages. If seeds are less than minimum seted seeds ( <1 ) then stop search and download of HTML files
 
-		$torrents = $this->parseSearchResultsPage(file_get_contents($htmlFilePath));
+		$torrents = $this->parseSearchResultsPage(file_get_contents($html));
 		$countTorrents=count($torrents);
 		$countZeroSeeds=0;
 		foreach ( $torrents as $t ){
@@ -91,6 +97,17 @@ abstract class Search1337xHelperFunctions{
 		else {
 			return true;
 		}
+	}
+	
+	// Stop retrieving results pages if all seeds are 0 or 1
+	protected function checkResultsForTitleYearMatch($html){
+
+		$torrents = $this->parseSearchResultsPage(file_get_contents($html));
+		$countTorrents=count($torrents);
+		
+//print (n.n."breakpoint inside checkResultsForTitleYearMatch".n.n);
+//exit();
+				
 	}
 }
 ?>

@@ -65,6 +65,8 @@ if ($allowedArgs['search']):
 	// Search1337x | Find how many results pages exist for each movie and save them to its own folder, named with imdb code
 	// Maybe reset the variables inside the class Search1337x rather than destroying it with unset(). Check for memory usage.
 	// Main Loop | Might take a while according to results from ImdbList class | 
+	
+	// TESTS: test movies with name like Love (2015) or Room (2015) Legend (2015)
 
 	printColor (n."Searching ... ".n, "white+bold");
 	printColor (CATEGORY.n, "white+bold");
@@ -99,19 +101,22 @@ if ($allowedArgs['search']):
 			$findTorrents=new ParseSearch1337x($title['imdb']); //Pass imdb folder name containing search results pages
 			$findTorrents->collectSearchResultsHTML();
 			$torrents = $findTorrents->collectTorrentInformation(); // Final array with torrent info for each folder
-		
+
 			// Save Search Results
 			// $imdb,$totalPages,$activePages,$totalTorrents,$activeTorrents
+			
+// Before save results do a match with title/year for movies
+			/*
 			$searchResults=new SearchResults( $title['imdb'], $search->getActivePages(), $search->getTotalPages(), $findTorrents->findTotalTorrents(), $findTorrents->findActiveTorrents(), $findTorrents->getActiveTorrents() );
-
 			if ( $searchResults->saveSearchSummary() ):
 
-				printColor ( n."[*]Saved search results to database.","green" );
+				printColor ( n."[*]Saved search summary to database.","green" );
 				printColor ( n."[*]Saving torrents search results...","yellow" );
 				$searchResults->saveSearchResultsTorrents();
 				printColor ( n."[*]Done".n.n,"white+bold" );
 
 			endif;
+			*/
 		
 			sleep(WAIT_SECONDS);
 

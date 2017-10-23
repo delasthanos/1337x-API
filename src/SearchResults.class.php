@@ -78,6 +78,9 @@ CREATE TABLE `search_results` (
 			$torrentlink=$split[3];
 			$imdb=$this->imdb;
 			$category=$this->category;
+			
+			var_dump($torrent);
+exit(n.n."Breakpoint inside: saveSearchResultsTorrents()".n.n);
 
 			$insert = $this->insertTorrentResult( $torrentid, $torrentlink, $torrent['seeds'], $torrent['leeches'], $category );
 			if ($insert===1) printColor("#","green");
