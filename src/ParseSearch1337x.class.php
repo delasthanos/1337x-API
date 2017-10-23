@@ -46,6 +46,24 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 
 		return $this->torrents;
 	}
+	
+	public function findTotalTorrents(){
+		print (n."\t[*]Found: ".count($this->torrents)." torrents." );
+		return count($this->torrents);
+	}
+
+	public function findActiveTorrents(){
+
+		$activeTorrents=0;
+		foreach ($this->torrents as $t ):
+		
+			if ( $t['seeds']>MIN_SEEDS ){++$activeTorrents;}
+			
+		endforeach;
+		print (n."\t[*]Active: ".$activeTorrents." ( seeds>".MIN_SEEDS." )");
+		return $activeTorrents;
+
+	}
 
 	private function collectHTMLFromFolder(){
 	
@@ -57,11 +75,9 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 		if ( $count > 0 ){
 			printColor (n."\t".$count.' results pages',"white+bold");
 			foreach ( $files as $f ){
-				print (n."\t----".$f);
+				//print (n."\t----".$f);
 				array_push($HTMLFiles, $f);
 			}
-			print (n.n);
-			
 			$this->HTMLFiles=$HTMLFiles; // All html filenames for this folder
 		}
 	}
@@ -89,7 +105,7 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 			} 
 			else {
 
-				printColor (n.n.n."_[#]ok_","green");
+				printColor (n."_[#]ok_","green");
 				$result = $stmt->fetchAll();
 				if ( count($result)===1 ){
 					print ($folder." = ".$result[0]['moviename']." ".$result[0]['yearmovie'].n);

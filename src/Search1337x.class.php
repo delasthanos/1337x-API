@@ -3,6 +3,7 @@ class Search1337x extends Search1337xHelperFunctions{
 
 	private $page=1;
 	private $totalPages=0;
+	private $activePages=0;
 	private $titlename; // Clean title name to search| Remove special chars | Allow only spaces
 	private $titlenameOriginal; // Original title name | Straight from Database
 	private $filename; // Clean filename for folder & HTML files. Remove special chars | Replace spaces with underscores
@@ -10,6 +11,15 @@ class Search1337x extends Search1337xHelperFunctions{
 	private $HTML; // saved results page complete path 
 	private $noResults=false;
 	private $banned=false;
+	
+	public function getTotalPages(){
+		return $this->totalPages;
+	}
+
+	public function getActivePages(){
+		return $this->activePages;
+	}
+	
 
 	public function searchForTitles($title){
 
@@ -45,29 +55,25 @@ class Search1337x extends Search1337xHelperFunctions{
 		if ($this->getResultsPage() ){
 
 			$this->findTotalPages($this->HTML);
+			++$this->activePages;
 			
 			if ($this->noResults) { print ("\n[*]No results."); }
 			if ($this->banned) { print ("\n\n\n----------->[!]WARNING. IP has been banned. Shit! You must get a new server now!\n\n\n"); exit("\n\n Emergency exit\n\n");}		
 			printColor ("\n[*]Total pages found: ".$this->totalPages." for : ".$this->titlenameOriginal, "white+bold");
-
-			// Delete title folder if no results if ($this->noResults) { }
 
 			// Loop to get the rest search results pages.
 			while ( (++$this->page <= $this->totalPages) && ($this->totalPages>0) ){
 
 				print ("\nPage ".($this->page).": " );
 				$this->getResultsPage();
+				++$this->activePages;
 
-				// Stop saving HTML pages if seeds are 0 for all torrents or MAX_RESULTS_PAGES limit has benn reached
-
-				if ( !$this->checkResultsForSeeds($this->HTML) ){
-					break;
-				}
-
+				// Break: Stop saving HTML pages on MIN_SEEDS or MAX_RESULTS_PAGES
+				if ( !$this->checkResultsForSeeds($this->HTML) ){ break; }
 				if ( $this->page > MAX_RESULTS_PAGES ){ printColor (n."[!]Reached MAX_RESULTS_PAGES: ".MAX_RESULTS_PAGES.". Break.".n, "red+bold"); break; }
 			}
 		}
-		//$this->getSearchResults($title['titlename']);
+
 	}
 	
 	private function getResultsPage(){

@@ -32,7 +32,7 @@ define("n","\n"); // Folder to save and parse HTML files for each movie. Without
 
 // Database configuration
 define( "DB_HOST", "localhost");
-define( "DB_USER", "tm");
-define( "DB_PASSWORD", "tm");
-define( "DB_NAME", "tm");
+define( "DB_USER", "imdb");
+define( "DB_PASSWORD", "imdb");
+define( "DB_NAME", "imdb");
 ?>

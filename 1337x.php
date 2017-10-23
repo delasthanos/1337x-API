@@ -1,4 +1,11 @@
 <?php 
+
+/*
+	Refactor the application to save search results and torrents into a database.
+	This is to reduce errors on import, and save disk space from HTML files.
+	
+*/
+
 if (php_sapi_name()!=='cli'){
 	define("CLI", false);
 }
@@ -49,6 +56,9 @@ endif; //CLI
  *  Search results foreach movie from 1337x
  *  Save HTML results pages
  */
+/*
+	Refactoring : Merge search and parse results and save into db
+*/
 if (CLI):
 if ($allowedArgs['search']):
 
@@ -65,17 +75,64 @@ if ($allowedArgs['search']):
 	elseif (CATEGORY=="TV"): $titles = $ImdbList->getTvshowsList();
 	endif;
 
+	// Iterate Movies or TvShows names to search and collect information
 	foreach ( $titles as $title ):
 
+		// Search according to title
 		$search = new Search1337x();
 		$search->searchForTitles($title);
-		sleep(WAIT_SECONDS);
+		
+		printColor (n.n."[->]Collect data from search results to save into database","white+bold");
+		print (n."Search summary: Active Pages/Total Pages=(".$search->getActivePages()."/".$search->getTotalPages().")".n.n );
+
+		// Parse Search Results
+		$findTorrents=new ParseSearch1337x($title['imdb']); //Pass imdb folder name containing search results pages
+		$findTorrents->collectSearchResultsHTML();
+		$torrents = $findTorrents->collectTorrentInformation(); // Final array with torrent info for each folder
+		$findTorrents->findTotalTorrents();
+		$findTorrents->findActiveTorrents();
+		
+		// Save Search Results
+		// $imdb,$totalPages,$activePages,$totalTorrents,$activeTorrents
+		$saveResults=new SaveSearchResults( $title['imdb'], $search->getActivePages(), $search->getTotalPages(), $findTorrents->findTotalTorrents(), $findTorrents->findActiveTorrents() );
+		$saveResults->save();
+
 		unset($search);
+		
+		sleep(WAIT_SECONDS);		
 
 	endforeach; // Foreach titles
 
 endif; //search
 endif; //CLI
+
+
+
+
+exit(n."Breakpoint on search".n);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
  *	Collect and Parse search results from above
