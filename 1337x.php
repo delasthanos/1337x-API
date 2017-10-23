@@ -11,12 +11,12 @@ ini_set('display_errors', 1);
 
 // Include classes and functions
 require_once("config.php");
-require_once("includes/dbhandler.class.php");
-require_once("includes/ansi.color.class.php"); $color = new Color();
-require_once("includes/functions.php");
+require_once("src/dbhandler.class.php");
+require_once("src/ansi.color.class.php"); $color = new Color();
+require_once("src/functions.php");
 
 spl_autoload_register(function ($class_name) {
-    require_once 'includes/'.$class_name.'.class.php';
+    require_once 'src/'.$class_name.'.class.php';
 });
 
 
