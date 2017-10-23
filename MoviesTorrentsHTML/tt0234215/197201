@@ -1,494 +1,0 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Download The Matrix Reloaded, [BDrip 1080p - H264 - Ita Ac3] Action - Adventure - Sci-Fi [TNTVillage.scambioetico.org] Torrent | 1337x</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/css/jquery-ui.css">
-<link rel="stylesheet" href="/css/icons.css">
-<link rel="stylesheet" href="/css/modal.css">
-<link rel="stylesheet" href="/css/scrollbar.css">
-<link rel="stylesheet" href="/css/style.css?ver=2.5">
-<link rel="shortcut icon" href="/favicon.ico">
-<!--[if lt IE 9]><script src = "/js/html5shiv.js"></script><![endif]-->
-</head>
-<body>
-<div class="mobile-menu"></div>
-<div class="top-bar">
-<div class="container">
-<ul class="top-bar-nav">
-<li><a href="/register">Register</a></li>
-<li class="active"><a href="/login">Login</a></li>
-</ul>
-</div>
-</div>
-<header>
-<div class="container">
-<div class="clearfix">
-<div class="logo"><a href="/home/"><img alt="logo" src="/images/logo.svg"></a></div>
-<a href="#" class="navbar-menu"><span></span><span></span><span></span></a>
-<div class="search-box">
-<form id="search-form" method="get" action="/srch">
-<input type="search" placeholder="Search for torrents.." id="autocomplete" name="search" class="ui-autocomplete-input form-control" autocomplete="off">
-<button type="submit" class="btn btn-search"><i class="flaticon-search"></i><span>Search</span></button>
-</form>
-</div>
-</div>
-<nav>
-<ul class="main-navigation">
-<li class="active"><a href="/home/" title="Go to Home">Home</a></li>
-<li><a href="/upload" title="Upload Torrent File">Upload</a></li>
-<li><a href="/rules" title="Rules">Rules</a></li>
-<li><a href="/contact" title="Contact 1337x">Contact</a></li>
-<li><a href="/about" title="About us">About us</a></li>
-</ul>
-</nav>
-</div>
-</header>
-<main class="container">
-<div class="row">
-<aside class="col-3 pull-right">
-<div class="list-box">
-<h2>Browse torrents</h2>
-<ul>
-<li><a href="/trending" title="Trending Torrents"><i class="flaticon-trending"></i> Trending Torrents</a></li>
-<li><a href="/movie-library/1/" title="Movie Liabrary"><i class="flaticon-movie-library"></i> Movie library</a></li>
-<li><a href="/series-library/a/1/" title="TV Liabrary"><i class="flaticon-tv-library"></i> TV library</a></li>
-<li><a href="/new-episodes/day/1/" title="New TV Episodes"><i class="flaticon-tv"></i> New TV Episodes</a></li>
-<li><a href="/top-100" title="Top 100 Torrents"><i class="flaticon-top"></i> Top 100 Torrents</a></li>
-<li><a href="/cat/Anime/1/" title="Anime"><i class="flaticon-ninja-portrait"></i> Anime</a></li>
-<li><a href="/cat/Apps/1/" title="Applications"><i class="flaticon-apps"></i> Applications</a></li>
-<li><a href="/cat/Documentaries/1/" title="Documentaries"><i class="flaticon-documentary"></i> Documentaries</a></li>
-<li><a href="/cat/Games/1/" title="Games"><i class="flaticon-games"></i> Games</a></li>
-<li><a href="/cat/Movies/1/" title="Movies"><i class="flaticon-movies"></i> Movies</a></li>
-<li><a href="/cat/Music/1/" title="Movies"><i class="flaticon-music"></i> Music</a></li>
-<li><a href="/cat/Other/1/" title="Others"><i class="flaticon-other"></i> Other</a></li>
-<li><a href="/cat/TV/1/" title="Television"><i class="flaticon-tv"></i> Television</a></li>
-<li><a href="/cat/XXX/1/" title="XXX"><i class="flaticon-xxx"></i> XXX</a></li>
-</ul>
-</div>
-<div class="list-box hidden-sm">
-<h2>1337x Links</h2>
-<ul class="list">
-<li><a target="_blank" href="https://chat.1337x.to"> 1337x Chat</a></li>
-<li><a target="_blank" href="https://bitsnoop.com"> BitSnoop</a></li>
-<li><a target="_blank" href="https://www.limetorrents.cc"> Limetorrents</a></li>
-<li><a target="_blank" href="https://www.torrentfunk.com"> TorrentFunk</a></li>
-<li><a target="_blank" href="http://www.torrentbit.net"> TorrentBit</a></li>
-<li><a target="_blank" href="https://www.torlock.com"> Torlock</a></li>
-<li><a target="_blank" href="https://torrentproject.se"> TorrentProject</a></li>
-</ul>
-</div>
-</aside>
-<script>
-function count(t){return $.ajax({async:!1,type:"POST",url:"/dltrack/197201/",data:{dst:t.href,src:document.location.href,torid:"197201"}}),!1}
-</script>
-<style>
-.torrent-category-detail ul.dropdown-menu .btn.acdcebee {
-  padding: 0 4px 0 50px;
-  box-shadow: none;
-}
-ul.dropdown-menu .btn.acdcebee .icon i {
-  line-height: 1;
-}
-.btn.acdcebee{
-  position: relative;
-  padding: 4px 4px 4px 50px;
-  font-size: 15px;
-  width: 100%;
-  font-family: 'Oswald Bold', sans-serif;
-  text-transform: uppercase;
-  box-shadow: 0 5px 0 rgba(0,0,0,0.5);
-  border-radius: 3px;
-}
-.movie-torrent .torrent-download .acdcebee{
-  min-width: 200px;
-}
-.movie-torrent .torrent-download .left .acdcebee {
-  width: inherit;
-}
-.movie-torrent .torrent-download .right .btn.acdcebee{
-width: auto;
-}
-/* STREAM */
-.btn-adefadaa {
-    background-color: #e00000;
-    color: #fff;
-}
-.btn-adefadaa .icon {
-    background-color: #980404;
-}
-.btn-adefadaa .icon::after {
-    border-left-color: #980404;
-}
-.btn-adefadaa:hover {
-    background-color: #cd0303;
-    color: #fff;
-}
-.btn-adefadaa:focus, .btn-adefadaa:active:focus {
-    background-color: #8d0808;
-    color: #fff;
-}
-/* DIRECT */
-.btn-fbcafbfc {
-    background-color: #00ceed;
-    color: #fff;
-}
-.btn-fbcafbfc .icon {
-    background-color: #0f8091;
-}
-.btn-fbcafbfc .icon::after {
-    border-left-color: #0f8091;
-}
-.btn-fbcafbfc:hover {
-    background-color: #02bbd7;
-    color: #fff;
-}
-.btn-fbcafbfc:focus, .btn-fbcafbfc:active:focus {
-    background-color: #0f7584;
-    color: #fff;
-}
-/*  MAGNET  */
-.btn-beeedeab {
-  color: #fff;
-  background-color: #89ad19;
-}
-.btn-beeedeab .icon {
-  background-color: #6a8616;
-}
-.btn-beeedeab .icon:after {
-  border-left-color: #6a8616;
-}
-.btn-beeedeab:hover {
-  color: #fff;
-  background-color: #7fa01a;
-}
-.btn-beeedeab:focus,
-.btn-beeedeab:active:focus {
-  color: #fff;
-  background-color: #637d18;
-}
-/*  BUTTON TORRENT DOWNLOAD  */
-.btn-cbfcbbaa {
-  color: #fff;
-  background-color: #da3a04;
-}
-.btn-cbfcbbaa .icon {
-  background-color: #962e08;
-}
-.btn-cbfcbbaa .icon:after {
-  border-left-color: #962e08;
-}
-.btn-cbfcbbaa:hover {
-  color: #fff;
-  background-color: #c73707;
-}
-.btn-cbfcbbaa:focus,
-.btn-cbfcbbaa:active:focus {
-  color: #fff;
-  background-color: #962e08;
-}
-
-/*  BUTTON TORRENT MIRROR DOWNLOAD  */
-.btn-dedcddbd {
-  color: #fff;
-  background-color: #f34104;
-}
-.btn-dedcddbd .icon {
-  background-color: #c13403;
-}
-.btn-dedcddbd .icon:after {
-  border-left-color: #c13403;
-}
-.btn-dedcddbd:hover {
-  color: #fff;
-  background-color: #c73707;
-}
-.btn-dedcddbd:focus,
-.btn-dedcddbd:active:focus {
-  color: #fff;
-  background-color: #c13403;
-}
-/* VPN LINK */
-.aecffeba {
-  position: relative;
-  top: -6px;
-  color: #fff;
-  font-size: 12px;
-  border-radius: 0 0 5px 5px;
-  background:url('/css/images/notfication-bg.png') repeat 0 0;
-  background-color: #5fa2d7;
-  transition: all .2s ease;
-}
-.aecffeba:hover {
-  background:url('/css/images/notfication-bg.png') repeat 0 0;
-  background-color: #5795c4;
-}
-.aecffeba a:hover {
-  text-decoration: underline;
-}
-.aecffeba:active {
-  background:url('/css/images/notfication-bg.png') repeat 0 0;
-  background-color: #236597;
-}
-.aecffeba .icon {
-  color: #fff;
-  display: block;
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  padding-top: 4px;
-  width: 40px;
-  text-align: center;
-  border-radius: 0 0 0 5px;
-  background:url('/css/images/notfication-bg.png') repeat 0 0;
-  background-color:#236597;
-}
-.aecffeba .icon i {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -24%;
-  margin-top: -30%;
-}
-.aecffeba a{
-  color: #fff;
-  display: inline-block;
-  padding: 18px 0 11px 66px;
-}
-</style>
-<div class="col-9 page-content">
-<div class="box-info torrent-detail-page  vpn-info-wrap">
-<div class="box-info-heading clearfix"><h1> The Matrix Reloaded, [BDrip 1080p - H264 - Ita Ac3] Action - Adve... </h1>
-</div>
-<div class="box-info-detail no-top-radius">
-<div class="torrent-category-detail clearfix">
-<ul class="download-links-dontblock btn-wrap-list">
-<li><a class="acdcebee btn btn-beeedeab" href="magnet:?xt=urn:btih:B90AEA6BEE70992267723C488183B301050351E8&dn=The+Matrix+Reloaded%2C+%5BBDrip+1080p+-+H264+-+Ita+Ac3%5D+Action+-+Adventure+-+Sci-Fi+%5BTNTVillage.scambioetico.org%5D&tr=http%3A%2F%2Ftracker.tntvillage.scambioetico.org%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.1337x.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce" onclick="javascript: count(this);"><span class="icon"><i class="flaticon-magnet"></i></span>Magnet Download</a> </li>
-<li style="margin-top:0px;"></li>
-<li style="margin-top:0px;"></li>
-<li style="margin-top:0px;"></li>
-<li style="margin-top:0px;"></li>
-<li class="dropdown">
-<a data-toggle="dropdown" class="acdcebee btn btn-cbfcbbaa" onclick="javascript: count(this);" href="#"><span class="icon"><i class="flaticon-two-down-arrows"></i></span>Torrent Download</a>
-<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-<li><a class="acdcebee btn btn-dedcddbd" target="_blank" href="http://itorrents.org/torrent/B90AEA6BEE70992267723C488183B301050351E8.torrent"><span class="icon"><i class="flaticon-torrent-download"></i></span>ITORRENTS MIRROR</a> </li>
-<li><a class="acdcebee btn btn-dedcddbd" target="_blank" href="http://torrage.info/torrent.php?h=B90AEA6BEE70992267723C488183B301050351E8"><span class="icon"><i class="flaticon-torrent-download"></i></span>TORRAGE MIRROR</a></li>
-<li><a class="acdcebee btn btn-dedcddbd" target="_blank" href="http://btcache.me/torrent/B90AEA6BEE70992267723C488183B301050351E8"><span class="icon"><i class="flaticon-torrent-download"></i></span>BTCACHE MIRROR</a></li>
-<li><a class="acdcebee btn btn-beeedeab" href="magnet:?xt=urn:btih:B90AEA6BEE70992267723C488183B301050351E8&dn=The+Matrix+Reloaded%2C+%5BBDrip+1080p+-+H264+-+Ita+Ac3%5D+Action+-+Adventure+-+Sci-Fi+%5BTNTVillage.scambioetico.org%5D&tr=http%3A%2F%2Ftracker.tntvillage.scambioetico.org%3A2710%2Fannounce&tr=udp%3A%2F%2Ftracker.1337x.org%3A80%2Fannounce&tr=udp%3A%2F%2Ftracker.zer0day.to%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Fcoppersurfer.tk%3A6969%2Fannounce"><span class="icon"><i class="flaticon-magnet"></i></span>None Working? Use Magnet</a></li>
-</ul>
-</li>
-<li style="margin-top:0px;"></li>
-<li style="margin-top:0px;"></li>
-<li style="margin-top:0px;"></li>
-<li style="margin-top:0px;"></li>
-<li><a id="adefadaa" class="acdcebee btn btn-adefadaa" href="/streamredirect.php?q=The Matrix Reloaded, [BDrip 1080p - H264 - Ita Ac3] Action - Adventure - Sci-Fi [TNTVillage.scambioetico.org]"><span class="icon"><i class="flaticon-stream"></i></span>Play Now (Stream)</a></li>
-<li style="margin-top:0px;"></li>
- <li style="margin-top:0px;"></li>
-<li style="margin-top:0px;"></li>
-<li style="margin-top:0px;"></li>
-<li><a id="fbcafbfc" class="acdcebee btn btn-fbcafbfc" href="/ghostvpn.php"><span class="icon"><i class="flaticon-shield-sat"></i></span>Anonymous Download</a> </li>
-<li style="margin-top:0px;"></li>
-<li style="margin-top:0px;"></li>
-<li style="margin-top:0px;"></li>
-<li style="margin-top:0px;"></li>
-</ul>
-<ul class="list">
-<li> <strong>Category</strong> <span>Movies</span> </li>
-<li> <strong>Type</strong> <span>HD</span> </li>
-<li> <strong>Language</strong> <span>Italian</span> </li>
-<li> <strong>Total size</strong> <span>7.7 GB</span> </li>
-<li> <strong>Uploaded By</strong> <span><small class="uploader"></small> <a href="/user/giovidon/">giovidon</a></span> </li>
-</ul>
-<ul class="list">
-<li> <strong>Downloads</strong> <span>1530</span> </li>
-<li> <strong>Last checked</strong> <span>2 days ago</span> </li>
-<li> <strong>Date uploaded</strong> <span>6 years ago</span> </li>
-<li> <strong>Seeders</strong> <span class="seeds">4</span> </li>
-<li> <strong>Leechers</strong> <span class="leeches">1</span> </li>
-</ul>
-</div>
-<div class="aecffeba"><a id="aecffeba" href="/ghostvpn.php"><span class="icon"><i class="flaticon-shield-sat"></i></span>Your IP Address is <strong class="vpn-ip"></strong> Location is <strong class="vpn-country"></strong> - Your ISP and Government can track your torrent activity! Hide your IP with a VPN!</a></div>
-<div class="manage-box">
-<div class="infohash-box">
-<p> <strong>Infohash :</strong> <span>B90AEA6BEE70992267723C488183B301050351E8</span></p>
-</div>
-</div>
-<div class="torrent-tabs">
-<ul class="tab-nav clearfix">
-<li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">Description</a></li>
-<li role="presentation"><a href="#files" aria-controls="files" role="tab" data-toggle="tab">Files</a></li>
-<li role="presentation"><a href="#comments" aria-controls="comments" role="tab" data-toggle="tab">Comments<span class="active">0</span></a></li>
-<li role="presentation" class="hidden-xs"><a href="#tracker-list" aria-controls="tracker-list" role="tab" data-toggle="tab">Tracker list</a></li>
-</ul>
-<div class="tab-content">
-<div role="tabpanel" class="tab-pane active" id="description">
-<p><img src="/images/profile-load.svg" data-original="http://img251.imageshack.us/img251/5029/bluraylogosvg1.png" class="img-responsive descrimg lazy" /> <br /><br /><br /><br /><br /><br /><strong>Le grandi trilogie in HD di Mandragola<br />Presenta </strong> <br /><br /><img src="/images/profile-load.svg" data-original="http://img3.imageshack.us/img3/6519/oloy.jpg" class="img-responsive descrimg lazy" /> <br /><br /><strong>The Matrix Reloaded </strong> <br /><br /><img src="/images/profile-load.svg" data-original="http://img707.imageshack.us/img707/9572/50611983.jpg" class="img-responsive descrimg lazy" /> <br /><br /><strong>Locandina </strong> <br /><br /><img src="/images/profile-load.svg" data-original="http://img835.imageshack.us/img835/4924/coverht.jpg" class="img-responsive descrimg lazy" /> <br /><br /><strong>Scheda film<br /><br />Titolo originale - Original title: The Matrix Reloaded<br />Nazionalità - Country: USA - Australia<br />Anno - Year: 2003 <br />Genere - Gender: Action - Adventure - Sci-Fi<br />Regia - Director: Andy Wachowski, Lana Wachowski<br />Soggetto - Writer: Andy Wachowski, Lana Wachowski<br />Sceneggiatura - Screenplay: Andy Wachowski, Lana Wachowski<br />Effetti speciali - Special Effects: Eric Allard, Leilani Amour Arenzana, Billy Aziz, John S. Baker, Al Broussard, Tony Centonze, Steve Courtley<br />Effetti visivi - Visual Effects: Aurelia Abate, Chadi Abo, Matthew Adams, Tim Ahern, Chris Anderson, Grant Anderson, Christian T. Andrews<br />Produzione - Production: Joel Silver<br />Produttore esecutivo - Executive producer: Bruce Berman, David Forbes, Grant Hill, Andrew Mason, Andy Wachowski, Lana Wachowski<br />Cooproduttore - co-producer: Vicki Popplewell, Steve Richards<br />Gestione produzione - Production Management: Jessica Alan, Amanda Crittenden, Mitchell E. Dauterive, Bill Draper, Grant Hill, Debra James, Pat Lacey<br />Musiche - Music: Don Davis<br />Data di uscita - Release date: 23 May 2003 (Italy)<br />Lingua originale - Lenguage: English - French<br />Editoriale - Editorial Department: Craig Alpert, Todd Baillere, David Birrell, Catherine Chase, Ed Fuller, Allison Gibbons, Mo Henry, Jenny Hicks<br />Fotografia - Cinematography: Bill Pope<br />Montaggio - Film Editing: Zach Staenberg<br />Scenografia - Production Design: Owen Paterson<br />Dipartimento artistico - Art department: John Allan, Kristen Anderson, Mary-Liz Andrews, Simon Bethune, Ian Bickerton, Colette Birrell, Mike Blaze<br />Costumi - Costumes: Kym Barrett<br />Trucco - Make up: Steven E. Anderson, Jason Baird, Barney Burman, Judith A. Cory, Gretchen Davis, Rick Echols, Maggie Fung, Cindy Gardner<br />Durata - During: 138 min<br />Art director: Hugh Bateup <br />Casting: Mali Finn, Shauna Wolifson<br />Stunts: Kenny Alexander, Hank Amos, Andy Arness, Clancy Beck, Keir Beck, Paul Borne, Glenn Boswell, Bob Bowles, Troy Brown, Marky Lee Campbell<br />Cast: Ray Anthony, Christine Anu, Andy Arness, Alima Ashton-Sheibu, Helmut Bakaitis, Steve Bastoni, Don Battee, Monica Bellucci, Daniel Bernhardt, Valerie Berry, Ian Bliss, Liliana Bogatko, Michael Budd, Stoney Burke, Kelly Butler, Josephine Byrnes, Noris Campos, Collin Chou, Paul Cotter, Marlene Cummins, Attila Davidhazy, Essie Davis, Terrell Dixon, Nash Edgerton, Laurence Fishburne, Gloria Foster, David Franklin, Austin Galuppo, Nona Gaye, Daryl Heath, Roy Jones Jr., Malcolm Kennard, David Kilde, Randall Duk Kim, Christopher Kirby, Peter Lamb, Nathaniel Lees, Harry Lennix, Tony Lynch, Robert Mammone, Joshua Mbakwe, Matt McColm, Scott McLean, Chris Mitchell, Steve Morris, Carrie-Anne Moss, Tory Mussett, Rene Naufahu, Robyn Nevin, David No, Genevieve O'Reilly, Socratis Otto, Harold Perrineau, Jada Pinkett Smith, Montaño Rain, Adrian Rayment, Neil Rayment, Rupert Reid, Keanu Reeves, David Roberts, Shane C. Rodrigo, Nick Scoggin, Kevin Scott, Tahei Simpson, Frankie Stevens, Nicandro Thomas, Gina Torres, Andrew Valli, Steve Vella, John Walton, Clayton Watson, Hugo Weaving, Cornel West, Leigh Whannell, Bernard White, Lambert Wilson, Anthony Brandon Wong, Anthony Zerbe <br /> </strong> <br /><br /><br /><br /><br /><strong>Trama </strong> <br /><br />I ribelli continuano a lottare contro le macchine per la definitiva liberazione della specie umana dal giogo della schiavitù. Capeggiati da Neo, essi percepiscono l'inasprirsi della battaglia quando vengono scoperti i piani delle macchine di penetrare nel cuore della terra e distruggere Zion. Morpheus e altri che credono nelle doti dell'Eletto, ignorando l'ordine generale di ritornare a Zion per fermare l'avanzata delle macchine nel mondo esterno, si tengono fuori dalla cittadella per potersi connettere costantemente a Matrix, nel caso si rifaccia vivo l'Oracolo per novità.<br />Neo, che ha già fatto propri poteri come volare e leggere il codice di Matrix direttamente dal mondo virtuale, sviluppa anche la preveggenza; i suoi sogni sono tormentati dall'immagine di Trinity che muore nel mondo virtuale. Durante un incontro con l'Oracolo, in effetti, gli viene detto che dovrà &quot;comprendere&quot; una scelta che, in cuor suo, lui ha già fatto. Le due possibilità tra cui scegliere sono salvare Trinity dalla morte o fermare le macchine.<br />Neo incontra Smith, che, ormai, non è più un agente, ma un programma rinnegato. In precedenza, Smith aveva avuto il compito di uccidere Neo e Morpheus; avendo fallito, essendo stato distrutto da Neo, esso avrebbe dovuto anche essere cancellato da Matrix, per lasciare posto alla nuova generazione potenziata di agenti. Per non essere cancellato, esso si nascose all'interno di Matrix, diventando una sorta di &quot;virus informatico&quot; di Matrix stessa (essendo Matrix un programma). Con il tempo, anche lui ha avuto la possibilità di acquisire nuove capacità; in particolare, ora è in grado di trasformare in copie di se stesso sia gli utenti di Matrix, sia i nuovi agenti potenziati. Questo avviene attraverso un processo di sovrascrittura, nel quale Smith infetta un altro, esattamente come un virus. Questo avrà rilevanza soprattutto nella terza parte di Matrix, Matrix Revolutions.<br />Neo è costretto a fuggire.<br />Smith si sovrascrive su Bane, uno degli utenti liberati dal mondo virtuale, e questo gli dà la possibilità di uscire nel mondo esterno, all'interno del corpo ospite. Con il nuovo corpo si mette subito all'inseguimento di Neo, ma viene bloccato dal capitano del malcapitato, che non intende seguire i vaneggiamenti di Morpheus e lasciare indifesa Zion.<br />Neo viene a sapere che esiste una porta in un palazzo che permetterebbe all'Eletto di raggiungere la sorgente (il Mainframe di Matrix) e di mettere fine al mondo delle macchine. Per aprire tale porta serve una chiave posseduta dal Fabbricante di chiavi, imprigionato nel palazzo del Merovingio e di sua moglie Persefone. Il Merovingio è sopravvissuto all'Eletto in tutte le precedenti versioni di Matrix (quindi, in totale, sei software, Neo compreso); ora, essendo un programma superato, si trova in esilio in un ambiente criptato e quindi nascosto dal resto di Matrix. Qui si recano dunque Morpheus, Neo e Trinity e liberano il Fabbricante di chiavi che consegna la chiave a Neo.<br />Neo con la chiave entra all'interno della porta di luce, ma nel frattempo Trinity è rimasta intrappolata all'interno di Matrix per via di un agente potenziato che la tiene in scacco. Neo incontra quindi l'Architetto che gli espone la realtà dei fatti: prima di lui sono esistiti altre cinque versioni di Matrix e corrispondenti eletti e ognuno di loro, giunto dall'Architetto, è stato portatore del codice originale consentendo di ricaricare Matrix, evitando in questo modo il crash del sistema. La necessità del reload era dovuta ad una anomalia sistemica causata a sua volta da un rifiuto istintivo degli umani al sistema Matrix. Per ridurre tale fenomeno era stato ideato nella psiche degli uomini controllati con Matrix, una finta possibilità di scelta a livello di inconscio ideato da un altro programma, l'Oracolo, realizzato per analizzare la psiche umana. Si manteneva comunque un 1% di casi di persone che rifiutavano il sistema e che andavano a popolare Zion. Per controllare la ribellione, le macchine periodicamente andavano a distruggere Zion che contestualmente all'eventuale crash del sistema avrebbe causato la distruzione dell'intera razza umana. Lo SCOPO dell'eletto era da un lato ristabilizzare il codice evitando il crash del sistema e dall'altro scegliere 23 persone all'interno di Matrix (16 femmine e 7 maschi) da salvare per ripopolare Zion. L'architetto spiega a Neo che anche lui si trova di fronte ad una scelta: da un lato seguire il suo SCOPO e dall'altro tornare in Matrix per salvare Trinity. Ma Neo sceglie di non ubbidire nella speranza di salvare Trinity rischiando quindi l'estinzione della razza umana.<br /><br /><strong>Scheda tecnica - Data Sheet </strong> <br /><br />Generale<br /><br />Nome completo : The Matrix Reloaded.mkv<br />Formato : Matroska<br />Dimensione : 7,68 GiB<br />Durata : 2h 12min<br />BitRate totale : 8 297 Kbps<br />Data di codifica  : UTC 2009-03-07 12:26:20<br />Creato con : mkvmerge v2.4.2 ('Oh My God') built on Jan 18 2009 17:30:28<br />Compressore : libebml v0.7.7 + libmatroska v0.8.1<br /><br />Video<br />ID : 1<br />Formato : AVC<br />Formato/Informazioni : Advanced Video Codec<br />Profilo del formato : <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="afe7c6c8c7efe39a819e">[email&#160;protected]</a> <br />Impostazioni del formato, CABAC : Si <br />Impostazioni del formato, ReFram : 8 fotogrammi<br />Codec ID : V_MPEG4/ISO/AVC<br />Durata : 2h 12min<br />BitRate : 7 585 Kbps<br />Larghezza : 1 920 pixel<br />Altezza : 800 pixel<br />AspectRatio : 2,40:1<br />FrameRate : 25,000 fps<br />FrameRate originale : 23,976 fps<br />ColorSpace : YUV<br />ChromaSubsampling : 4:2:0<br />BitDepth/String : 8 bits<br />Tipo di scansione : Progressivo<br />Bit/(Pixel*Frame) : 0.198<br />Dimensione della traccia : 7,18 GiB (93%)<br />Compressore : x264 core 54 svn-635M<br />Impostazioni compressione : cabac=1 / ref=5 / deblock=1:-4:-4 / analyse=0x3:0x133 / me=umh / subme=6 / brdo=1 / mixed_ref=1 / me_range=16 / chroma_me=1 / trellis=1 / 8x8dct=1 / cqm=2 / deadzone=4,6 / chroma_qp_offset=0 / threads=2 / nr=0 / decimate=1 / mbaff=0 / bframes=3 / b_pyramid=1 / b_adapt=1 / b_bias=0 / direct=3 / wpredb=1 / bime=1 / keyint=250 / keyint_min=25 / scenecut=40(pre) / rc=2pass / bitrate=7585 / ratetol=1.0 / rceq='blurCplx^(1-qComp)' / qcomp=0.60 / qpmin=10 / qpmax=51 / qpstep=4 / cplxblur=20.0 / qblur=0.5 / ip_ratio=1.40 / pb_ratio=1.30 / zones / aq=1:0.3:15.0<br />Lingua : Inglese<br /><br />Audio<br />ID : 2<br />Formato : AC-3<br />Formato/Informazioni : Audio Coding 3<br />Format_Settings_ModeExtension : CM (complete main)<br />Codec ID : A_AC3<br />Durata : 2h 12min<br />Modalità : Costante<br />BitRate : 384 Kbps<br />Canali : 6 canali<br />Posizione dei canali : Front: L C R, Side: L R, LFE<br />SamplingRate : 48,0 KHz<br />BitDepth/String : 16 bits<br />Ritardo video : 12ms<br />Dimensione della traccia : 364 Mb (5%)<br />Titolo : ac3 ita<br />Lingua : Italiano<br /><br />Trailer<br /><br />http://www.youtube.com/watch?v=acmbihkmeVg<br /><br />IMDB<br /><br />http://www.imdb.com/title/tt0234215/<br /><br /><br /><strong>Screenshoot </strong> <br /><br /><img src="/images/profile-load.svg" data-original="http://img831.imageshack.us/img831/6012/28812281.jpg" class="img-responsive descrimg lazy" /> <br /><br /><img src="/images/profile-load.svg" data-original="http://img857.imageshack.us/img857/1355/97447670.jpg" class="img-responsive descrimg lazy" /> <br /><br /><strong>Note </strong> <br /><br />Eccoci al II capitolo di questa fantastica trilogia, capitolo nel quale ci si allontana dal mondo di matrix per andare, per la I volta, a Zion, l'ultima città reale degli uomini liberi.<br />Molti nuovi personaggi in questo capitolo, come il Merovingio e consorte (interpretato dalla spettacolare Monica Bellucci, piu bella che mai.<br />Comunque, come gia detto, non credo ci sia molto da dire per questa trilogia, tutti la conosciamo, ma, rivederla in questo formato è sempre cosa gradita, sono films da collezionare e questa è l'occasione giusta, il fatto che abbia una sola traccia audio ci permettere di masterizzare i films in un solo DVD in modo da poterlo inserire nella nostra videoteca personale (consigli a tutti di fare ciò).<br />Quindi non mi resta che rinnovare il nostro appuntamente per il III ed ultimo capitolo della saga, quando andremo nel mondo delle macchine.<br />Mi raccomando il seed, anche Neo e Morpheus sarebbero daccordo con me a questo riguardo, Matrix non sopravviverebbe senza seed.<br /><br /><strong>Banda e seed </strong> <br /><br /><strong>In seed 24h al giorno a circa 500Kb/s. Per piacere aiutatemi col seed, grazie, piu condividete e piu saremo veloci. </strong> <br /></p>
-</div>
-<div role="tabpanel" class="tab-pane file-content" id="files">
-<h2>Files: </h2>
-<ul><li><i class="flaticon-movies"></i>Th3 M4tr1x R3l04d3d.mkv (7.7 GB)</li></ul>
-</div>
-<div role="tabpanel" class="tab-pane" id="comments">
-<h2>There are currently no comments. Feel free to leave one :)</h2>
-</div>
-<div role="tabpanel" class="tab-pane" id="tracker-list">
-<h3>Code: </h3>
-<ul>
-<li><span class="icon"><i class="flaticon-href-link"></i></span> http://tracker.tntvillage.scambioetico.org:2710/announce</li>
-<li><span class="icon"><i class="flaticon-href-link"></i></span> udp://tracker.1337x.org:80/announce</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-<footer>
-<div class="bitcoin">
-<div class="bitcoin-icon-wrap">
-<span class="bitcoin-icon"><i class="flaticon-bitcoin red"></i></span>
-</div>
-<span class="bitcoin-text"><span>Bitcoin Donate: </span><a href="bitcoin:3Qpdm4ckJ64irx1Nuyw9ZCCvc2qxoqkuBY">3Qpdm4ckJ64irx1Nuyw9ZCCvc2qxoqkuBY</a></span>
-</div>
-<a class="scroll-top" href="#"><i class="flaticon-up"></i></a>
-<ul>
-<li><a href="/">Home</a></li>
-<li class="active"><a href="/home/">Full Home Page</a></li>
-<li><a href="/contact">Dmca</a></li>
-<li><a href="/contact">Contact</a></li>
-</ul>
-<p class="info">1337x 2007 - 2017</p>
-</footer>
-<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/78d64697/cloudflare-static/email-decode.min.js"></script><script src="/js/jquery-1.11.0.min.js"></script>
-<script src="/js/jquery-ui.js"></script>
-<script src="/js/auto-searchv2.js"></script>
-<div class="modal fade modal-custom align-center" id="alert-popup" tabindex="-1" role="dialog" aria-labelledby="AlertPopup">
-<div class="modal-dialog" role="document">
-<div class="modal-content">
-<div class="modal-header">
-<a href="#" class="close" data-dismiss="modal" aria-label="Close"><i class="flaticon-logout"></i></a>
-<h4 class="modal-title" id="AlertPopup">You will be redirected in 3 seconds.</h4>
-</div>
-<div class="modal-body">
-<p>You are leaving 1337x to a website that is not affiliated with us in any way.</p>
-<p>We cannot guarantee for security of a linked website.</p>
-</div>
-</div>
-</div>
-</div>
-<script src="/js/equalheight.js"></script>
-<script src="/js/scrollbar.js"></script>
-<script src="/js/tab.js"></script>
-<script src="/js/lazyload.min.js"></script>
-<script src="/js/comment.js"></script>
-<script src="/js/pagination.js"></script>
-<script src="/js/modal.js"></script>
-<script src="/js/main.js"></script>
-<script>
-function vpn_height(){
-  vpn_info_height = $('.vpn-info').outerHeight() - 6 + 29;
-  $('.vpn-info-wrap .torrent-detail .shadow').css('bottom', - vpn_info_height)
-}
-  function resizeHeight() {
-    jQuery('.js-height .js-col').maxHeight();
-  }
-  resizeHeight();
-  $(window).resize(function(){
-    vpn_height();
-    resizeHeight();
-  })
-
-  function torrent_desc_width(){
-    torrent_wrap_width = $('.torrent-detail-page .torrent-detail').width();
-    torrent_image_width = $('.torrent-image-wrap').outerWidth();
-    torrent_detail_width = $('.torrent-detail-info').outerWidth();
-    torrent_total_width = torrent_wrap_width - torrent_image_width - 1;
-    $('.torrent-detail-info').css('min-width', torrent_total_width);
-  }
-
-  function  modal_resize(){
-    window_height = $(window).height();
-    modal_height = $('.modal.in .modal-dialog').outerHeight();
-    total_height = window_height - modal_height;
-    $('.modal.in .modal-dialog').css('margin-top', total_height / 2);
-  }
-  
-  $('.modal').on('shown.bs.modal', function (e) {
-    modal_resize();
-  })
-  modal_resize();
-  
-  $(window).resize(function(){
-    torrent_desc_width();
-  });
-
-  $('a[data-toggle="tab"]').tab();
-
-  $(window).load(function() {
-    vpn_height();
-    torrent_desc_width();
-    $(".content-row").mCustomScrollbar();
-  });
-
-  $("img.lazy").lazyload({
-    effect : "fadeIn",
-    placeholder : '/images/profile-load.svg'
-  });
-  
-  $('a[href="#comments"]').on('shown.bs.tab', function () {
-    $("img.lazy").lazyload({
-      effect : "fadeIn",
-      placeholder : '/images/profile-load.svg'
-    });
-  });
-  
-
-  var modal_url;
-  $('.js-modal-url').click(function(){
-    modal_url = $(this).attr('href')
-  });
-  
-  $('#alert-popup').on('shown.bs.modal', function (e) {
-    setTimeout(function() {
-       window.location.href = modal_url;
-    }, 3000); // Chnage location Time
-  })
-  
-
-  
-var members;
-$(window).load(function() {
-        $.ajax({
-       type: "GET",
-        crossDomain: true,
-        url: "//cdn.1337x.to/ip.php",
-        dataType: "json",
-        success: function(data) {
-          $('.vpn-country').html(data.country);
-          $('.vpn-ip').html(data.ip);
-          vpn_height();
-        }
-    });
-    
-      var url = "/comments.php?torrentid=197201" ;
-    $.getJSON(url, function(result) {
-        console.log(result);
-        members = result;
-        buildComment(result);
-
-    }).done(function(){
-    });
-});  
-  
-</script>
-<script src="/js/babaebcdfafefcac.js"></script>
-<script>
-if (top != self) {top.location.replace(self.location.href);}
-</script>
-</body>
-</html>
