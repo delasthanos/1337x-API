@@ -44,6 +44,11 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 			}
 		endforeach; // Foreach HTML file
 
+
+		// Remove Doubles | Some torrents on 1337x appear on page 1 and page 2 from search results. 
+		// I have no idea why they did this. So torrents array must be uniqued before proceeding
+		$this->torrents = array_map("unserialize", array_unique(array_map("serialize", $this->torrents)));
+
 		return $this->torrents;
 	}
 	
@@ -55,14 +60,28 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 	public function findActiveTorrents(){
 
 		$activeTorrents=0;
-		foreach ($this->torrents as $t ):
+		
+		foreach ( $this->torrents as $t ):
 		
 			if ( $t['seeds']>MIN_SEEDS ){++$activeTorrents;}
 			
 		endforeach;
-		print (n."\t[*]Active: ".$activeTorrents." ( seeds>".MIN_SEEDS." )");
+		print (n."\t[*]Active( and REMOVE DOUBLES): ".$activeTorrents." ( seeds>".MIN_SEEDS." )");
 		return $activeTorrents;
 
+	}
+	
+	public function getActiveTorrents(){ //array
+
+		$activeTorrents=[];
+		
+		foreach ( $this->torrents as $t ):
+		
+			if ( $t['seeds']>MIN_SEEDS ){ array_push($activeTorrents, $t); }
+			
+		endforeach;
+
+		return $activeTorrents;	
 	}
 
 	private function collectHTMLFromFolder(){

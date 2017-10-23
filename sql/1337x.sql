@@ -12,3 +12,16 @@ CREATE TABLE `search_results` (
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+CREATE TABLE `search_results_torrents` (
+  `imdb` int(11) UNSIGNED NOT NULL,
+  `1337x_id` int(11) UNSIGNED NOT NULL,
+  `link` MEDIUMTEXT NOT NULL,
+  `seeds` MEDIUMTEXT NOT NULL,
+  `leeches` MEDIUMTEXT NOT NULL,
+
+  FOREIGN KEY (`imdb`) REFERENCES search_results(imdb),
+  UNIQUE INDEX `imdb_1337x_id_match` (`imdb`,`1337x_id`)
+
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

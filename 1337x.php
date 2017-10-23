@@ -94,8 +94,15 @@ if ($allowedArgs['search']):
 		
 		// Save Search Results
 		// $imdb,$totalPages,$activePages,$totalTorrents,$activeTorrents
-		$saveResults=new SearchResults( $title['imdb'], $search->getActivePages(), $search->getTotalPages(), $findTorrents->findTotalTorrents(), $findTorrents->findActiveTorrents() );
-		$saveResults->save();
+		$searchResults=new SearchResults( $title['imdb'], $search->getActivePages(), $search->getTotalPages(), $findTorrents->findTotalTorrents(), $findTorrents->findActiveTorrents(), $findTorrents->getActiveTorrents() );
+
+		if ( $searchResults->saveSearchResults() ):
+
+			printColor ( n.n."[*]Saved search results to database.","green" );
+			printColor ( n."[*]Saving torrents search results...","yellow" );
+			$searchResults->saveSearchResultsTorrents();
+
+		endif;
 
 		unset($search);
 		
