@@ -19,7 +19,6 @@ class Search1337x extends Search1337xHelperFunctions{
 	public function getActivePages(){
 		return $this->activePages;
 	}
-	
 
 	public function searchForTitles($title){
 
@@ -47,11 +46,10 @@ class Search1337x extends Search1337xHelperFunctions{
 
 		// Prepare | Create folder for Title. Folder is named with imdb code
 		$this->createTitleFolder($this->filename);
-		
-//exit(n."Breakpoint in class".n);
 
 		// Get first page to check for results and number of total pages
-		printColor ("\nFirst Page ".($this->page).": ","white+bold");
+		printColor (n."[*]Downloading search results pages for : ".$this->titlenameOriginal.n,"white+bold");
+		printColor (n."First Page ".($this->page).": ","white+bold");
 		if ($this->getResultsPage() ){
 
 			$this->findTotalPages($this->HTML);
@@ -59,12 +57,12 @@ class Search1337x extends Search1337xHelperFunctions{
 			
 			if ($this->noResults) { print ("\n[*]No results."); }
 			if ($this->banned) { print ("\n\n\n----------->[!]WARNING. IP has been banned. Shit! You must get a new server now!\n\n\n"); exit("\n\n Emergency exit\n\n");}		
-			printColor ("\n[*]Total pages found: ".$this->totalPages." for : ".$this->titlenameOriginal, "white+bold");
+			printColor (n."[*]Total pages found: ".$this->totalPages.".", "white");
 
 			// Loop to get the rest search results pages.
 			while ( (++$this->page <= $this->totalPages) && ($this->totalPages>0) ){
 
-				print ("\nPage ".($this->page).": " );
+				print (n."Page ".($this->page).": " );
 				$this->getResultsPage();
 				++$this->activePages;
 
@@ -73,7 +71,46 @@ class Search1337x extends Search1337xHelperFunctions{
 				if ( $this->page > MAX_RESULTS_PAGES ){ printColor (n."[!]Reached MAX_RESULTS_PAGES: ".MAX_RESULTS_PAGES.". Break.".n, "red+bold"); break; }
 			}
 		}
+	}
 
+	public function checkTitleInSearchSummary($imdb){
+	
+		$status=['exists'=>false,'text'=>'Download search results.'];
+	
+		$dbh = dbhandler::getInstance(); 
+		$dbConLocal = $dbh->dbCon; 
+		if ( !$dbConLocal ) { exit(" \n\n db connection error.\n\n "); }
+		
+		$imdb=str_replace("tt","",$imdb);
+		$buildQuery="SELECT * FROM 1337x.search_summary WHERE imdb=:imdb LIMIT 10"; // Limit for safety. Normally you should get only one result.
+		if ( !$stmt = $dbh->dbh->prepare($buildQuery) ) { var_dump ( $dbh->dbh->errorInfo() ); } 
+		else {
+
+			$stmt->bindParam(':imdb', $imdb );
+			if (!$stmt->execute() ){
+
+				printColor (n."[!]erroreroreroe","red+bold");
+			} 
+			else{
+			
+				$result = $stmt->fetchAll();
+				if (count($result)===1){
+					$now=time();
+					//print (n.n.n."last_checked=".strtotime($result[0]['last_checked']).n.n.n);
+					//print (n.n.n."now=".$now.n.n.n);
+					$difference = ($now-strtotime($result[0]['last_checked']));
+					$text =  "Last checked: $difference sec ".round(($difference/60))." minutes ago.";
+					
+					if ($difference < 500 ){
+
+						$status=['exists'=>true,'text'=>$text];;
+						return $status;
+					} 
+				}
+			}
+		}
+
+		return $status;
 	}
 	
 	private function getResultsPage(){

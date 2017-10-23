@@ -80,33 +80,44 @@ if ($allowedArgs['search']):
 
 		// Search according to title
 		$search = new Search1337x();
-		$search->searchForTitles($title);
 		
-		printColor (n.n."[->]Collect data from search results to save into database","white+bold");
-		print (n."Search summary: Active Pages/Total Pages=(".$search->getActivePages()."/".$search->getTotalPages().")".n.n );
-
-		// Parse Search Results
-		$findTorrents=new ParseSearch1337x($title['imdb']); //Pass imdb folder name containing search results pages
-		$findTorrents->collectSearchResultsHTML();
-		$torrents = $findTorrents->collectTorrentInformation(); // Final array with torrent info for each folder
-		$findTorrents->findTotalTorrents();
-		$findTorrents->findActiveTorrents();
+		$status=$search->checkTitleInSearchSummary($title['imdb']);
 		
-		// Save Search Results
-		// $imdb,$totalPages,$activePages,$totalTorrents,$activeTorrents
-		$searchResults=new SearchResults( $title['imdb'], $search->getActivePages(), $search->getTotalPages(), $findTorrents->findTotalTorrents(), $findTorrents->findActiveTorrents(), $findTorrents->getActiveTorrents() );
+		if ($status['exists']===true):
 
-		if ( $searchResults->saveSearchResults() ):
+			print(n."[*]Title ".$title['imdb']." already searched.");
+			print ($status['text']);
 
-			printColor ( n.n."[*]Saved search results to database.","green" );
-			printColor ( n."[*]Saving torrents search results...","yellow" );
-			$searchResults->saveSearchResultsTorrents();
+		else:
+		
+			$search->searchForTitles($title);
+		
+			printColor (n."[*]Collecting data from results to save into database ...","white+bold");sleep(1);
+			print (n."Search summary: Active Pages/Total Pages=(".$search->getActivePages()."/".$search->getTotalPages().")");
+
+			// Parse Search Results
+			$findTorrents=new ParseSearch1337x($title['imdb']); //Pass imdb folder name containing search results pages
+			$findTorrents->collectSearchResultsHTML();
+			$torrents = $findTorrents->collectTorrentInformation(); // Final array with torrent info for each folder
+		
+			// Save Search Results
+			// $imdb,$totalPages,$activePages,$totalTorrents,$activeTorrents
+			$searchResults=new SearchResults( $title['imdb'], $search->getActivePages(), $search->getTotalPages(), $findTorrents->findTotalTorrents(), $findTorrents->findActiveTorrents(), $findTorrents->getActiveTorrents() );
+
+			if ( $searchResults->saveSearchSummary() ):
+
+				printColor ( n."[*]Saved search results to database.","green" );
+				printColor ( n."[*]Saving torrents search results...","yellow" );
+				$searchResults->saveSearchResultsTorrents();
+				printColor ( n."[*]Done".n.n,"white+bold" );
+
+			endif;
+		
+			sleep(WAIT_SECONDS);
 
 		endif;
-
-		unset($search);
 		
-		sleep(WAIT_SECONDS);		
+		unset($search);
 
 	endforeach; // Foreach titles
 

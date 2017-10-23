@@ -150,7 +150,7 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 		if ( !$stmt = $dbh->dbh->prepare($buildQuery) ) { 
 			var_dump ( $dbh->dbh->errorInfo() ); 
 		} 
-		else { 		
+		else {
 			if (!$stmt->execute() ){
 
 				printColor (n."[!]error","red+bold");

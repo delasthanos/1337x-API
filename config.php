@@ -3,7 +3,7 @@
 // example of 1337x https://1337x.to/category-search/Independence Day Resurgence/Movies/1/;
 // NOTE: Maybe you should refactor Search1337.class to work for TV category too.
 //define("CATEGORY","Movies"); // 1337x Category used below to set othr defines
-define("CATEGORY","TV"); // 1337x Category used below to set othr defines
+define("CATEGORY","Movies"); // 1337x Category used below to set othr defines
 define( "TORRENT_URL_PREFIX", "https://1337x.to");
 define( "SEARCH_URL_START", "https://1337x.to/category-search/");
 define( "HTML", true);
@@ -27,7 +27,7 @@ endswitch;
 define("WAIT_SECONDS", 5); // Wait between each search request for titles. Otherwise IP gets banned. Read NOTES for details.
 define("WAIT_SECONDS_RESULTS", 3); // Wait between search pages. 1,2,3 ...
 define("MIN_SEEDS", 1); // Number of seeds on 1337x to start ignoring torrents and results pages
-define("MAX_RESULTS_PAGES", 10 ); // Max results pages to fetch. 1,2,3 ... for safety. Maybe increase this value for TvShows
+define("MAX_RESULTS_PAGES", 15 ); // Max results pages to fetch. 1,2,3 ... for safety. Maybe increase this value for TvShows
 define("n","\n"); // Folder to save and parse HTML files for each movie. Without trailing slash.
 
 // Database configuration
