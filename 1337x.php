@@ -100,13 +100,13 @@ if ($allowedArgs['search']):
 			// Parse Search Results
 			$findTorrents=new ParseSearch1337x($title['imdb']); //Pass imdb folder name containing search results pages
 			$findTorrents->collectSearchResultsHTML();
-			$torrents = $findTorrents->collectTorrentInformation(); // Final array with torrent info for each folder
+			$torrents = $findTorrents->collectTorrentsFromHTML(); // Final array with torrent info for each folder
+			
+			if (CATEGORY=="Movies"): $torrents = $findTorrents->filterTorrentsByMovieYear(); endif;
 
 			// Save Search Results
 			// $imdb,$totalPages,$activePages,$totalTorrents,$activeTorrents
 			
-// Before save results do a match with title/year for movies
-			/*
 			$searchResults=new SearchResults( $title['imdb'], $search->getActivePages(), $search->getTotalPages(), $findTorrents->findTotalTorrents(), $findTorrents->findActiveTorrents(), $findTorrents->getActiveTorrents() );
 			if ( $searchResults->saveSearchSummary() ):
 
@@ -116,7 +116,6 @@ if ($allowedArgs['search']):
 				printColor ( n."[*]Done".n.n,"white+bold" );
 
 			endif;
-			*/
 		
 			sleep(WAIT_SECONDS);
 
@@ -180,7 +179,7 @@ if ($allowedArgs['save-html-torrents']):
 		// Print stats
 		$HTMLFiles=new ParseSearch1337x($folder);
 		$HTMLFiles->collectSearchResultsHTML();
-		$torrents = $HTMLFiles->collectTorrentInformation(); // Final array with torrent info for each folder
+		$torrents = $HTMLFiles->collectTorrentsFromHTML(); // Final array with torrent info for each folder
 		if ( is_array($torrents) ){print (n."\t[*]Found: ".count($torrents)." torrents." );}
 
 		$activeTorrents=0;

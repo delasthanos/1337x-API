@@ -5,7 +5,7 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 	private $title = []; //Holds current title (movie, tvshow) information. Seted inside findMovieInDB(),findTvshowInDB()
 	private $imdbFolder; //seted inside findMovieInDB(),findTvshowInDB()
 	private $HTMLFiles=[]; //seted inside findMovieInDB(),findTvshowInDB()
-	private $torrents=[]; // Populated/seted in collectTorrentInformation()
+	private $torrents=[]; // Populated/seted in collectTorrentsFromHTML()
 
 	public function __construct($folder){
 
@@ -27,7 +27,7 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 	}
 
 	// Works for one search results pages. Make it work for all of them
-	public function collectTorrentInformation(){
+	public function collectTorrentsFromHTML(){
 
 		foreach ( $this->HTMLFiles as $currentFile ):
 			//$destination=HTML_SEARCH_FILES_PATH."/".$this->imdbFolder."/".$this->HTMLFiles[0]; // HTML results page
@@ -47,9 +47,49 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 
 		// Remove Doubles | Some torrents on 1337x appear on page 1 and page 2 from search results. 
 		// I have no idea why they did this. So torrents array must be uniqued before proceeding
-		$this->torrents = array_map("unserialize", array_unique(array_map("serialize", $this->torrents)));
 
+		$this->torrents = array_map("unserialize", array_unique(array_map("serialize", $this->torrents)));
 		return $this->torrents;
+	}
+	
+	public function filterTorrentsByMovieYear(){
+	
+		$torrents=[];
+
+		print (n.n."filterTorrentsByMovieYear()".n);
+		
+		foreach ( $this->torrents as $torrent ){
+
+			$name = preg_replace('/[^a-zA-Z0-9]+/', ' ', $torrent['name']);
+			$moviename=preg_replace('/[^a-zA-Z0-9]+/', ' ', $this->title['moviename']);
+			$splitName = explode($this->title['yearmovie'], $name);
+			
+			var_dump(trim($splitName[0]));
+			
+			$splitMovieName = explode(" ",$moviename);
+			
+			$matches = array();
+			preg_match('(\d{4})', $name, $matches);
+			var_dump($matches);
+			
+			$mvLn=count($splitMovieName);
+			$x=0;
+			print ("moviename count ".$mvLn);
+			for ($x=0; $x<$mvLn; $x++ ){
+			
+			}
+			
+		exit(n.n."Breakpoint in filterTorrentsByMovieYear()");
+
+			if ( ($split[0]===$this->title['moviename']) && ($split[1]===$this->title['yearmovie']) ){
+				print n.$name;
+				array_push($torrents, $torrent);
+			}
+		}
+		
+		$this->torrents=$torrents;
+		return $this->torrents;
+	
 	}
 	
 	public function findTotalTorrents(){
