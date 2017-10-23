@@ -2,7 +2,7 @@
 if (php_sapi_name()!=='cli'){
 	define("CLI", false);
 }
-else if (php_sapi_name()!=='cli'){
+else if (php_sapi_name()==='cli'){
 	define("CLI", true);
 }
 
@@ -18,6 +18,12 @@ require_once("includes/functions.php");
 spl_autoload_register(function ($class_name) {
     require_once 'includes/'.$class_name.'.class.php';
 });
+
+
+//$url="https://1337x.to/category-search/A Good Day to Die Hard/Movies/1/";
+//$url="https://1337x.to/category-search/A Good Day to Die Hard/Movies/1/";
+//$url="https://1337x.to/category-search/A%20Good%20Day%20to%20Die%20Hard/Movies/1/";
+//testCurl($url);
 
 ///////////////////////////////
 // Parse command line arguments
@@ -146,6 +152,7 @@ if (!CLI):
 
 	$torrents=[];
 	$folder=HTML_TORRENTS_FILES_PATH;
+	if (!file_exists($folder)){ exit("No html files found.Please run search first."); }
 	$folders=array_diff( scandir($folder), array('.','..'));
 
 	foreach ($folders as $folderName ):

@@ -6,7 +6,7 @@ class Search1337x extends Search1337xHelperFunctions{
 	private $titlename; // Clean title name to search| Remove special chars | Allow only spaces
 	private $titlenameOriginal; // Original title name | Straight from Database
 	private $filename; // Clean filename for folder & HTML files. Remove special chars | Replace spaces with underscores
-	//private $URL; //seted by constructMovieURL each time
+	//private $URL; //seted by constructURLFromTitle each time
 	private $HTML; // saved results page complete path 
 	private $noResults=false;
 	private $banned=false;
@@ -74,7 +74,7 @@ class Search1337x extends Search1337xHelperFunctions{
 	
 		// Note: If file exists don't download it again to avoid making noise on their server.
 
-		$url=$this->constructMovieURL();
+		$url=$this->constructURLFromTitle();
 		$destination=$this->constructHTMLFilename();
 
 		if (!file_exists($destination)){
@@ -135,8 +135,8 @@ class Search1337x extends Search1337xHelperFunctions{
 		}
 	}
 
-	private function constructMovieURL(){
-		return SEARCH_URL_START.$this->titlename.SEARCH_URL_END.$this->page."/";
+	private function constructURLFromTitle(){
+		return SEARCH_URL_START.urlencode($this->titlename).SEARCH_URL_END.$this->page."/";
 	}
 
 	protected function constructHTMLFilename(){

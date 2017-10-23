@@ -8,6 +8,8 @@ NOTES:
 [!] You must add a delay between each request on 1337x, otherwise ip is going to be banned. If you are banned you have to get a new ip/server. 
 	Banned IP seems irreversable.
     Currently delay is set to 5 seconds between each search and 3 seconds to browse through results pages ( page 1,2,3 .. last )
+    
+[!] You must encode title name (movie,tvshow), before search other wise you get a bad request.Use urlencode php function.
 
 [!] Issues & Problems:
 
