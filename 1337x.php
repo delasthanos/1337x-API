@@ -8,8 +8,8 @@ else if (php_sapi_name()==='cli'){
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-system('clear');
-// include classes and functions
+
+// Include classes and functions
 require_once("config.php");
 require_once("includes/dbhandler.class.php");
 require_once("includes/ansi.color.class.php"); $color = new Color();
@@ -25,6 +25,7 @@ spl_autoload_register(function ($class_name) {
 //$url="https://1337x.to/category-search/A%20Good%20Day%20to%20Die%20Hard/Movies/1/";
 //testCurl($url);
 
+if (CLI) system('clear');
 ///////////////////////////////
 // Parse command line arguments
 if (CLI):
@@ -57,6 +58,7 @@ endif; //CLI
 if (CLI):
 if ($allowedArgs['search']):
 	printColor (n."Searching ... ".n, "white+bold");
+	printColor (CATEGORY.n, "white+bold");
 	
 	$ImdbList = new ImdbList();
 	if (CATEGORY=="Movies"):
@@ -122,7 +124,7 @@ if ($allowedArgs['html-stats']):
 				$downloadHTMLTorrent->downloadTorrentHTMLPage();
 				unset($downloadHTMLTorrent);
 			endif;
-			if (++$countDownloaded>10){break; printColor(n."Break after 10 torrent pages. Still testing.".n,"red");}
+			if (++$countDownloaded>10){ printColor(n."Break after 10 torrent pages. Still testing.".n,"red"); break; }
 
 		endforeach; // Foreach torrent
 

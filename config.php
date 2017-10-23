@@ -3,7 +3,7 @@
 // example of 1337x https://1337x.to/category-search/Independence Day Resurgence/Movies/1/;
 // NOTE: Maybe you should refactor Search1337.class to work for TV category too.
 //define("CATEGORY","Movies"); // 1337x Category used below to set othr defines
-define("CATEGORY","Movies"); // 1337x Category used below to set othr defines
+define("CATEGORY","TV"); // 1337x Category used below to set othr defines
 define( "TORRENT_URL_PREFIX", "https://1337x.to");
 define( "SEARCH_URL_START", "https://1337x.to/category-search/");
 define( "HTML", true);

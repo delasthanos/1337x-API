@@ -85,7 +85,7 @@ abstract class Search1337xHelperFunctions{
 		
 		if ( $countZeroSeeds === $countTorrents ){
 			printColor( n."[!]All ".$countTorrents."torrents in page have 0 or 1 seed: ". $countZeroSeeds."/".$countTorrents, "yellow");
-			printColor( n."[*]Stop saving or reading results pages", "yellow");
+			printColor( n."[*]Stop saving or reading results pages", "red");
 			return false;
 		}
 		else {
