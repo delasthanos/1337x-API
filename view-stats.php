@@ -19,15 +19,17 @@
 	spl_autoload_register(function ($class_name) {
 		require_once 'src/'.$class_name.'.class.php';
 	});
+
+	$view=new ViewStatsHTML();
 	
 	if ( isset($_GET['imdb']) ){
 		$imdb=strip_tags($_GET['imdb']);
 		print ("Showing torrent results imdb: ".$imdb);
-		$view=new ViewStatsHTML();
 		$view->viewResults($imdb);		
 	}
 	else {
-		$view=new ViewStatsHTML();
+
+		$view->showStatsSummary();
 		$view->viewStats();
 	}
 	

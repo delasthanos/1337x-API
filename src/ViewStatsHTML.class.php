@@ -2,7 +2,7 @@
 class ViewStatsHTML{
 
 	private $dbh;
-	private $MODE="SUMMARY";
+	private $MODE="SUMMARY_HOME";
 
 	public function __construct(){
 		$this->dbh=dbhandler::getInstance();
@@ -16,6 +16,24 @@ class ViewStatsHTML{
 	public function viewResults($imdb){
 
 		$this->showResults($imdb);
+		
+	}
+	
+	public function showStatsSummary(){
+
+		$selectquery ="select count(*) from 1337x.search_summary";
+		$stmt = $this->dbh->dbh->prepare($selectquery);
+		$stmt->execute();
+		$searches = $stmt->fetchColumn();
+
+		$selectquery ="select count(*) from 1337x.search_results";
+		$stmt = $this->dbh->dbh->prepare($selectquery);
+		$stmt->execute();
+		$results = $stmt->fetchColumn();
+		
+		print ('<div class="show-stats">'.$searches.' searches perfomed for imdb titles.</div>');
+		print ('<div class="show-stats">'.$results.' torrent results with seeds > '.MIN_SEEDS.'</div>');
+
 		
 	}
 
@@ -148,7 +166,7 @@ class ViewStatsHTML{
 				$cells .= '<td>'.$row['id'].'</td>';
 				$cells .= '<td>'.$row['yearmovie'].'</td>';
 				$cells .= '<td>'.$row['rating'].'</td>';
-				if ($this->MODE ==='SUMMARY')$cells .= '<td class="view-results white small-text underline" id="'.$row['imdb'].'">view results</td>';
+				if ($this->MODE ==='SUMMARY_HOME')$cells .= '<td class="view-results white small-text underline" id="'.$row['imdb'].'">view results</td>';
 			print $cells;
 			print ('</tr>');			
 		}

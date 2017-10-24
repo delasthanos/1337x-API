@@ -1,11 +1,9 @@
 <?php 
-
 /*
-	Refactor the application to save search results and torrents into a database.
-	This is to reduce errors on import, and save disk space from HTML files.
-	
+	App is still under refactoring.
+	Breakpoint on search.
+	Search results are saved into db now.
 */
-
 if (php_sapi_name()!=='cli'){
 	define("CLI", false);
 }
@@ -51,7 +49,6 @@ endif; //CLI
 // Parse command line arguments
 ///////////////////////////////
 
-
 /*
  *  Search results foreach movie from 1337x
  *  Save HTML results pages
@@ -94,7 +91,7 @@ if ($allowedArgs['search']):
 		
 			$search->searchForTitles($title);
 		
-			printColor (n."[*]Collecting data from results to save into database ...","white+bold");sleep(1);
+			printColor (n."[*]Collecting data from results to save into database ...","white+bold"); //sleep(1);
 			print (n."Search summary: Active Pages/Total Pages=(".$search->getActivePages()."/".$search->getTotalPages().")");
 
 			// Parse Search Results
@@ -130,33 +127,7 @@ if ($allowedArgs['search']):
 endif; //search
 endif; //CLI
 
-
-
-
-exit(n."Breakpoint on search".n);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+exit(n.n."Breakpoint on search. Still refactoring.".n.n);
 
 /*
  *	Collect and Parse search results from above
