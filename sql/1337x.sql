@@ -1,7 +1,8 @@
 /*CREATE DATABASE 1337x CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;*/
 
 CREATE TABLE `search_summary` (
-  `imdb` int(11) UNSIGNED NOT NULL,
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `imdb` varchar(255) NOT NULL DEFAULT '0',
   `totalPages` MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,
   `activePages` MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,
   `totalTorrents` MEDIUMINT UNSIGNED NOT NULL DEFAULT 0,
@@ -9,12 +10,14 @@ CREATE TABLE `search_summary` (
   `last_checked` datetime,
   `category` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
 
-  PRIMARY KEY (`imdb`)
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX (`imdb`)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `search_results` (
-  `imdb` int(11) UNSIGNED NOT NULL,
+  `summary_id` int(11) UNSIGNED NOT NULL,
+  `imdb` varchar(255) NOT NULL DEFAULT '0',
   `1337x_id` int(11) UNSIGNED NOT NULL,
   `link` MEDIUMTEXT NOT NULL,
   `seeds` MEDIUMTEXT NOT NULL,
@@ -22,7 +25,7 @@ CREATE TABLE `search_results` (
   `category` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
 
   UNIQUE INDEX `imdb_1337x_id_match` (`imdb`,`1337x_id`),
-  FOREIGN KEY (`imdb`) REFERENCES search_summary(imdb)
+  FOREIGN KEY (`summary_id`) REFERENCES search_summary(id)
 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
