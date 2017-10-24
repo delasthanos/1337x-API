@@ -56,40 +56,86 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 	
 		$torrents=[];
 
-		print (n.n."filterTorrentsByMovieYear()".n);
+		printColor (n.n."filterTorrentsByMovieYear() *UNDER TESTING* ".n, "white+bold" );
 		
 		foreach ( $this->torrents as $torrent ){
 
-			$name = preg_replace('/[^a-zA-Z0-9]+/', ' ', $torrent['name']);
-			$moviename=preg_replace('/[^a-zA-Z0-9]+/', ' ', $this->title['moviename']);
-			$splitName = explode($this->title['yearmovie'], $name);
-			
-			var_dump(trim($splitName[0]));
-			
-			$splitMovieName = explode(" ",$moviename);
-			
-			$matches = array();
-			preg_match('(\d{4})', $name, $matches);
-			var_dump($matches);
-			
-			$mvLn=count($splitMovieName);
-			$x=0;
-			print ("moviename count ".$mvLn);
-			for ($x=0; $x<$mvLn; $x++ ){
-			
-			}
-			
-		exit(n.n."Breakpoint in filterTorrentsByMovieYear()");
+			//Sample names from 1337x
+			// Notes: Die Hard 3 is the same as Die Hard with a Vengeance, but some movies do not include the whole title in torrent name. Hard to catch.
+			//Batman vs. Two-Face (2017) [720p] [YTS] [YIFY]
+			//[18+] Korean Back affair (2015) WEB-DL HD RIP
+			//The.Last.Word.2017.BluRay.1080p.x264.AAC.5.1.-.Hon3y
+			//Die.Hard.1988.720p.BluRay.x264-NeZu
+			//Die Hard 3 1995 720p BrRip x264 bitloks YIFY
+			//Die Hard 1988 1080p BrRip x264 bitloks YIFY
+			//Die Hard 3 1995 1080p BrRip x264 bitloks YIFY
 
-			if ( ($split[0]===$this->title['moviename']) && ($split[1]===$this->title['yearmovie']) ){
-				print n.$name;
-				array_push($torrents, $torrent);
+			$name=$torrent['name'];
+			$movie=$this->title['moviename'];
+
+			$name = strtolower(preg_replace('/[^a-zA-Z0-9]+/', ' ', $name));
+			$movie = strtolower(preg_replace('/[^a-zA-Z0-9]+/', ' ', $movie));
+
+			$splitmovie = explode(" ",$movie);
+
+			$matches = array();
+			preg_match('(\d{4})', $name, $matches); //find 4 digits // year
+			//printColor(n.$movie.n,"white+bold");
+			if ( count($matches)===1 ){ //only one year
+				//print(n."One match:".n);
+				$split = explode($this->title['yearmovie'], $name); //split torrent name by year of the movie
+				$leftPart=trim($split[0]);
+
+				print($leftPart);
+				print(n.$leftPart ."~=". $movie );
+				
+				$splitLeft=explode(" ",$leftPart);
+				$splitLeft=array_unique($splitLeft); //remove double words// ex: die hard 3 die hard with a vengeance
+				$split=array_unique($split); //remove double words from movie title too // ex: the lord of the rings the return of the king  = lord of the rings return of the king
+				
+				$cl=count($splitLeft);
+				$cmv=count($splitmovie);
+				
+				print ( " ".$cl." ".$cmv." " );
+
+				
+				if ( ($cl>=$cmv) && (($cl-$cmv)<=1) ): // torrent name length equal or greater than movie name and word count between one at most
+					printColor(" possible match ","white+bold");
+
+					if ($splitLeft[0]==$splitmovie[0]){ // Check first word
+						// Match all words from movie name to torrent name left part
+						$allWords=false;
+						foreach ( $splitmovie as $sp ){
+							//print (n."checking: ".$sp.n);
+							if ( strpos($leftPart, $sp) !== false ){
+								$allWords=true;
+							}else {
+								$allWords=false;
+							}
+						}
+						if ($allWords){
+							printColor ("ok","green");
+							array_push($torrents, $torrent );
+						} 
+						if (!$allWords) printColor ("not","red");
+					}
+					else{
+						printColor("_NOT_","red+bold");
+					}
+
+				endif;
+				print n.n;
+			} //only one year
+			else{
+				printColor ( n."More than one year in torrnent name. Exit. ","white+bold");
+				exit();
 			}
-		}
+
+		}//foreach torrent
 		
+		printColor (n."filterTorrentsByMovieYear() *UNDER TESTING* ".n.n, "white+bold" );
 		$this->torrents=$torrents;
-		return $this->torrents;
-	
+		return $this->torrents;	
 	}
 	
 	public function findTotalTorrents(){

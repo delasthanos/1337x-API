@@ -21,11 +21,14 @@ class ImdbList extends dbhandler{
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`=2014 OR yearmovie=2015";
 		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Lord of the Rings%'";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%A Good Day to Die Hard%'";
-
 		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' limit 100";
-
 		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' AND moviename='The DUFF';";
+		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' AND moviename='Room';";
 		$selectquery = "SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' AND moviename='Love'";
+		//$selectquery = "SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Die Hard with a Vengeance%'";
+		//$selectquery = "SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Die Hard%'";
+		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Lord of the Rings%'";
+		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename='The Lord of the Rings: The Return of the King'";
 		
 		printColor(n.$selectquery.n, "green");
 		$dbh = $this->getInstance(); 

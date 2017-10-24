@@ -101,8 +101,10 @@ if ($allowedArgs['search']):
 			$findTorrents=new ParseSearch1337x($title['imdb']); //Pass imdb folder name containing search results pages
 			$findTorrents->collectSearchResultsHTML();
 			$torrents = $findTorrents->collectTorrentsFromHTML(); // Final array with torrent info for each folder
-			
-			if (CATEGORY=="Movies"): $torrents = $findTorrents->filterTorrentsByMovieYear(); endif;
+
+			// UNDER TESTING | Match all words between torrent name and movie name. Testing failed.
+			// Lots of conditions to take into consideration. Maybe be strict results for titles with one word, and be more resilient with longer movie titles
+			//if (CATEGORY=="Movies"): $torrents = $findTorrents->filterTorrentsByMovieYear(); endif;
 
 			// Save Search Results
 			// $imdb,$totalPages,$activePages,$totalTorrents,$activeTorrents
