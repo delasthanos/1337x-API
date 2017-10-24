@@ -11,6 +11,9 @@ class ImdbList extends dbhandler{
 	}
    
 	public function getMoviesList(){
+	
+		// Show stats for movies: select * from search_summary JOIN imdb.movies_list ON CONCAT("tt",search_summary.imdb)=imdb.movies_list.imdb;
+	
 		//print ("Getting movies list");
 		//$selectquery ="SELECT * FROM movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Lord of the%' LIMIT 100";
 		//$selectquery ="SELECT * FROM movies_list WHERE 1 AND enabled=1 AND imdb='tt0167260' LIMIT 100";
@@ -29,6 +32,8 @@ class ImdbList extends dbhandler{
 		//$selectquery = "SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Die Hard%'";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Lord of the Rings%'";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename='The Lord of the Rings: The Return of the King'";
+		
+		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`=2014";
 		
 		printColor(n.$selectquery.n, "green");
 		$dbh = $this->getInstance(); 

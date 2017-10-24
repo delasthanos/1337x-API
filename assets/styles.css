@@ -1,0 +1,95 @@
+body{
+    background: #080808;
+	color: #8BAF35;
+	font-family: Verdana,sans-serif;
+
+	font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+	
+}
+.green-light{
+    color: #8BBF0C;
+    font-weight: 900;
+    font-size: 16px;
+}
+    
+}
+.white{
+	color: #828282;
+}
+.small-text {
+	font-size: 11px;
+}
+
+.underline{
+	text-decoration: underline;
+}
+
+
+.results {
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+.results td{
+	text-align: left;
+	padding: 5px;
+	/*font-weight: 600;*/
+	/*font-size: 15px;*/
+}
+.results tr{
+	background: #4a4a4a;
+	background: #232323;
+}
+.results .diff{
+	background: #393939;
+	background: #191919;
+}
+.results thead{
+	background: #000000;
+	/*font-weight: bold;*/
+	color: #828282;
+    /*position: fixed;*/
+    top: 0px;
+}
+.results tbody, .results thead tr {
+
+	/*  display: table;*/
+  /*width: 80%;  */
+  /*table-layout: fixed;*/
+}
+
+.view-results{
+	cursor: hand;
+	cursor: pointer;
+}
+.sum-entry{
+
+}
+.sum-entry:hover{
+	background: #040404 !important;
+}
+.torrents{
+	background: #2D2D2D;
+	padding: 20px;
+	display: table;
+}
+.moviename{
+	color: #ACADA9;
+	font-weight: 600;
+}
+.imdb{
+	color: #907A21;
+	font-weight: 600;
+	font-size: 12px;
+	text-decoration: underline;
+    background-color: #9E850C;
+    color: #1a1a1a;
+    border-radius: 50px;
+    padding: 6px;
+    margin-left: 10px;
+}
