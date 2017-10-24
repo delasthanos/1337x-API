@@ -2,6 +2,7 @@
 class ViewStatsHTML{
 
 	private $dbh;
+	private $MODE="SUMMARY";
 
 	public function __construct(){
 		$this->dbh=dbhandler::getInstance();
@@ -9,22 +10,19 @@ class ViewStatsHTML{
 
 	public function viewStats(){
 
-		//$selectquery ="select * from 1337x.search_summary JOIN imdb.movies_list ON CONCAT('tt',search_summary.imdb)=imdb.movies_list.imdb AND imdb.movies_list.imdb='tt2015381'";
 		$this->showSummary();
-
 	}
 
 	public function viewResults($imdb){
 
-		print ("Show search results for imdb code.");
 		$this->showResults($imdb);
 		
 	}
 
 	private function showSummary(){
 		$selectquery ="select * from 1337x.search_summary JOIN imdb.movies_list 
-		WHERE CONCAT('tt',search_summary.imdb)=imdb.movies_list.imdb 
-		AND imdb.movies_list.yearmovie=2014 
+		ON search_summary.imdb=imdb.movies_list.imdb 
+		/*AND imdb.movies_list.yearmovie=2014 */ 
 		ORDER BY totalTorrents DESC
 		";
 		if ( !$stmt = $this->dbh->dbh->prepare($selectquery) ) { 
@@ -34,7 +32,7 @@ class ViewStatsHTML{
 
 			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			if (count($rows)>0):				
-				$this->printSummaryTable($rows, "results");
+				$this->printSummaryTable($rows);
 			else:
 				print ("No results. Check your query.");
 			endif;
@@ -42,18 +40,20 @@ class ViewStatsHTML{
 	}
 
 	private function showResults($imdb){
+	
+		$this->MODE="RESULTS";
 
-		$selectquery ="select * from 1337x.search_summary JOIN imdb.movies_list WHERE CONCAT('tt',search_summary.imdb)=imdb.movies_list.imdb AND imdb.movies_list.imdb=:imdb";
+		$selectquery ="select * from 1337x.search_summary JOIN imdb.movies_list ON search_summary.imdb=imdb.movies_list.imdb WHERE 1 AND imdb.movies_list.imdb=:imdb";
 		if ( !$stmt = $this->dbh->dbh->prepare($selectquery) ) { var_dump ( $dbh->dbh->errorInfo() ); } 
 		
 		$stmt->bindParam(':imdb', $imdb );
 
 		if ( $stmt->execute() ) {
 			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-			$this->printSummaryTable($rows, "results");
+			$this->printSummaryTable($rows);
 		}
 		
-		$imdb=str_replace("tt","",$imdb); // remove tt from imdb code
+		//$imdb=str_replace("tt","",$imdb); // remove tt from imdb code
 		$selectquery="select * from 1337x.search_results WHERE imdb=:imdb ORDER BY CAST(`seeds` as UNSIGNED) DESC";
 		if ( !$stmt = $this->dbh->dbh->prepare($selectquery) ) { var_dump ( $dbh->dbh->errorInfo() ); } 
 
@@ -105,12 +105,12 @@ class ViewStatsHTML{
 	
 	}
 	
-	private function printSummaryTable( $rows , $divClass ){
+	private function printSummaryTable( $rows ){
 
 		$getKeys=array_keys($rows[0]);
 		
-		print ('<div class="'.$divClass.'">');
-		print ('<h3>Total: '.count($rows).'</h3>');
+		print ('<div class="results">');
+		print ('<h3>Total: '.count($rows).' title searches.</h3>');
 		print ('<table>');
 		print ('<thead><tr>');		
 		//foreach ( $getKeys as $key ){print('<td>');	print($key);print('</td>');}
@@ -124,7 +124,7 @@ class ViewStatsHTML{
 			$cellsHead.='<td>id</td>';
 			$cellsHead.='<td>yearmovie</td>';
 			$cellsHead.='<td>rating</td>';
-			$cellsHead.='<td>@</td>';
+			if ($this->MODE ==='SUMMARY')$cellsHead.='<td>@</td>';
 		print ($cellsHead);
 		print ('</tr></thead>');
 
@@ -136,16 +136,19 @@ class ViewStatsHTML{
 			if (!$diff){print ('<tr class="sum-entry diff" >');$diff=true;}
 			else if ($diff){print ('<tr class="sum-entry" >');$diff=false;}
 			//foreach ( $row as $k=>$v){print('<td>');print($v);print('</td>');}
-				$cells = '<td class="imdb">'.$row['imdb'].'</td>';
+				$last_checked=timeDifference($row['last_checked']);
+
+				$imdbLinkA='<a target="_blank" href="http://www.imdb.com/title/'.$row['imdb'].'/">';
+				$cells = '<td class="imdb">'.$imdbLinkA.$row['imdb'].'</a></td>';
 				$cells .= '<td class="moviename">'.$row['moviename'].'</td>';
 				$cells .= '<td><span class="green-light">'.$row['activePages'].'</span>'.'/ '.$row['totalPages'].'</td>';
 				$cells .= '<td><span class="green-light">'.$row['activeTorrents'].'</span>'.'/'.$row['totalTorrents'].'</td>';
-				$cells .= '<td>'.$row['last_checked'].'</td>';
+				$cells .= '<td>'.$last_checked.'</td>';
 				$cells .= '<td>'.$row['category'].'</td>';
 				$cells .= '<td>'.$row['id'].'</td>';
 				$cells .= '<td>'.$row['yearmovie'].'</td>';
 				$cells .= '<td>'.$row['rating'].'</td>';
-				$cells .= '<td class="view-results white small-text underline" id="'.$row['imdb'].'">view results</td>';
+				if ($this->MODE ==='SUMMARY')$cells .= '<td class="view-results white small-text underline" id="'.$row['imdb'].'">view results</td>';
 			print $cells;
 			print ('</tr>');			
 		}

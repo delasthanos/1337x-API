@@ -109,7 +109,7 @@ if ($allowedArgs['search']):
 			// Save Search Results
 			// $imdb,$totalPages,$activePages,$totalTorrents,$activeTorrents
 			
-			$searchResults=new SearchResults( $title['imdb'], $search->getActivePages(), $search->getTotalPages(), $findTorrents->findTotalTorrents(), $findTorrents->findActiveTorrents(), $findTorrents->getActiveTorrents() );
+			$searchResults=new SearchResults( $title['imdb'], $search->getTotalPages(), $search->getActivePages(), $findTorrents->findTotalTorrents(), $findTorrents->findActiveTorrents(), $findTorrents->getActiveTorrents() );
 			if ( $searchResults->saveSearchSummary() ):
 
 				printColor ( n."[*]Saved search summary to database.","green" );

@@ -72,6 +72,14 @@ function testCurl($url){
 
 }
 
+function timeDifference($last_checked){
+
+	$now=time();
+	$difference = ($now-strtotime($last_checked));
+	//return "Last checked: $difference sec ".round(($difference/60))." minutes ago.";
+	return round(($difference/60))." minutes ago.";	
+}
+
 function findTorrentPageLink( $link ){
 	// Pass a link spli by / and find if first word is torrent
 	$split = explode("/", $link );

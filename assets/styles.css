@@ -11,6 +11,9 @@ body{
 	line-height: 20px;
 	
 }
+a{
+	color: #000;
+}
 .green-light{
     color: #8BBF0C;
     font-weight: 900;
@@ -33,13 +36,13 @@ body{
 .results {
 	overflow: hidden;
 	margin-bottom: 20px;
+	background: #3A3A3A;
 }
 
 .results td{
 	text-align: left;
 	padding: 5px;
-	/*font-weight: 600;*/
-	/*font-size: 15px;*/
+    border: 4px solid #1B1B1B;
 }
 .results tr{
 	background: #4a4a4a;
@@ -66,6 +69,9 @@ body{
 .view-results{
 	cursor: hand;
 	cursor: pointer;
+    background: #355B8A;
+    color: #BBBBBB; 
+    font-weight: 300;
 }
 .sum-entry{
 
@@ -79,7 +85,7 @@ body{
 	display: table;
 }
 .moviename{
-	color: #ACADA9;
+	color: #CECECE;
 	font-weight: 600;
 }
 .imdb{
@@ -87,7 +93,7 @@ body{
 	font-weight: 600;
 	font-size: 12px;
 	text-decoration: underline;
-    background-color: #9E850C;
+    background-color: #D8B716;
     color: #1a1a1a;
     border-radius: 50px;
     padding: 6px;

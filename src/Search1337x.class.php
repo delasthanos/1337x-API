@@ -83,7 +83,7 @@ class Search1337x extends Search1337xHelperFunctions{
 		$dbConLocal = $dbh->dbCon; 
 		if ( !$dbConLocal ) { exit(" \n\n db connection error.\n\n "); }
 		
-		$imdb=str_replace("tt","",$imdb);
+		//$imdb=str_replace("tt","",$imdb); // Imdb is VARCHAR now.
 		$buildQuery="SELECT * FROM 1337x.search_summary WHERE imdb=:imdb LIMIT 10"; // Limit for safety. Normally you should get only one result.
 		if ( !$stmt = $dbh->dbh->prepare($buildQuery) ) { var_dump ( $dbh->dbh->errorInfo() ); } 
 		else {
@@ -91,7 +91,8 @@ class Search1337x extends Search1337xHelperFunctions{
 			$stmt->bindParam(':imdb', $imdb );
 			if (!$stmt->execute() ){
 
-				printColor (n."[!]erroreroreroe","red+bold");
+				printColor (n.n."[!]error inside checkTitleInSearchSummary".n.n,"red+bold");
+				exit();
 			} 
 			else{
 			

@@ -14,6 +14,7 @@
 
 	require_once("config.php");
 	require_once("src/dbhandler.class.php");
+	require_once("src/functions.php");	
 	
 	spl_autoload_register(function ($class_name) {
 		require_once 'src/'.$class_name.'.class.php';
@@ -21,7 +22,7 @@
 	
 	if ( isset($_GET['imdb']) ){
 		$imdb=strip_tags($_GET['imdb']);
-		print ("Show torrent results imdb: ".$imdb);
+		print ("Showing torrent results imdb: ".$imdb);
 		$view=new ViewStatsHTML();
 		$view->viewResults($imdb);		
 	}
