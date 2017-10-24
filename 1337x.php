@@ -53,9 +53,6 @@ endif; //CLI
  *  Search results foreach movie from 1337x
  *  Save HTML results pages
  */
-/*
-	Refactoring : Merge search and parse results and save into db
-*/
 if (CLI):
 if ($allowedArgs['search']):
 
