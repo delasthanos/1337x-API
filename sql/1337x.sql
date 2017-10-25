@@ -23,6 +23,7 @@ CREATE TABLE `search_results` (
   `seeds` MEDIUMTEXT NOT NULL,
   `leeches` MEDIUMTEXT NOT NULL,
   `category` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+  `downloaded` tinyint(1) UNSIGNED NOT NULL DEFAULT 0 ,
 
   UNIQUE INDEX `imdb_1337x_id_match` (`imdb`,`1337x_id`),
   FOREIGN KEY (`summary_id`) REFERENCES search_summary(id)

@@ -2,21 +2,24 @@
 class ParseSearch1337x extends Search1337xHelperFunctions{
 
 	private $folder="";
-	private $title = []; //Holds current title (movie, tvshow) information. Seted inside findMovieInDB(),findTvshowInDB()
 	private $imdbFolder; //seted inside findMovieInDB(),findTvshowInDB()
+
+	private $title = []; //Holds current title (movie, tvshow) information. Seted inside findMovieInDB(),findTvshowInDB()
 	private $HTMLFiles=[]; //seted inside findMovieInDB(),findTvshowInDB()
 	private $torrents=[]; // Populated/seted in collectTorrentsFromHTML()
 
 	public function __construct($folder){
 
-		$this->folder=$folder;
-		$this->imdbFolder= $this->folder;
+		// Match folder given from database. Bindparam beacuse it's called with AJAX too.
+		//$this->folder=$folder; // seted below in findMovieInDB(), findTvshowInDB()
+		//$this->imdbFolder= $this->folder;
+
 		switch (CATEGORY):
 			case ('Movies'):
-				$this->findMovieInDB( $this->folder ); // Sets $this->title with one row result from database
+				$this->findMovieInDB( $folder ); // Sets $this->title with one row result from database
 				break;
 			case ('TV'):
-				$this->findTvshowInDB( $this->folder ); // Sets $this->title with one row result from database
+				$this->findTvshowInDB( $folder ); // Sets $this->title with one row result from database
 				break;
 		endswitch;		
 	}
@@ -187,7 +190,7 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 		}
 	}
 
-	private function findMovieInDB($folder){
+	private function findMovieInDB($folder){ //sets imdb $this->folder and $this->title
 	
 		// Match imfbFolder name with imdb code of database to ensure data integrity
 
@@ -195,12 +198,15 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 		$dbConLocal = $dbh->dbCon; 
 		if ( !$dbConLocal ) { exit(" \n\n db connection error.\n\n "); }
 
-		$buildQuery="SELECT * FROM imdb.movies_list WHERE 1 AND imdb='$folder' LIMIT 10"; // Limit for safety. Normally you should get only one result.
+		$buildQuery="SELECT * FROM imdb.movies_list WHERE 1 AND imdb=:folder LIMIT 10"; // Limit for safety. Normally you should get only one result.
 		
 		if ( !$stmt = $dbh->dbh->prepare($buildQuery) ) { 
 			var_dump ( $dbh->dbh->errorInfo() ); 
 		} 
-		else { 		
+		else {
+		
+			$stmt->bindParam(':folder', $folder );
+
 			if (!$stmt->execute() ){
 
 				printColor (n."[!]error","red+bold");
@@ -214,9 +220,12 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 				$result = $stmt->fetchAll();
 				if ( count($result)===1 ){
 					print ($folder." = ".$result[0]['moviename']." ".$result[0]['yearmovie'].n);
-					$this->title=$result[0];
+					$this->title=$result[0]; //set global private variables
+					$this->folder=$result[0]['imdb']; //set global private variables
+					$this->imdbFolder=$result[0]['imdb']; //set global private variables
 				}else {
-					printColor ( n.n."No results or more than one. This shouldn't happen.".n,"red+bold");
+					printColor ( n.n."No results or more than one for Movie. This shouldn't happen.".n,"red+bold");
+					var_dump($result);
 					exit();
 				}
 			}		
@@ -231,12 +240,15 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 		$dbConLocal = $dbh->dbCon; 
 		if ( !$dbConLocal ) { exit(" \n\n db connection error.\n\n "); }
 
-		$buildQuery="SELECT * FROM imdb.tvshows_list WHERE 1 AND imdb='$folder' LIMIT 10"; // Limit for safety. Normally you should get only one result.
+		$buildQuery="SELECT * FROM imdb.tvshows_list WHERE 1 AND imdb=:folder LIMIT 10"; // Limit for safety. Normally you should get only one result.
 		
 		if ( !$stmt = $dbh->dbh->prepare($buildQuery) ) { 
 			var_dump ( $dbh->dbh->errorInfo() ); 
 		} 
 		else {
+		
+			$stmt->bindParam(':folder', $folder );
+
 			if (!$stmt->execute() ){
 
 				printColor (n."[!]error","red+bold");
@@ -250,7 +262,9 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 				$result = $stmt->fetchAll();
 				if ( count($result)===1 ){
 					print ($folder." = ".$result[0]['tvshowname']." ".$result[0]['imdb'].n);
-					$this->title=$result[0];
+					$this->title=$result[0];//set global private variables
+					$this->folder=$result[0]['imdb'];//set global private variables
+					$this->imdbFolder=$result[0]['imdb'];//set global private variables
 				}else {
 					printColor ( n.n."No results or more than one. This shouldn't happen.".n,"red+bold");
 					exit();

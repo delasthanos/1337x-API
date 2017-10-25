@@ -1,5 +1,5 @@
 <?php 
-class Search1337x extends Search1337xHelperFunctions{
+class SearchResults1337x extends Search1337xHelperFunctions{
 
 	private $page=1;
 	private $totalPages=0;
@@ -102,9 +102,9 @@ class Search1337x extends Search1337xHelperFunctions{
 					//print (n.n.n."last_checked=".strtotime($result[0]['last_checked']).n.n.n);
 					//print (n.n.n."now=".$now.n.n.n);
 					$difference = ($now-strtotime($result[0]['last_checked']));
-					$text =  "Last checked: $difference sec ".round(($difference/60))." minutes ago.";
+					$text =  "Last checked: $difference sec ".round( round(($difference/60)) / 60 )." hours ago.";
 					
-					if ($difference < 5000000 ){
+					if ($difference < 518400 ){ // 6days
 
 						$status=['exists'=>true,'text'=>$text];;
 						return $status;

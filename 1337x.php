@@ -60,7 +60,7 @@ if ($allowedArgs['search']):
 	// Maybe reset the variables inside the class Search1337x rather than destroying it with unset(). Check for memory usage.
 	// Main Loop | Might take a while according to results from ImdbList class | 
 	
-	// TESTS: test movies with name like Love (2015) or Room (2015) Legend (2015)
+	// NOTE: test movies with name like Love (2015) or Room (2015) Legend (2015)
 
 	printColor (n."Searching ... ".n, "white+bold");
 	printColor (CATEGORY.n, "white+bold");
@@ -75,15 +75,15 @@ if ($allowedArgs['search']):
 	foreach ( $titles as $title ):
 
 		// Search according to title
-		$search = new Search1337x();
-		
-		$status=$search->checkTitleInSearchSummary($title['imdb']);
-		
+		$search = new SearchResults1337x();
+		$status=$search->checkTitleInSearchSummary($title['imdb']); // 6 days 
+		// Already searched. 
 		if ($status['exists']===true):
 
 			print(n."[*]Title ".$title['imdb']." already searched.");
 			print ($status['text']);
 
+		// Search.
 		else:
 		
 			$search->searchForTitles($title);
@@ -112,10 +112,43 @@ if ($allowedArgs['search']):
 				printColor ( n."[*]Done".n.n,"white+bold" );
 
 			endif;
-			
 			sleep(WAIT_SECONDS);
-
 		endif;
+		
+		
+		printColor (n.n."\t[!]TEST save torrents files here".n.n,"yellow");
+		
+exit("break here");
+
+		// Print stats
+		$folder=$title['imdb'];
+		$findTorrents=new ParseSearch1337x($title['imdb']);
+		$findTorrents->collectSearchResultsHTML();
+		$torrents = $findTorrents->collectTorrentsFromHTML(); // Final array with torrent info for each folder
+		if ( is_array($torrents) ){print (n."\t[*]Found: ".count($torrents)." torrents." );}
+
+		$activeTorrents=0;
+		foreach ($torrents as $t ):
+		
+			if ( $t['seeds']>MIN_SEEDS ){++$activeTorrents;}
+			
+		endforeach;
+		print (n."\t[*]Active: ".$activeTorrents." ( seeds>".MIN_SEEDS." )");
+		// Print stats
+		
+		// Download Torrent Pages HTML
+		$countDownloaded=0;
+		foreach ($torrents as $t ):
+
+			if ( $t['seeds']>MIN_SEEDS ):
+				$downloadHTMLTorrent= new DownloadHTMLTorrentPage( $folder, $t ); //$folder==imdb, $t==torrent Array
+				$downloadHTMLTorrent->downloadTorrentHTMLPage();
+				unset($downloadHTMLTorrent);
+			endif;
+			//if (++$countDownloaded>10){ printColor(n."Break after 10 torrent pages. Still testing.".n,"red"); break; }
+
+		endforeach; // Foreach torrent
+
 		
 		unset($search);
 

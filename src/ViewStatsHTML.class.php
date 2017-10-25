@@ -6,6 +6,7 @@ class ViewStatsHTML{
 	private $totalSearches=0;
 	private $next=1;
 	private $perPage=10;
+	private $imdb;
 
 	public function __construct(){
 		$this->dbh=dbhandler::getInstance();
@@ -16,8 +17,9 @@ class ViewStatsHTML{
 		$this->showSummary($next,$perPage);
 	}
 
-	public function viewResults($imdb){
-
+	public function viewResults($imdb){	
+	
+		$this->imdb=$imdb;
 		$this->showResults($imdb);
 		
 	}
@@ -108,9 +110,13 @@ class ViewStatsHTML{
 		}
 	}
 
+	// Results page
 	private function printResults( $rows , $divClass ){
 	
 		$getKeys=array_keys($rows[0]);
+		
+		print ('<div id="folder-'.$this->imdb.'" class="download-torrent-pages">Download torrent HTML pages</div>');
+		print ('<pre id="terminal"><div id="download-torrent-results"></div></pre>');
 		
 		print ('<div class="'.$divClass.'">');
 		print ('<h3>Total: '.count($rows).'</h3>');

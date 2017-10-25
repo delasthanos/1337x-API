@@ -2,6 +2,7 @@
 <html>
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="assets/ansi_up.js"></script>
 <script src="assets/view-stats.js"></script>
 <link rel="stylesheet" href="assets/styles.css">
 </head>

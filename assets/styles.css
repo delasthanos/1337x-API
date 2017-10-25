@@ -172,3 +172,11 @@ a{
 h1,h2,h3,h4{
 	color: #ACE81C;
 }
+
+#terminal{
+    background: #000;
+    padding: 20px;
+    font-size: 11px;
+    color: #949494;
+    /* box-shadow: 0 0 20px 2px #4A4949 inset; */
+}
