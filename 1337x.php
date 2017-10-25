@@ -112,7 +112,7 @@ if ($allowedArgs['search']):
 				printColor ( n."[*]Done".n.n,"white+bold" );
 
 			endif;
-		
+			
 			sleep(WAIT_SECONDS);
 
 		endif;

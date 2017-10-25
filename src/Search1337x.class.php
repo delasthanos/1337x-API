@@ -104,7 +104,7 @@ class Search1337x extends Search1337xHelperFunctions{
 					$difference = ($now-strtotime($result[0]['last_checked']));
 					$text =  "Last checked: $difference sec ".round(($difference/60))." minutes ago.";
 					
-					if ($difference < 500 ){
+					if ($difference < 5000000 ){
 
 						$status=['exists'=>true,'text'=>$text];;
 						return $status;

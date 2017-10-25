@@ -8,7 +8,9 @@
 <body>
 <h2>Stats: 1337x.search_summary</h2>
 <?php 
-
+/*
+	notes: check movies like : Drive, Furious etc...
+*/
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
 
@@ -28,9 +30,24 @@
 		$view->viewResults($imdb);		
 	}
 	else {
+	
+		$next=1;
+		$perPage=10;		
+		if ( isset($_GET['next'])){
+		
+			$next=strip_tags($_GET['next']);
+			if ((int)$next<1) $next=1;
+			
+			if ( isset($_GET['perPage'])){
+				$perPage=strip_tags($_GET['perPage']);
+			}
 
-		$view->showStatsSummary();
-		$view->viewStats();
+			$view->showTotalStats("HOME");
+			$view->viewStatsSummary($next,$perPage);
+		}else{
+			$view->showTotalStats("HOME");
+			$view->viewStatsSummary(1,10);
+		}
 	}
 	
 ?>

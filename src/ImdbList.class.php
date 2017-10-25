@@ -2,18 +2,18 @@
 class ImdbList extends dbhandler{
 
 	// TESTS: test movies with name like Love (2015) or Room (2015) Legend (2015)
-	
+
 	// TESTS: Daredevil append Marvel on search
 
 	private $rootList=[];
-	
+
 	function __construct() {
 	}
-   
+
 	public function getMoviesList(){
-	
+
 		// Show stats for movies: select * from search_summary JOIN imdb.movies_list ON CONCAT("tt",search_summary.imdb)=imdb.movies_list.imdb;
-	
+
 		//print ("Getting movies list");
 		//$selectquery ="SELECT * FROM movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Lord of the%' LIMIT 100";
 		//$selectquery ="SELECT * FROM movies_list WHERE 1 AND enabled=1 AND imdb='tt0167260' LIMIT 100";
@@ -31,7 +31,9 @@ class ImdbList extends dbhandler{
 
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`=1995 ORDER BY rating DESC LIMIT 100";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`=1995 AND moviename='Braveheart' ORDER BY rating DESC LIMIT 100";
-		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`=2014 LIMIT 1000";
+		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`> 1995 AND `yearmovie`< 2014 ORDER BY `rating` DESC LIMIT 10000";
+		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`> 1990 AND `yearmovie`< 2013 ORDER BY RAND() DESC LIMIT 10000";
+		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`= 2003 ORDER BY `rating` DESC LIMIT 10000";
 		
 		printColor(n.$selectquery.n, "green");
 		$dbh = $this->getInstance(); 

@@ -2,15 +2,18 @@
 class ViewStatsHTML{
 
 	private $dbh;
-	private $MODE="SUMMARY_HOME";
+	private $MODE="HOME"; // $this->MODE="RESULTS"; // $this->MODE="AJAX";
+	private $totalSearches=0;
+	private $next=1;
+	private $perPage=10;
 
 	public function __construct(){
 		$this->dbh=dbhandler::getInstance();
 	}
 
-	public function viewStats(){
+	public function viewStatsSummary($next,$perPage){
 
-		$this->showSummary();
+		$this->showSummary($next,$perPage);
 	}
 
 	public function viewResults($imdb){
@@ -19,33 +22,51 @@ class ViewStatsHTML{
 		
 	}
 	
-	public function showStatsSummary(){
+	//Accepts AJAX MODE | live update
+	public function showTotalStats($mode){ //sets $this->totalSearches for global useage
+
+		if ($mode==="AJAX") $this->MODE="AJAX";
 
 		$selectquery ="select count(*) from 1337x.search_summary";
 		$stmt = $this->dbh->dbh->prepare($selectquery);
 		$stmt->execute();
 		$searches = $stmt->fetchColumn();
+		$this->totalSearches=$searches;
 
 		$selectquery ="select count(*) from 1337x.search_results";
 		$stmt = $this->dbh->dbh->prepare($selectquery);
 		$stmt->execute();
 		$results = $stmt->fetchColumn();
-		
-		print ('<div class="show-stats">'.$searches.' searches perfomed for imdb titles.</div>');
-		print ('<div class="show-stats">'.$results.' torrent results with seeds > '.MIN_SEEDS.'</div>');
 
-		
+		if ($this->MODE!=="AJAX") print('<div id="update-stats-cont">'); // update-stats-cont already loaded in HTML page. 
+		print('<div id="update-stats">');
+		print ('<div class="show-stats"><span "live-update">'.$searches.'</span> searches perfomed for imdb titles.</div>');
+		print ('<div class="show-stats"><span "live-update">'.$results.'</span> torrent results with seeds > '.MIN_SEEDS.'</div>');
+		print('</div>');
+		if ($this->MODE!=="AJAX") print('</div>');		
 	}
 
-	private function showSummary(){
+	private function showSummary($next,$perPage){  //called from public viewStatsSummary()
+
+		if ($this->next!==$next) $this->next=$next;
+		if ($this->perPage!==$perPage) $this->perPage=$perPage;
+		$next=(int)$this->next;
+		$perPage=(int)$this->perPage;
+		
+
 		$selectquery ="select * from 1337x.search_summary JOIN imdb.movies_list 
 		ON search_summary.imdb=imdb.movies_list.imdb 
 		/*AND imdb.movies_list.yearmovie=2014 */ 
-		ORDER BY totalTorrents DESC
+		ORDER BY activeTorrents DESC LIMIT :nextResults, :perPage 
 		";
 		if ( !$stmt = $this->dbh->dbh->prepare($selectquery) ) { 
-			//var_dump ( $dbh->dbh->errorInfo() );
+			var_dump ( $dbh->dbh->errorInfo() );
 		} 
+
+		$stmt->bindParam(':nextResults', $next , PDO::PARAM_INT );
+		$stmt->bindParam(':perPage', $perPage , PDO::PARAM_INT );
+		//$stmt->bindValue(':nextResults', $next , PDO::PARAM_INT );
+
 		if ( $stmt->execute() ) { 
 
 			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -54,7 +75,9 @@ class ViewStatsHTML{
 			else:
 				print ("No results. Check your query.");
 			endif;
-		}	
+		}
+		
+		var_dump($stmt->errorInfo());
 	}
 
 	private function showResults($imdb){
@@ -123,12 +146,22 @@ class ViewStatsHTML{
 	
 	}
 	
+	// HOME Page
 	private function printSummaryTable( $rows ){
 
 		$getKeys=array_keys($rows[0]);
 		
 		print ('<div class="results">');
-		print ('<h3>Total: '.count($rows).' title searches.</h3>');
+		print ('<div class="results-header">');
+			print ('<h3>Sowing: '.count($rows).' of '.$this->totalSearches.' title searches.</h3>');
+			
+			print ('<a href="view-stats.php?next='.($this->next-50).'&perPage=50">-<span class="small-text">50</span></a>');
+			print ('<a href="view-stats.php?next='.($this->next-10).'&perPage=10">-prev <span class="small-text">10</span></a>');
+			
+			print ('<a href="view-stats.php?next='.($this->next+10).'&perPage=10">+next <span class="small-text">10</span></a>');
+			print ('<a href="view-stats.php?next='.($this->next+50).'&perPage=50">+ <span class="small-text">50</span></a>');
+
+		print ('</div>');
 		print ('<table>');
 		print ('<thead><tr>');		
 		//foreach ( $getKeys as $key ){print('<td>');	print($key);print('</td>');}
@@ -166,7 +199,7 @@ class ViewStatsHTML{
 				$cells .= '<td>'.$row['id'].'</td>';
 				$cells .= '<td>'.$row['yearmovie'].'</td>';
 				$cells .= '<td>'.$row['rating'].'</td>';
-				if ($this->MODE ==='SUMMARY_HOME')$cells .= '<td class="view-results white small-text underline" id="'.$row['imdb'].'">view results</td>';
+				if ($this->MODE ==='HOME')$cells .= '<td class="view-results white small-text underline" id="'.$row['imdb'].'">view results</td>';
 			print $cells;
 			print ('</tr>');			
 		}
