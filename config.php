@@ -7,6 +7,7 @@ define("CATEGORY","Movies"); // 1337x Category used below to set othr defines
 define( "TORRENT_URL_PREFIX", "https://1337x.to");
 define( "SEARCH_URL_START", "https://1337x.to/category-search/");
 define( "JSON_FILE_PATH", "JSON");
+define( "TORRENTS_DOWNLOAD_LIMIT", 5);
 define( "HTML", true);
 define( "JSON", false);
 
@@ -26,7 +27,7 @@ switch(CATEGORY):
 
 endswitch;
 define("WAIT_SECONDS", 3.5); // Wait between each search request for titles. Otherwise IP gets banned. Read NOTES for details.
-define("WAIT_SECONDS_RESULTS", 2.5); // Wait between search pages. 1,2,3 ...
+define("WAIT_SECONDS_RESULTS", 1.5); // Wait between search pages. 1,2,3 ...
 define("MIN_SEEDS", 1); // Number of seeds on 1337x to start ignoring torrents and results pages
 define("MAX_RESULTS_PAGES", 15 ); // Max results pages to fetch. 1,2,3 ... for safety. Maybe increase this value for TvShows
 define("n","\n"); // Folder to save and parse HTML files for each movie. Without trailing slash.

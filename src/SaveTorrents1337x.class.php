@@ -13,21 +13,26 @@ class SaveTorrents1337x{
 		printColor (n.n."\t[!]TEST save torrents files here".n.n,"yellow");
 		$folder=$title['imdb'];
 		$findTorrents=new ParseSearch1337x($title['imdb']);
+
+//collect torrents from db
 		$torrents = $findTorrents->collectTorrentsFromDB(); // Final array with torrent info for each folder
 		if ( is_array($torrents) ){print (n."\t[*]Found: ".count($torrents)." torrents." );}
 		else exit(n.n."Inside SaveTorrents1337x torrents is not array. Exit".n.n);
 		
 		// Download Torrent Pages HTML
 		$countDownloaded=0;
-		foreach ($torrents as $torrent):
+		
+		if (count($torrents)>0):
+			foreach ($torrents as $torrent):
 				
-			$downloadHTMLTorrent= new DownloadHTMLTorrentPage( $folder, $torrent ); //$folder==imdb, $t==torrent Array
-			$downloadHTMLTorrent->downloadTorrentHTMLPage();
-			unset($downloadHTMLTorrent);
+				$downloadHTMLTorrent= new DownloadHTMLTorrentPage( $folder, $torrent ); //$folder==imdb, $t==torrent Array
+				$downloadHTMLTorrent->downloadTorrentHTMLPage();
+				unset($downloadHTMLTorrent);
 				
-			if (++$countDownloaded>10){ printColor(n."Break after 5 torrent pages. Still testing.".n,"red+bold"); break; }
+				if (++$countDownloaded>TORRENTS_DOWNLOAD_LIMIT){ printColor(n."Break after 5 torrent pages. Still testing.".n,"red+bold"); break; }
 
-		endforeach; // Foreach torrent
+			endforeach; // Foreach torrent
+		endif;
 		
 	}
 	
@@ -42,23 +47,27 @@ class SaveTorrents1337x{
 
 		//foreach ($folders as $folderName ):
 
+		if (file_exists(HTML_TORRENTS_FILES_PATH."/".$folderName."/")):
+
 		$collectTorrents=[];
 		$files=array_diff( scandir(HTML_TORRENTS_FILES_PATH."/".$folderName."/"), array('.','..'));
-		foreach ($files as $f ):
+		
+		if (count($files)>0):
+			foreach ($files as $f ):
 
-			$parseTorrent = new ParseTorrentPage(HTML_TORRENTS_FILES_PATH."/".$folderName."/".$f);
-			$torrent = $parseTorrent->parseTorrentPage();
-			array_push($collectTorrents, $torrent);
+				$parseTorrent = new ParseTorrentPage(HTML_TORRENTS_FILES_PATH."/".$folderName."/".$f);
+				$torrent = $parseTorrent->parseTorrentPage();
+				array_push($collectTorrents, $torrent);
 
-		endforeach;
+			endforeach;
 	
-		$torrents[$folderName] = $collectTorrents;
+			$torrents[$folderName] = $collectTorrents;
 		
-		print_r($torrents);
-		
-		$json=json_encode($torrents);
-		file_put_contents(JSON_FILE_PATH.'/'.$folderName,  $json);
-
+//print_r($torrents);	
+			$json=json_encode($torrents);
+			file_put_contents(JSON_FILE_PATH.'/'.$folderName,  $json);
+		endif;
+		endif;//filexists
 		//endforeach; // foreach folders
 	}
 }
