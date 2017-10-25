@@ -74,83 +74,15 @@ if ($allowedArgs['search']):
 	// Iterate Movies or TvShows names to search and collect information
 	foreach ( $titles as $title ):
 
-		// Search according to title
-		$search = new SearchResults1337x();
-		$status=$search->checkTitleInSearchSummary($title['imdb']); // 6 days 
-		// Already searched. 
-		if ($status['exists']===true):
-
-			print(n."[*]Title ".$title['imdb']." already searched.");
-			print ($status['text']);
-
-		// Search.
-		else:
-		
-			$search->searchForTitles($title);
-		
-			printColor (n."[*]Collecting data from results to save into database ...","white+bold"); //sleep(1);
-			print (n."Search summary: Active Pages/Total Pages=(".$search->getActivePages()."/".$search->getTotalPages().")");
-
-			// Parse Search Results
-			$findTorrents=new ParseSearch1337x($title['imdb']); //Pass imdb folder name containing search results pages
-			$findTorrents->collectSearchResultsHTML();
-			$torrents = $findTorrents->collectTorrentsFromHTML(); // Final array with torrent info for each folder
-
-			// UNDER TESTING | Match all words between torrent name and movie name. Testing failed.
-			// Lots of conditions to take into consideration. Maybe be strict results for titles with one word, and be more resilient with longer movie titles
-			//if (CATEGORY=="Movies"): $torrents = $findTorrents->filterTorrentsByMovieYear(); endif;
-
-			// Save Search Results
-			// $imdb,$totalPages,$activePages,$totalTorrents,$activeTorrents
-			
-			$searchResults=new SearchResults( $title['imdb'], $search->getTotalPages(), $search->getActivePages(), $findTorrents->findTotalTorrents(), $findTorrents->findActiveTorrents(), $findTorrents->getActiveTorrents() );
-			if ( $searchResults->saveSearchSummary() ):
-
-				printColor ( n."[*]Saved search summary to database.","green" );
-				printColor ( n."[*]Saving torrents search results...","yellow" );
-				$searchResults->saveSearchResultsTorrents();
-				printColor ( n."[*]Done".n.n,"white+bold" );
-
-			endif;
-			sleep(WAIT_SECONDS);
-		endif;
-		
-		
-		printColor (n.n."\t[!]TEST save torrents files here".n.n,"yellow");
-		
-exit("break here");
-
-		// Print stats
-		$folder=$title['imdb'];
-		$findTorrents=new ParseSearch1337x($title['imdb']);
-		$findTorrents->collectSearchResultsHTML();
-		$torrents = $findTorrents->collectTorrentsFromHTML(); // Final array with torrent info for each folder
-		if ( is_array($torrents) ){print (n."\t[*]Found: ".count($torrents)." torrents." );}
-
-		$activeTorrents=0;
-		foreach ($torrents as $t ):
-		
-			if ( $t['seeds']>MIN_SEEDS ){++$activeTorrents;}
-			
-		endforeach;
-		print (n."\t[*]Active: ".$activeTorrents." ( seeds>".MIN_SEEDS." )");
-		// Print stats
-		
-		// Download Torrent Pages HTML
-		$countDownloaded=0;
-		foreach ($torrents as $t ):
-
-			if ( $t['seeds']>MIN_SEEDS ):
-				$downloadHTMLTorrent= new DownloadHTMLTorrentPage( $folder, $t ); //$folder==imdb, $t==torrent Array
-				$downloadHTMLTorrent->downloadTorrentHTMLPage();
-				unset($downloadHTMLTorrent);
-			endif;
-			//if (++$countDownloaded>10){ printColor(n."Break after 10 torrent pages. Still testing.".n,"red"); break; }
-
-		endforeach; // Foreach torrent
-
-		
+		// Search has moved inside Search1337x factory class.
+		$search= new Search1337x();
+		$search->search($title);
 		unset($search);
+		
+		// Parse search, collect torrents , download html pages and save to db has moved inside SaveTorrents1337x factory class
+		$saveTorrents=new SaveTorrents1337x();
+		$saveTorrents->saveTorrents($title);
+		unset($saveTorrents);
 
 	endforeach; // Foreach titles
 
