@@ -1,5 +1,5 @@
 <?php 
-class SearchResults{
+class SaveSearchResults{
 /*
 CREATE TABLE `search_summary` (
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
