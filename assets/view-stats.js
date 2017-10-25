@@ -48,6 +48,8 @@ window.setInterval(ganttEach, 5000);
 
 	$(".download-torrent-pages").click(function (){
 	
+		var imdb= this.id.split('-')[1];
+	
 		$("#download-torrent-results").hide();
 		$(".download-torrent-pages").html("Downloading. May take a while. PLease wait ...");
 	
@@ -65,9 +67,12 @@ window.setInterval(ganttEach, 5000);
 				var ansi_up = new AnsiUp;
 				var html = ansi_up.ansi_to_html(json);
 
-				$(".download-torrent-pages").html("[*]Done::Terminal Output");
+				$(".download-torrent-pages").html("[*]Done. Terminal Output: ");
+				
+				$("#terminal").fadeIn(1500);
 				$("#download-torrent-results").html(html);
 				$("#download-torrent-results").fadeIn(1000);
+				$("#view-json").html('<a target="_blank" href="JSON/'+imdb+'"> View generated JSON file for '+imdb+' </a>');
 			},
 			error : function(xhr, textStatus, errorThrown ) {
 				if (textStatus == 'timeout') {
@@ -87,7 +92,4 @@ window.setInterval(ganttEach, 5000);
 			}
 		});
 	});
-
 });
-
-

@@ -1,5 +1,9 @@
 <?php 
 /*
+	NOTE: FIX THIS
+	git authno and email was not set until recently.
+	Fix old commits from root author to delasthanos
+	
 	App is still under refactoring.
 	Breakpoint on search.
 	Search results are saved into db now.
@@ -82,6 +86,7 @@ if ($allowedArgs['search']):
 		// Parse search, collect torrents , download html pages and save to db has moved inside SaveTorrents1337x factory class
 		$saveTorrents=new SaveTorrents1337x();
 		$saveTorrents->saveTorrents($title);
+		$saveTorrents->showTorrents($title);
 		unset($saveTorrents);
 
 	endforeach; // Foreach titles

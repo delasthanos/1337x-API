@@ -29,7 +29,14 @@
 
 	//$imdb="tt3659388";
 	$folder=$imdb;
+	$title['imdb']=$imdb;
+	
+	$saveTorrents=new SaveTorrents1337x();
+	$saveTorrents->saveTorrents($title);
+	$saveTorrents->showTorrents($title);
 
+
+/* OLD METHOD: reading HTML files. add class handler now
 	printColor (n.n."\t[!]TEST save torrents files here".n.n,"yellow");
 
 	$findTorrents=new ParseSearch1337x($folder);
@@ -59,5 +66,5 @@
 
 	endforeach; // Foreach torrent
 
-
+*/
 ?>

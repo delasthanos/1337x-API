@@ -6,6 +6,7 @@
 define("CATEGORY","Movies"); // 1337x Category used below to set othr defines
 define( "TORRENT_URL_PREFIX", "https://1337x.to");
 define( "SEARCH_URL_START", "https://1337x.to/category-search/");
+define( "JSON_FILE_PATH", "JSON");
 define( "HTML", true);
 define( "JSON", false);
 

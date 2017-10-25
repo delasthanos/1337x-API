@@ -45,6 +45,7 @@ class ViewStatsHTML{
 		print ('<div class="show-stats"><span "live-update">'.$searches.'</span> searches perfomed for imdb titles.</div>');
 		print ('<div class="show-stats"><span "live-update">'.$results.'</span> torrent results with seeds > '.MIN_SEEDS.'</div>');
 		print('</div>');
+		
 		if ($this->MODE!=="AJAX") print('</div>');		
 	}
 
@@ -59,6 +60,7 @@ class ViewStatsHTML{
 		$selectquery ="select * from 1337x.search_summary JOIN imdb.movies_list 
 		ON search_summary.imdb=imdb.movies_list.imdb 
 		/*AND imdb.movies_list.yearmovie=2014 */ 
+		AND moviename LIKE '%lord%' 
 		ORDER BY activeTorrents DESC LIMIT :nextResults, :perPage 
 		";
 		if ( !$stmt = $this->dbh->dbh->prepare($selectquery) ) { 
@@ -115,6 +117,8 @@ class ViewStatsHTML{
 	
 		$getKeys=array_keys($rows[0]);
 		
+		print('<div id="view-json">');
+		print('</div>');
 		print ('<div id="folder-'.$this->imdb.'" class="download-torrent-pages">Download torrent HTML pages</div>');
 		print ('<pre id="terminal"><div id="download-torrent-results"></div></pre>');
 		
@@ -159,7 +163,7 @@ class ViewStatsHTML{
 		
 		print ('<div class="results">');
 		print ('<div class="results-header">');
-			print ('<h3>Sowing: '.count($rows).' of '.$this->totalSearches.' title searches.</h3>');
+			print ('<h3 class="white">Showing: '.count($rows).' of '.$this->totalSearches.' title searches.</h3>');
 			
 			print ('<a href="view-stats.php?next='.($this->next-50).'&perPage=50">-<span class="small-text">50</span></a>');
 			print ('<a href="view-stats.php?next='.($this->next-10).'&perPage=10">-prev <span class="small-text">10</span></a>');

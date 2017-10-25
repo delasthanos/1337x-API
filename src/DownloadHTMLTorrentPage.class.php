@@ -28,7 +28,7 @@ class DownloadHTMLTorrentPage{
 		if (count($split)===1){ // link read from database
 	
 			$this->torrentid=$torrent['1337x_id'];
-			$url=$this->constructTorrentPageURL('/torrent/'.$torrent['1337x_id'].'/'.$torrent['link']);	
+			$url=$this->constructTorrentPageURL('/torrent/'.$torrent['1337x_id'].'/'.$torrent['link'].'/');	
 		
 		}else { // link read directly from HTML parse
 

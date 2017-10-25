@@ -7,7 +7,10 @@
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-<h2>Stats: 1337x.search_summary</h2>
+
+<header>
+	<a href="view-stats.php"><h2>Stats: 1337x.search_summary</h2></a>
+</header>
 <?php 
 /*
 	notes: check movies like : Drive, Furious etc...

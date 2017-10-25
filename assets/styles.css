@@ -1,21 +1,35 @@
 body{
     background: #080808;
+    background: #424242;
+    margin: 0;
+    padding: 0;
+    
 	color: #8BAF35;
 	font-family: Verdana,sans-serif;
-
-font-face: sans-serif;
+	font-face: sans-serif;
 	font-family: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
-
 	font-size: 14px;
 	font-style: normal;
 	font-variant: normal;
 	font-weight: 400;
 	line-height: 20px;
 	
+	
 }
 a{
 	color: #000;
 }
+header{
+	background: #090909;
+    padding: 27px 5px;
+}
+td{
+    text-align: left;
+    padding: 6px;
+    border: 2px 444 #solid;
+    background: #000;
+}
+
 .green-light{
     color: #8BBF0C;
     font-weight: 900;
@@ -132,11 +146,12 @@ a{
     padding: 4px;
     line-height: 20px;
     font-family: monospace;
-	position: fixed;	
-
+	position: fixed;
+	top:0;
+	right:0;
 }
 .results{
-	margin-top: 150px;
+	/*margin-top: 150px;*/
 }
 #update-stats span{
 	color: #364F6F !important;
@@ -174,9 +189,43 @@ h1,h2,h3,h4{
 }
 
 #terminal{
-    background: #000;
+background: #000;
     padding: 20px;
     font-size: 11px;
     color: #949494;
     /* box-shadow: 0 0 20px 2px #4A4949 inset; */
+    width: 80%;
+    /* background: #333; */
+    /* text-overflow: clip; */
+    word-break: break-word;
+    overflow: hidden;
+    height: 500px;
+    overflow-y: scroll;
+    border: 5px solid;
+    /* box-shadow: 0 0 20px 2px #4A4949 inset; */
+    
+    display: none;
+}
+.download-torrent-pages{
+    background: #222;
+    display: inline-flex;
+    padding: 5px 10px;
+    text-decoration: underline;
+    margin-bottom: 10px;
+    font-weight: 900;
+}
+.download-torrent-pages:hover{
+    background: #000;
+    cursor: hand;
+    cursor: pointer;
+}
+#view-json{
+	margin-bottom: 10px;
+	margin-left: 5px;
+}
+#view-json a{
+	color: #aaa;
+	font-size: 16px;
+	font-weight: 900;
+	color: #DADADA;
 }

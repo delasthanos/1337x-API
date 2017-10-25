@@ -25,9 +25,41 @@ class SaveTorrents1337x{
 			$downloadHTMLTorrent->downloadTorrentHTMLPage();
 			unset($downloadHTMLTorrent);
 				
-			//if (++$countDownloaded>10){ printColor(n."Break after 10 torrent pages. Still testing.".n,"red"); break; }
+			if (++$countDownloaded>10){ printColor(n."Break after 5 torrent pages. Still testing.".n,"red+bold"); break; }
 
 		endforeach; // Foreach torrent
+		
+	}
+	
+	// show torrents from html folders
+	public function showTorrents($title){
+	
+		$folderName=$title['imdb'];
+		$torrents=[];
+		$folder=HTML_TORRENTS_FILES_PATH;
+		if (!file_exists($folder)){ exit("No html files found.Please run search first."); }
+		$folders=array_diff( scandir($folder), array('.','..'));
+
+		//foreach ($folders as $folderName ):
+
+		$collectTorrents=[];
+		$files=array_diff( scandir(HTML_TORRENTS_FILES_PATH."/".$folderName."/"), array('.','..'));
+		foreach ($files as $f ):
+
+			$parseTorrent = new ParseTorrentPage(HTML_TORRENTS_FILES_PATH."/".$folderName."/".$f);
+			$torrent = $parseTorrent->parseTorrentPage();
+			array_push($collectTorrents, $torrent);
+
+		endforeach;
+	
+		$torrents[$folderName] = $collectTorrents;
+		
+		print_r($torrents);
+		
+		$json=json_encode($torrents);
+		file_put_contents(JSON_FILE_PATH.'/'.$folderName,  $json);
+
+		//endforeach; // foreach folders
 	}
 }
 ?>
