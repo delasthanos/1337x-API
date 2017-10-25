@@ -23,9 +23,20 @@ class DownloadHTMLTorrentPage{
 	
 		print (n."donwloadTorrentPage(): ");
 		$split=explode("/",$torrent['link']);
-		$this->torrentid=$split[2]; // 1337x torrent id from link to create HTML filename
+		
+		// Check if $torrent is from database or directly from HTML
+		if (count($split)===1){ // link read from database
+	
+			$this->torrentid=$torrent['1337x_id'];
+			$url=$this->constructTorrentPageURL('/torrent/'.$torrent['1337x_id'].'/'.$torrent['link']);	
+		
+		}else { // link read directly from HTML parse
 
-		$url=$this->constructTorrentPageURL($torrent['link']);
+			$this->torrentid=$split[2]; // 1337x torrent id from link to create HTML filename
+			$url=$this->constructTorrentPageURL($torrent['link']);
+		}
+
+
 		$destination=$this->constructHTMLFilename();
 
 		if (!file_exists($destination)){

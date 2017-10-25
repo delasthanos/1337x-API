@@ -89,7 +89,7 @@ if ($allowedArgs['search']):
 endif; //search
 endif; //CLI
 
-exit(n.n."Breakpoint on search. Still refactoring.".n.n);
+exit(n.n."END. Breakpoint on search. Still refactoring.".n.n);
 
 /*
  *	Collect and Parse search results from above

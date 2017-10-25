@@ -1,7 +1,7 @@
 <?php 
 class ParseSearch1337x extends Search1337xHelperFunctions{
 
-	private $folder="";
+	private $imdb="";
 	private $imdbFolder; //seted inside findMovieInDB(),findTvshowInDB()
 
 	private $title = []; //Holds current title (movie, tvshow) information. Seted inside findMovieInDB(),findTvshowInDB()
@@ -11,8 +11,8 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 	public function __construct($folder){
 
 		// Match folder given from database. Bindparam beacuse it's called with AJAX too.
-		//$this->folder=$folder; // seted below in findMovieInDB(), findTvshowInDB()
-		//$this->imdbFolder= $this->folder;
+		//$this->imdb=$folder; // seted below in findMovieInDB(), findTvshowInDB()
+		//$this->imdbFolder= $this->imdb;
 
 		switch (CATEGORY):
 			case ('Movies'):
@@ -24,9 +24,57 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 		endswitch;		
 	}
 
+	public function collectTorrentsFromDB(){
+	
+		print (n.n."Going to collect torrents from db : ");
+		
+		$dbh = dbhandler::getInstance(); 
+		$dbConLocal = $dbh->dbCon; 
+		if ( !$dbConLocal ) { exit(" \n\n db connection error.\n\n "); }
+
+		$select="SELECT id FROM 1337x.search_summary WHERE 1 AND imdb=:imdb LIMIT 10"; // Limit for safety. Normally you should get only one result.
+		if ( !$stmt = $dbh->dbh->prepare($select) ) { var_dump ( $dbh->dbh->errorInfo() ); exit(); }
+		else {
+			$imdb=$this->imdb;
+			$stmt->bindParam(':imdb', $imdb );
+			if (!$stmt->execute() ){printColor (n."[!]error","red+bold");var_dump($stmt->errorInfo());exit();} 
+			else { $result = $stmt->fetchAll(); $id=$result[0]['id']; }
+		}
+
+
+		$select="select * from 1337x.search_results where summary_id=:id";
+		if ( !$stmt = $dbh->dbh->prepare($select) ) { var_dump ( $dbh->dbh->errorInfo() ); exit(); }
+		else {
+			$imdb=$this->imdb;
+			$stmt->bindParam(':id', $id );
+			if (!$stmt->execute() ){printColor (n."[!]error","red+bold");var_dump($stmt->errorInfo());exit();} 
+			else { 
+				$torrents = $stmt->fetchAll();
+				return $torrents;
+			}
+		}
+		
+		return 0;
+	}
+
+	// Read results pages from folders
 	public function collectSearchResultsHTML(){
 
-		$this->collectHTMLFromFolder(); // Collect HTML search pages for each title | Sets $this->HTMLFiles
+		//$this->collectHTMLFromFolder(); // Collect HTML search pages for each title | Sets $this->HTMLFiles DELETED
+		// Set folder name after findMovieInDB() to ensure imdb match from database
+		$HTMLFiles=[];
+		$folder=$this->title['imdb'];
+		$files=array_diff( scandir(HTML_SEARCH_FILES_PATH."/".$folder), array('.','..'));
+		$count = count($files);
+		if ( $count > 0 ){
+			printColor (n."\t".$count.' results pages',"white+bold");
+			foreach ( $files as $f ){
+				//print (n."\t----".$f);
+				array_push($HTMLFiles, $f);
+			}
+			$this->HTMLFiles=$HTMLFiles; // All html filenames for this folder
+			var_dump($this->HTMLFiles);
+		}
 	}
 
 	// Works for one search results pages. Make it work for all of them
@@ -55,6 +103,7 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 		return $this->torrents;
 	}
 	
+	// TEST to restirct torrents by year in title. Deprecated because it is not working properly
 	public function filterTorrentsByMovieYear(){
 	
 		$torrents=[];
@@ -173,24 +222,8 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 		return $activeTorrents;	
 	}
 
-	private function collectHTMLFromFolder(){
-	
-		// Set folder name after findMovieInDB() to ensure imdb match from database
-		$HTMLFiles=[];
-		$folder=$this->title['imdb'];
-		$files=array_diff( scandir(HTML_SEARCH_FILES_PATH."/".$folder), array('.','..'));
-		$count = count($files);
-		if ( $count > 0 ){
-			printColor (n."\t".$count.' results pages',"white+bold");
-			foreach ( $files as $f ){
-				//print (n."\t----".$f);
-				array_push($HTMLFiles, $f);
-			}
-			$this->HTMLFiles=$HTMLFiles; // All html filenames for this folder
-		}
-	}
 
-	private function findMovieInDB($folder){ //sets imdb $this->folder and $this->title
+	private function findMovieInDB($folder){ //sets imdb $this->imdb and $this->title
 	
 		// Match imfbFolder name with imdb code of database to ensure data integrity
 
@@ -221,7 +254,7 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 				if ( count($result)===1 ){
 					print ($folder." = ".$result[0]['moviename']." ".$result[0]['yearmovie'].n);
 					$this->title=$result[0]; //set global private variables
-					$this->folder=$result[0]['imdb']; //set global private variables
+					$this->imdb=$result[0]['imdb']; //set global private variables
 					$this->imdbFolder=$result[0]['imdb']; //set global private variables
 				}else {
 					printColor ( n.n."No results or more than one for Movie. This shouldn't happen.".n,"red+bold");
@@ -263,7 +296,7 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 				if ( count($result)===1 ){
 					print ($folder." = ".$result[0]['tvshowname']." ".$result[0]['imdb'].n);
 					$this->title=$result[0];//set global private variables
-					$this->folder=$result[0]['imdb'];//set global private variables
+					$this->imdb=$result[0]['imdb'];//set global private variables
 					$this->imdbFolder=$result[0]['imdb'];//set global private variables
 				}else {
 					printColor ( n.n."No results or more than one. This shouldn't happen.".n,"red+bold");

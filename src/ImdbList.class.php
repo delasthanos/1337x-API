@@ -35,7 +35,8 @@ class ImdbList extends dbhandler{
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`> 1990 AND `yearmovie`< 2013 ORDER BY RAND() DESC LIMIT 10000";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`= 2003 ORDER BY `rating` DESC LIMIT 10000";
 		
-		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename='The Martian'";
+		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename='The Martian'";
+		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%A Good Day to Die Hard%'";
 		
 		printColor(n.$selectquery." ", "green");
 		$dbh = $this->getInstance(); 
