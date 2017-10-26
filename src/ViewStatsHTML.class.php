@@ -44,6 +44,12 @@ class ViewStatsHTML{
 		print('<div id="update-stats">');
 		print ('<div class="show-stats"><span "live-update">'.$searches.'</span> searches perfomed for imdb titles.</div>');
 		print ('<div class="show-stats"><span "live-update">'.$results.'</span> torrent results with seeds > '.MIN_SEEDS.'</div>');
+
+		if ($this->MODE==="AJAX") {
+			$files = new FilesystemIterator( '../JSON', FilesystemIterator::SKIP_DOTS);
+			print '<div class="show-stats"><span "live-update"="">'.iterator_count($files).'</span> JSON files with torrent info.</div>';
+		}
+
 		print('</div>');
 		
 		if ($this->MODE!=="AJAX") print('</div>');		
@@ -60,9 +66,11 @@ class ViewStatsHTML{
 		$selectquery ="select * from 1337x.search_summary JOIN imdb.movies_list 
 		ON search_summary.imdb=imdb.movies_list.imdb 
 		/*AND imdb.movies_list.yearmovie=2014 */ 
-		AND moviename LIKE '%lord%' 
+		AND moviename LIKE '%Lord of the%' 
 		ORDER BY activeTorrents DESC LIMIT :nextResults, :perPage 
 		";
+		print ($selectquery);
+		
 		if ( !$stmt = $this->dbh->dbh->prepare($selectquery) ) { 
 			var_dump ( $dbh->dbh->errorInfo() );
 		} 
@@ -81,7 +89,7 @@ class ViewStatsHTML{
 			endif;
 		}
 		
-		var_dump($stmt->errorInfo());
+		//var_dump($stmt->errorInfo());
 	}
 
 	private function showResults($imdb){

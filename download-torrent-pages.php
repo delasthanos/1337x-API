@@ -32,8 +32,10 @@
 	$title['imdb']=$imdb;
 	
 	$saveTorrents=new SaveTorrents1337x();
-	$saveTorrents->saveTorrents($title);
-	$saveTorrents->showTorrents($title);
+	$saveTorrents->downloadTorrents($title);
+	$saveTorrents->createJSON($title);
+	var_dump($title);
+	$saveTorrents->saveTorrents();
 
 
 /* OLD METHOD: reading HTML files. add class handler now

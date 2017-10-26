@@ -12,5 +12,4 @@
 
 	$view=new ViewStatsHTML();
 	$view->showTotalStats("AJAX");
-
 ?>

@@ -120,8 +120,8 @@ td{
     font-size: 14px;
     color: #518CD4;
     font-weight: 600;
-    border: 1px solid #8BAF35;
-    border: 1px solid #5B7323;
+    /*border: 1px solid #8BAF35;*/
+    /*border: 1px solid #5B7323;*/
     /*
     background: #000000;
     background: rgba(0, 0, 0,.5);
@@ -140,7 +140,7 @@ td{
     font-size: 14px;
     color: #518CD4;
     font-weight: 600;
-    border: 1px solid #8BAF35;
+    /*border: 1px solid #8BAF35;*/
     background: #000000;
     background: rgba(0, 0, 0,.5);
     padding: 4px;
@@ -160,7 +160,7 @@ td{
 	font-size: 16px;
 	/*font-size: 66px;*/
 	/*line-height: 70px;*/
-	box-shadow: 0 0 2px 0px #364F6F inset;
+	/*box-shadow: 0 0 2px 0px #364F6F inset;*/
 	padding: 5px;margin-right: 15px;
 }
 .results-header{

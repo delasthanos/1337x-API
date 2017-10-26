@@ -3,10 +3,10 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 
 	private $imdb="";
 	private $imdbFolder; //seted inside findMovieInDB(),findTvshowInDB()
-
 	private $title = []; //Holds current title (movie, tvshow) information. Seted inside findMovieInDB(),findTvshowInDB()
 	private $HTMLFiles=[]; //seted inside findMovieInDB(),findTvshowInDB()
 	private $torrents=[]; // Populated/seted in collectTorrentsFromHTML()
+	private $summary_id;
 
 	public function __construct($folder){
 
@@ -26,7 +26,7 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 
 	public function collectTorrentsFromDB(){
 	
-		print (n.n."Going to collect torrents from db : ");
+		print (n."Collected torrents from db : ");
 		
 		$dbh = dbhandler::getInstance(); 
 		$dbConLocal = $dbh->dbCon; 
@@ -38,7 +38,7 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 			$imdb=$this->imdb;
 			$stmt->bindParam(':imdb', $imdb );
 			if (!$stmt->execute() ){printColor (n."[!]error","red+bold");var_dump($stmt->errorInfo());exit();} 
-			else { $result = $stmt->fetchAll(); $id=$result[0]['id']; }
+			else { $result = $stmt->fetchAll(); $id=$result[0]['id']; $this->summary_id=$result[0]['id']; }
 		}
 
 
@@ -55,6 +55,10 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 		}
 		
 		return 0;
+	}
+	
+	public function getSummaryId(){
+		return $this->summary_id;
 	}
 
 	// Read results pages from folders

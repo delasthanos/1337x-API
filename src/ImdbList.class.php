@@ -22,21 +22,19 @@ class ImdbList extends dbhandler{
 		//select count(*) from movies_list where yearmovie=2015 OR yearmovie=2014;
 		//$selectquery ="SELECT * FROM movies_list WHERE 1 AND enabled=1 AND moviename='A Gringo Walks Into a Bar'";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`=2014 OR yearmovie=2015";
-		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Lord of the Rings%'";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%A Good Day to Die Hard%'";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' limit 100";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' AND moviename='The DUFF';";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' AND moviename='Room';";
 		//$selectquery = "SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' AND moviename='Love'";
-
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`=1995 ORDER BY rating DESC LIMIT 100";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`=1995 AND moviename='Braveheart' ORDER BY rating DESC LIMIT 100";
-		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`> 1995 AND `yearmovie`< 2014 ORDER BY `rating` DESC LIMIT 10000";
+		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`> 1995 AND `yearmovie`< 2014 ORDER BY `rating` DESC LIMIT 18000";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`> 1990 AND `yearmovie`< 2013 ORDER BY RAND() DESC LIMIT 10000";
-		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`= 2003 ORDER BY `rating` DESC LIMIT 10000";
-		
+		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`= 2003 ORDER BY `rating` DESC LIMIT 10000";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename='The Martian'";
-		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%A Good Day to Die Hard%'";
+		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%A Good Day to Die Hard%'";
+		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Lord of the Rings%'";
 		
 		printColor(n.$selectquery." ", "green");
 		$dbh = $this->getInstance(); 

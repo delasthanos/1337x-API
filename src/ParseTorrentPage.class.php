@@ -46,6 +46,12 @@ class ParseTorrentPage{
 		@$dom->loadHTML($getFile);
 		$xPath = new DOMXPath($dom);
 		
+		$splitFileName=explode("/",$this->file);
+		$get1337xidFromFolder=array_pop($splitFileName);
+		//var_dump($get1337xidFromFolder);
+		//exit();
+		$this->torrent['1337x_id'] = $get1337xidFromFolder;
+		
 		$this->torrent['title'] = $this->getTitle( $xPath );
 		//print (n.$title);
 		
