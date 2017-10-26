@@ -84,6 +84,7 @@ class SaveTorrents1337x{
 			$this->imdb=$title['imdb'];
 			$json=json_encode($torrents);
 			$this->JSON=$json;
+			if (!file_exists(JSON_FILE_PATH)) mkdir(JSON_FILE_PATH, 0777, true);
 			file_put_contents(JSON_FILE_PATH.'/'.$folderName,  $json);
 		endif;
 		endif;//filexists
@@ -111,12 +112,85 @@ class SaveTorrents1337x{
 			else { $search_results = $stmt->fetchAll(PDO::FETCH_ASSOC); }
 		}
 		
-		$torrents=json_decode($this->JSON);
+		$torrents=json_decode($this->JSON,true);
 		$imdb=$this->imdb;
-		print (n.n."Torrents from JSON are".count($torrents->torrents));
+		print (n.n."Torrents from JSON are ".count($torrents['torrents']).n.n );
 		
-		if ( count($search_results)>0 ):
-		endif;
+		//var_dump($torrents);
+		foreach ($torrents['torrents'] as $t):
+		
+			//print_r($t);
+/*
+			$parameters=array(
+				':1337x_id' => $t['1337x_id'],
+				':category' => 1,
+				':titlename' => $t['title'],
+				':hash' => $t['hash'],
+				':format_type' =>  $t['details']['Type'],
+				':language' => $t['details']['Language'],
+				':size' => $t['details']['Total-size'],
+				':seeds' => $t['details']['Seeders'],
+				':leeches' => $t['details']['Leechers'],
+				':uploader' => $t['details']['Uploaded-By'],
+				':uploaded' => $t['details']['Date-uploaded'],
+				':checked' => $t['details']['Last-checked'],
+				':downloads' => $t['details']['Downloads'],
+				':links' => $t['links'],
+				':images' => $t['images'],
+				':imdbmatch' => 0
+			);
+*/
+			$links=serialize($t['links']);
+			$images=serialize($t['images']);
+			$parameters=array(
+				':1337x_id' => $t['1337x_id'],
+				':category' => 1,
+				':titlename' => $t['title'],
+				':hash' => $t['hash'],
+				':format_type' =>  $t['details']['Type'],
+				':language' => $t['details']['Language'],
+				':size' => $t['details']['Total-size'],
+				':seeds' => $t['details']['Seeders'],
+				':leeches' => $t['details']['Leechers'],
+				':uploader' => $t['details']['Uploaded-By'],
+				':uploaded' => $t['details']['Date-uploaded'],
+				':checked' => $t['details']['Last-checked'],
+				':downloads' => $t['details']['Downloads'],
+				':links' => $links,
+				':images' => $images,
+				':imdbmatch' => 0
+			);
+			
+			//print_r($parameters);
+			$insert="INSERT INTO 1337x.1337xtorrents 
+			( 1337x_id,category,titlename,hash,format_type,language,size,seeds,leeches,uploader,uploaded,checked,downloads,links,images,imdbmatch  ) 
+			VALUES 
+			(:1337x_id,:category,:titlename,:hash,:format_type,:language,:size,:seeds,:leeches,:uploader,:uploaded,:checked,:downloads,:links,:images,:imdbmatch )";
+
+			
+
+			if ( !$stmt = $this->dbh->dbh->prepare($insert) ) { var_dump ( $dbh->dbh->errorInfo() ); } 
+			else { 
+	
+				if (!$stmt->execute($parameters) ){
+					if ( in_array( 1062, $stmt->errorInfo() ) ){ 
+						//return 1062;
+						printColor (n."1062: Exists".n, "yellow");
+					}
+					else { return $stmt->errorInfo(); }
+				} 
+				else {
+					print("ok"); 
+					//return 1; 
+				}
+			}	
+
+
+		
+		endforeach;
+
+		//if ( count($search_results)>0 ):
+		//endif;
 
 	}
 }

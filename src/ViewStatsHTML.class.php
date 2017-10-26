@@ -7,6 +7,7 @@ class ViewStatsHTML{
 	private $next=1;
 	private $perPage=10;
 	private $imdb;
+	private $_1337x_id;
 
 	public function __construct(){
 		$this->dbh=dbhandler::getInstance();
@@ -22,6 +23,14 @@ class ViewStatsHTML{
 		$this->imdb=$imdb;
 		$this->showResults($imdb);
 		
+	}
+	
+	public function viewTorrent( $imdb, $_1337x_id ){
+	
+		$this->imdb=$imdb;
+		$this->$_1337x_id=$_1337x_id;
+		$this->showTorrent( $imdb, $_1337x_id );
+	
 	}
 	
 	//Accepts AJAX MODE | live update
@@ -40,10 +49,16 @@ class ViewStatsHTML{
 		$stmt->execute();
 		$results = $stmt->fetchColumn();
 
+		$selectquery ="select count(*) from 1337x.1337xtorrents";
+		$stmt = $this->dbh->dbh->prepare($selectquery);
+		$stmt->execute();
+		$torrents = $stmt->fetchColumn();
+
 		if ($this->MODE!=="AJAX") print('<div id="update-stats-cont">'); // update-stats-cont already loaded in HTML page. 
 		print('<div id="update-stats">');
 		print ('<div class="show-stats"><span "live-update">'.$searches.'</span> searches perfomed for imdb titles.</div>');
 		print ('<div class="show-stats"><span "live-update">'.$results.'</span> torrent results with seeds > '.MIN_SEEDS.'</div>');
+		print ('<div class="show-stats"><span "live-update">'.$torrents.'</span> torrent results with seeds > '.MIN_SEEDS.'</div>');
 
 		if ($this->MODE==="AJAX") {
 			$files = new FilesystemIterator( '../JSON', FilesystemIterator::SKIP_DOTS);
@@ -119,7 +134,55 @@ class ViewStatsHTML{
 			else print ('<h3>No results</h3>');
 		}
 	}
+	
+	private function showTorrent( $imdb, $_1337x_id ){
 
+		$this->MODE="TORRENT";
+
+		$selectquery ="select * from 1337x.search_summary JOIN imdb.movies_list ON search_summary.imdb=imdb.movies_list.imdb WHERE 1 AND imdb.movies_list.imdb=:imdb";
+		if ( !$stmt = $this->dbh->dbh->prepare($selectquery) ) { var_dump ( $dbh->dbh->errorInfo() ); } 
+		
+		$stmt->bindParam(':imdb', $imdb );
+
+		if ( $stmt->execute() ) {
+			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			$this->printSummaryTable($rows);
+		}
+		
+		//$imdb=str_replace("tt","",$imdb); // remove tt from imdb code
+		$selectquery="select * from 1337x.search_results WHERE imdb=:imdb AND 1337x_id=:1337x_id";
+		if ( !$stmt = $this->dbh->dbh->prepare($selectquery) ) { var_dump ( $dbh->dbh->errorInfo() ); } 
+
+		$stmt->bindParam(':imdb', $imdb );
+		$stmt->bindParam(':1337x_id', $_1337x_id );
+
+		if ( $stmt->execute() ) {
+			$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			
+			if (count($results)>0) $this->printResults($results, "torrents");
+			else print ('<h3>No results</h3>');
+		}
+
+
+		$selectquery="select * from 1337x.1337xtorrents where 1337x_id=:1337x_id";
+		if ( !$stmt = $this->dbh->dbh->prepare($selectquery) ) { var_dump ( $dbh->dbh->errorInfo() ); } 
+
+		$stmt->bindParam(':1337x_id', $_1337x_id );
+
+		if ( $stmt->execute() ) {
+			$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			if (count($results)>0) $this->printTorrent($results);
+			else print ('<h3>No results</h3>');
+		}
+		//var_dump($stmt->errorInfo());
+	}
+
+	private function printTorrent( $results ){
+	
+		foreach ($results as $r ){
+			print_r($r);
+		}
+	}
 	// Results page
 	private function printResults( $rows , $divClass ){
 	
@@ -143,6 +206,7 @@ class ViewStatsHTML{
 
 			if (!$diff){print ('<tr class="result-entry diff" id="'.$row['link'].'">');$diff=true;}
 			else if ($diff){print ('<tr class="result-entry" id="'.$row['link'].'">');$diff=false;}
+			
 			foreach ( $row as $k=>$v){print('<td>');print($v);print('</td>');}
 			/*
 				$cells = '<td>'.$row['imdb'].'</td>';
@@ -156,7 +220,8 @@ class ViewStatsHTML{
 				$cells .= '<td>'.$row['rating'].'</td>';
 			print $cells;
 			*/
-			print ('</tr>');			
+			print('<td>');print ('<a href="view-stats.php?imdb='.$this->imdb.'&1337x_id='.$row['1337x_id'].'">');print("view torrent");print ('</a>');print('</td>');
+			print ('</tr>');
 		}
 		print ('</tbody>');
 		print ('</table>');

@@ -8,22 +8,15 @@
 	Breakpoint on search.
 	Search results are saved into db now.
 */
-if (php_sapi_name()!=='cli'){
-	define("CLI", false);
-}
-else if (php_sapi_name()==='cli'){
-	define("CLI", true);
-}
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
+if (php_sapi_name()!=='cli'){define("CLI", false);}
+else if (php_sapi_name()==='cli'){define("CLI", true);}
 // Include classes and functions
 require_once("config.php");
 require_once("src/dbhandler.class.php");
 require_once("src/ansi.color.class.php"); $color = new Color();
 require_once("src/functions.php");
-
 spl_autoload_register(function ($class_name) {
     require_once 'src/'.$class_name.'.class.php';
 });

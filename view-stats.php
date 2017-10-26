@@ -27,11 +27,17 @@
 	});
 
 	$view=new ViewStatsHTML();
+
+	if ( isset($_GET['imdb']) && isset($_GET['1337x_id']) ){
 	
-	if ( isset($_GET['imdb']) ){
+		$imdb=strip_tags($_GET['imdb']);
+		$_1337x_id=strip_tags($_GET['1337x_id']);
+		$view->viewTorrent( $imdb, $_1337x_id );
+	}
+	else if ( isset($_GET['imdb']) ){
 		$imdb=strip_tags($_GET['imdb']);
 		print ("Showing torrent results imdb: ".$imdb);
-		$view->viewResults($imdb);		
+		$view->viewResults($imdb);
 	}
 	else {
 	

@@ -55,7 +55,6 @@ CREATE TABLE `search_results` (
 			case ("TV"): $this->category=2;break;
 		endswitch;
 
-		
 		$dbh = dbhandler::getInstance(); 
 		$dbConLocal = $dbh->dbCon; 
 		if ( !$dbConLocal ) { exit(" \n\n db connection error.\n\n "); }
@@ -97,7 +96,6 @@ CREATE TABLE `search_results` (
 			}
 
 		endforeach;
-
 	}
 	
 	private function insertTorrentResult( $torrentid, $torrentlink, $seeds, $leeches, $category ){

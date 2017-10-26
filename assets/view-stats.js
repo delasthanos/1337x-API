@@ -43,7 +43,7 @@ function ganttEach() {
 		}
 	});
 }
-window.setInterval(ganttEach, 5000);
+window.setInterval(ganttEach, 2000);
 
 
 	$(".download-torrent-pages").click(function (){
