@@ -183,12 +183,14 @@ class ViewStatsHTML{
 		if ( !$stmt = $this->dbh->dbh->prepare($selectquery) ) { var_dump ( $dbh->dbh->errorInfo() ); } 
 
 		$stmt->bindParam(':imdb', $imdb );
+		
+		print ($imdb);
 
 		if ( $stmt->execute() ) {
 			$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			
 			if (count($results)>0) $this->printResults($results, "torrents");
-			else print ('<h3>No results</h3>');
+			else print ('<h3>No results#</h3>');
 		}
 	}
 	

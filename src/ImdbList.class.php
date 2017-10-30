@@ -25,7 +25,6 @@ class ImdbList extends dbhandler{
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' limit 100";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' AND moviename='The DUFF';";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' AND moviename='Room';";
-		//$selectquery = "SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' AND moviename='Love'";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`=1995 ORDER BY rating DESC LIMIT 100";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`=1995 AND moviename='Braveheart' ORDER BY rating DESC LIMIT 100";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`> 1995 AND `yearmovie`< 2014 ORDER BY `rating` DESC LIMIT 18000";
@@ -33,10 +32,14 @@ class ImdbList extends dbhandler{
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND `yearmovie`= 2003 ORDER BY `rating` DESC LIMIT 10000";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename='The Martian'";
 		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%A Good Day to Die Hard%'";
-		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Star Wars: Episode VII - The Force Awakens%'";
 		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Max%' and yearmovie=2015";
 		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Max%'";
 		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%A Good Day to Die Hard%'";
+		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Star Wars: Episode VII - The Force Awakens%'";		
+		//$selectquery = "SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' AND moviename='Love'";
+		$selectquery = "SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' AND moviename='A Tale of Love and Darkness'";
+		//$selectquery = "SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2014' AND moviename like '%mercy%'";
+		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Max%' and yearmovie=2015";
 		
 		printColor(n.$selectquery." ", "green");
 		$dbh = $this->getInstance(); 

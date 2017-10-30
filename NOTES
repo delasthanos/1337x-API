@@ -9,10 +9,13 @@ Development Notes:
 		
 	mysql clear tables: delete from 1337xtorrents; delete from search_results; delete from search_summary;
 	
-	A good test to check conflicts and doubles: 
+	Examples test to check conflicts and doubles: 
 
 		Mad Max: Fury Road tt1392190 2015
 		Max tt3369806 2015
+		
+		Love (2015)
+		A Tale of Love and Darkness (2015)
 
 	###########################################################################################################
 	

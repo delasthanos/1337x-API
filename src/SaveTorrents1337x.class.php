@@ -114,10 +114,10 @@ class SaveTorrents1337x{
 
 		$torrents=json_decode($this->JSON,true);
 		$imdb=$this->imdb;
-		print (n."Torrents from JSON are ".count($torrents['torrents'])."Inserting to database ... ".n.n );
+		print (n."Torrents from JSON are ".count($torrents['torrents']).". Inserting to database ... ".n.n );
 		//var_dump($torrents);
 		foreach ($torrents['torrents'] as $t):
-
+		if ( $t['imdbMatch'] != 'not found'):
 			$links=serialize($t['links']);
 			$images=serialize($t['images']);
 			$parameters=[
@@ -136,7 +136,7 @@ class SaveTorrents1337x{
 				':downloads' => $t['details']['Downloads'],
 				':links' => $links,
 				':images' => $images,
-				':imdbmatch' => 0
+				':imdbmatch' => $t['imdbMatch']
 			];
 			
 			//print_r($parameters);
@@ -147,18 +147,23 @@ class SaveTorrents1337x{
 
 			if ( !$stmt = $this->dbh->dbh->prepare($insert) ) { var_dump ( $dbh->dbh->errorInfo() ); } 
 			else { 
-	
 				if (!$stmt->execute($parameters) ){
 					if ( in_array( 1062, $stmt->errorInfo() ) ){ 
 						printColor ("#", "yellow");//return 1062; 
 					}
-					else { return $stmt->errorInfo(); }
+					else { 
+						//return $stmt->errorInfo(); 
+						print_r ($stmt->errorInfo());
+					}
 				} 
 				else {
 					printColor("#","green"); //return 1; 
 				}
 			}
-		endforeach;
+		else:
+			printColor ("_no_imdb_", "yellow");//return 1062; 
+		endif; //Imdb match
+		endforeach; //Foreach torrents
 
 		//if ( count($search_results)>0 ):
 		//endif;

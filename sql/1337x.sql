@@ -82,7 +82,7 @@ CREATE TABLE `1337xtorrents` (
 	`downloads` SMALLINT UNSIGNED NOT NULL NOT NULL,
 	`links` MEDIUMTEXT NOT NULL,
 	`images` MEDIUMTEXT NOT NULL,
-	`imdbmatch` tinyint(1) UNSIGNED NOT NULL DEFAULT 0,
+	`imdbmatch` varchar(255) NOT NULL DEFAULT '0',
 
 	PRIMARY KEY (`1337x_id`)
 

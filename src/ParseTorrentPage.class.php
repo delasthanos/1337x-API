@@ -23,11 +23,15 @@ class ParseTorrentPage{
 */	
 	
 	private $file;
+	private $imdb;
 	private $torrent=[];
 
 	public function __construct( $file ){
 		
 		$this->file=$file;
+		$split=explode('/',$file);
+		array_pop($split);
+		$this->imdb=array_pop($split);
 	}
 	
 	public function parseTorrentPage(){
@@ -40,7 +44,6 @@ class ParseTorrentPage{
 		$images=[];
 		
 		$getFile=file_get_contents($this->file);
-		//var_dump($getFile);
 		
 		$dom = new DOMDocument();
 		@$dom->loadHTML($getFile);
@@ -48,11 +51,14 @@ class ParseTorrentPage{
 		
 		$splitFileName=explode("/",$this->file);
 		$get1337xidFromFolder=array_pop($splitFileName);
-		//var_dump($get1337xidFromFolder);
-		//exit();
-		$this->torrent['1337x_id'] = $get1337xidFromFolder;
-		
+
+		$this->torrent['1337x_id'] = $get1337xidFromFolder;		
 		$this->torrent['title'] = $this->getTitle( $xPath );
+		if ( $this->matchImdb($getFile) ){
+			$this->torrent['imdbMatch'] = $this->imdb;
+		} else {
+			$this->torrent['imdbMatch'] = "not found";
+		}
 		//print (n.$title);
 		
 		$elements = $xPath->query('//div[contains(@class,"torrent-detail-page")]');
@@ -77,6 +83,16 @@ class ParseTorrentPage{
 		endforeach;
 		
 		return $this->torrent;
+	}
+	
+	private function matchImdb($htmlFile){
+		if ( strpos( $htmlFile, $this->imdb ) !== false ){
+			printColor ( n."IMDB code match!", "green+bold" );
+			return true;
+		} else {
+			printColor ( n."IMDB not found!", "red+bold" );
+			return false;
+		}
 	}
 
 	private function getTitle( $x ){
