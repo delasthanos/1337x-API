@@ -20,6 +20,28 @@ class SearchResults1337x extends Search1337xHelperFunctions{
 		return $this->activePages;
 	}
 
+	public function getDownloadURL($title){
+		/*
+		*	Used for informational purposes only
+		*/
+		
+		switch (CATEGORY):
+			case ('Movies'):
+				$this->titlenameOriginal = $title['moviename'];
+				$this->setTitleName($title['moviename']." ".$title['yearmovie']);
+				$this->setFilename($title['imdb']);
+				break;
+			case ('TV'):
+				$this->titlenameOriginal = $title['tvshowname'];
+				$this->setTitleName($title['tvshowname']);
+				$this->setFilename($title['imdb']);
+				break;
+		endswitch;
+		
+		$url=$this->constructURLFromTitle();
+		return $url;
+	}
+
 	// Main Search Operation | Saves resutls HTML files | Stops on MIN_SEEDS or MAX_RESULTS_PAGES
 	public function searchForTitles($title){
 

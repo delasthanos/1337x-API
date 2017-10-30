@@ -1,9 +1,25 @@
 Development Notes:
 
+[!] NOTE for Movies:
+	
+	###########################################################################################################
+	Movienames that return too much irrelevant results: 
+		2 + 2, 4, 9, Max, Spy, #Horror(2015), Ma ma (2015), Home (2015), Room (2015), Fury(2014),
+		Frozen (2013), The Walk (2015), Black (2015)
+		
+	mysql clear tables: delete from 1337xtorrents; delete from search_results; delete from search_summary;
+	
+	A good test to check conflicts and doubles: 
+
+		Mad Max: Fury Road tt1392190 2015
+		Max tt3369806 2015
+
+	###########################################################################################################
+	
 Files on disk:
 2000 saved movies search results =~ 500mb
 
-[!] You must add a delay between each request on 1337x, otherwise ip is going to be banned. If you are banned you have to get a new ip/server. 
+[!] You must add a delay between each request, otherwise ip is going to be banned. If you are banned you have to get a new ip/server. 
 	Banned IP seems irreversable.
     Currently delay is set to 5 seconds between each search and 3 seconds to browse through results pages ( page 1,2,3 .. last )
     
@@ -11,19 +27,12 @@ Files on disk:
 
 [!] Issues & Problems:
 
-	Folders to save html files should be named by imdb codes to ensure data integrity.There are movies like 1994, or so which have more than one results in database
+	Folders to save html files should be named by imdb codes to ensure data integrity.
 
-[!] Refactor the app to keep track on database for search and downloaded html pages, to save disk space and easier manipulation
-
+[!] Data is saved in downloaded files and in database. After testing is complete you can start delething folders.
 
 
 [*] Steps to collect and import torrents from 1337x
-
-STEPS (summary):
-
-	1. Search 1337x and save results pages for each movie
-	2. Parse search results and save them, or start downloading HTML files for ech torrent
-	3. ...
 
 STEPS:	
 

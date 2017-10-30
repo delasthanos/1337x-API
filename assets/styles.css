@@ -89,6 +89,14 @@ td{
     color: #BBBBBB; 
     font-weight: 300;
 }
+.view-health{
+	cursor: hand;
+	cursor: pointer;
+    background: #921E1E;
+    color: #BBBBBB; 
+    font-weight: 600;
+    text-align: center !important;
+}
 .sum-entry{
 
 }
@@ -99,6 +107,15 @@ td{
 	background: #2D2D2D;
 	padding: 20px;
 	display: table;
+}
+.torrents a{
+	color: #FFF;
+}
+.torrent-info{
+	background: #000;
+    word-break: break-word;
+    overflow: hidden;
+    padding: 10px;
 }
 .moviename{
 	color: #CECECE;
@@ -173,7 +190,7 @@ td{
 }
 .results-header h3, .results-header a {
 	display: inline-table;
-	color: #ACE81C;
+	/*color: #ACE81C;*/
 }
 .results-header a {
     background: #636363;
@@ -184,8 +201,12 @@ td{
     color: #252525;
 }
 
-h1,h2,h3,h4{
+
+h1{
 	color: #ACE81C;
+}
+h2,h3,h4{
+	color: #518CD4;
 }
 
 #terminal{

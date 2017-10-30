@@ -11,7 +11,7 @@ $(document).ready(function (){
 	
 	$("#update-stats-cont").fadeIn(1000);
 	
-function ganttEach() {
+function updateStats() {
 
 	$.ajax({
 		url : 'src/update-stats.php',
@@ -43,7 +43,7 @@ function ganttEach() {
 		}
 	});
 }
-window.setInterval(ganttEach, 2000);
+window.setInterval(updateStats, 2000);
 
 
 	$(".download-torrent-pages").click(function (){

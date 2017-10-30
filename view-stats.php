@@ -10,6 +10,8 @@
 
 <header>
 	<a href="view-stats.php"><h2>Stats: 1337x.search_summary</h2></a>
+	<div id="update-stats-cont">
+	</div>
 </header>
 <?php 
 /*

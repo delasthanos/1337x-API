@@ -8,6 +8,7 @@ class ViewStatsHTML{
 	private $perPage=10;
 	private $imdb;
 	private $_1337x_id;
+	private $title=[];
 
 	public function __construct(){
 		$this->dbh=dbhandler::getInstance();
@@ -54,20 +55,75 @@ class ViewStatsHTML{
 		$stmt->execute();
 		$torrents = $stmt->fetchColumn();
 
-		if ($this->MODE!=="AJAX") print('<div id="update-stats-cont">'); // update-stats-cont already loaded in HTML page. 
-		print('<div id="update-stats">');
-		print ('<div class="show-stats"><span "live-update">'.$searches.'</span> searches perfomed for imdb titles.</div>');
-		print ('<div class="show-stats"><span "live-update">'.$results.'</span> torrent results with seeds > '.MIN_SEEDS.'</div>');
-		print ('<div class="show-stats"><span "live-update">'.$torrents.'</span> torrent results with seeds > '.MIN_SEEDS.'</div>');
+		//if ($this->MODE!=="AJAX") print('<div id="update-stats-cont">'); // update-stats-cont already loaded in HTML page. 
+		if ($this->MODE==="AJAX"):		
+			print('<div id="update-stats">');
+			print ('<div class="show-stats"><span "live-update">'.$searches.'</span> searches perfomed for imdb titles</div>');
+			print ('<div class="show-stats"><span "live-update">'.$results.'</span> torrent results with seeds '.MIN_SEEDS.'</div>');
+			print ('<div class="show-stats"><span "live-update">'.$torrents.'</span> torrents imported to db </div>');
 
-		if ($this->MODE==="AJAX") {
-			$files = new FilesystemIterator( '../JSON', FilesystemIterator::SKIP_DOTS);
-			print '<div class="show-stats"><span "live-update"="">'.iterator_count($files).'</span> JSON files with torrent info.</div>';
-		}
-
-		print('</div>');
+			if ($this->MODE==="AJAX") {
+				$files = new FilesystemIterator( '../JSON', FilesystemIterator::SKIP_DOTS);
+				print '<div class="show-stats"><span "live-update"="">'.iterator_count($files).'</span> JSON files with torrent info</div>';
+			}
+			print('</div>');
+		endif;
 		
-		if ($this->MODE!=="AJAX") print('</div>');		
+		//if ($this->MODE!=="AJAX") print('</div>');		
+	}
+	
+	private function checkHealth($result){
+		/*
+		*	Use this function find results that belong to more than one imdb code 
+		*   There are movies like Max(2015) and Mad Max: Fury Road(2015) which collect the same torrents
+		*/
+		//foreach ($results as $result):
+
+			// First collect all 1337x_ids whitch match current imdb code
+			$selectquery="select imdb, 1337x_id from 1337x.search_results WHERE imdb=:imdb";
+			if ( !$stmt = $this->dbh->dbh->prepare($selectquery) ) { var_dump ( $dbh->dbh->errorInfo() );} 
+			$stmt->bindParam(':imdb', $result['imdb'] );
+			if ( $stmt->execute() ) {
+				$_1337x_ids = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			}
+
+			// Then foreach 1337x_id find records where imdb!= from current imdb code
+
+			$collectMismatchIMDB=[];
+			foreach ($_1337x_ids as $id ):
+
+				$selectquery="select imdb, 1337x_id from 1337x.search_results WHERE imdb!=:imdb AND 1337x_id=:1337x_id";
+
+				if ( !$stmt = $this->dbh->dbh->prepare($selectquery) ) { var_dump ( $dbh->dbh->errorInfo() );} 
+				$stmt->bindParam(':imdb', $result['imdb'] );
+				$stmt->bindParam(':1337x_id', $id['1337x_id'] );				
+				if ( $stmt->execute() ) {
+					$_1337x_ids_mismatch = $stmt->fetchAll(PDO::FETCH_ASSOC);
+					$counter=0;
+					foreach ($_1337x_ids_mismatch as $mismatch){
+						array_push($collectMismatchIMDB,$mismatch);
+						//if ( ++$counter<5 ){var_dump($mismatch);}
+					}
+				}
+				
+			endforeach;
+			
+
+			// Collect imdb codes mismatch
+			$imdbCodes=[];
+			foreach ( $collectMismatchIMDB as $current ){
+				//print ('<br>Found mismatch for '.$current['imdb'] );
+				array_push($imdbCodes,$current['imdb']);
+			}
+			$imdbGroup=array_unique($imdbCodes);
+			
+			//print ('<br>Found mismatch for '.$result['imdb']." total results: ".count($collectMismatchIMDB)."<br>" );
+			$mismatches=[];
+			$mismatches['total']=count($collectMismatchIMDB);
+			$mismatches['imdb']=$imdbGroup;
+			return $mismatches;
+
+		//endforeach;
 	}
 
 	private function showSummary($next,$perPage){  //called from public viewStatsSummary()
@@ -77,12 +133,12 @@ class ViewStatsHTML{
 		$next=(int)$this->next;
 		$perPage=(int)$this->perPage;
 		
-
-		$selectquery ="select * from 1337x.search_summary JOIN imdb.movies_list 
-		ON search_summary.imdb=imdb.movies_list.imdb 
 		/*AND imdb.movies_list.yearmovie=2014 */ 
-		AND moviename LIKE '%Lord of the%' 
-		ORDER BY activeTorrents DESC LIMIT :nextResults, :perPage 
+		/*AND moviename LIKE '%Lord of the%' */
+
+		$selectquery ="select * from 1337x.search_summary JOIN imdb.movies_list ON search_summary.imdb=imdb.movies_list.imdb 
+
+		/*ORDER BY activeTorrents DESC LIMIT :nextResults, :perPage */
 		";
 		print ($selectquery);
 		
@@ -97,10 +153,10 @@ class ViewStatsHTML{
 		if ( $stmt->execute() ) { 
 
 			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-			if (count($rows)>0):				
+			if (count($rows)>0):
 				$this->printSummaryTable($rows);
 			else:
-				print ("No results. Check your query.");
+				print ("<h2>No results. Check your query.</h2>");
 			endif;
 		}
 		
@@ -119,6 +175,7 @@ class ViewStatsHTML{
 		if ( $stmt->execute() ) {
 			$rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 			$this->printSummaryTable($rows);
+			$this->title=$rows[0];
 		}
 		
 		//$imdb=str_replace("tt","",$imdb); // remove tt from imdb code
@@ -180,7 +237,23 @@ class ViewStatsHTML{
 	private function printTorrent( $results ){
 	
 		foreach ($results as $r ){
-			print_r($r);
+			print('<pre class="torrent-info">');
+				//print_r($r);
+				foreach ($r as $k=>$v){
+					if ( $k==='links'){
+						print ( $k." => " );
+						print_r(unserialize($v));
+					} 
+					else if ( $k==='images'){
+						print ( $k." => " );
+						print_r(unserialize($v));
+					} 
+
+					else {
+						print $k." => ".$v.n;
+					}
+				}
+			print('</pre>');
 		}
 	}
 	// Results page
@@ -194,7 +267,14 @@ class ViewStatsHTML{
 		print ('<pre id="terminal"><div id="download-torrent-results"></div></pre>');
 		
 		print ('<div class="'.$divClass.'">');
-		print ('<h3>Total: '.count($rows).'</h3>');
+		print ('<h3>1337x.search_results: '.count($rows).'</h3>');
+		
+		/*
+			Create a new seach instance just to get download link for search results page.
+		*/
+		$search = new SearchResults1337x();
+		print ("Search URL: ".$search->getDownloadURL($this->title));
+		
 		print ('<table>');
 		print ('<thead><tr>');
 		foreach ( $getKeys as $key ){print('<td>');	print($key);print('</td>');}
@@ -236,13 +316,14 @@ class ViewStatsHTML{
 		
 		print ('<div class="results">');
 		print ('<div class="results-header">');
-			print ('<h3 class="white">Showing: '.count($rows).' of '.$this->totalSearches.' title searches.</h3>');
+			print ('<h3 class="white">1337x.search_summary '.count($rows).' of '.$this->totalSearches.' title searches.</h3>');
 			
-			print ('<a href="view-stats.php?next='.($this->next-50).'&perPage=50">-<span class="small-text">50</span></a>');
-			print ('<a href="view-stats.php?next='.($this->next-10).'&perPage=10">-prev <span class="small-text">10</span></a>');
-			
-			print ('<a href="view-stats.php?next='.($this->next+10).'&perPage=10">+next <span class="small-text">10</span></a>');
-			print ('<a href="view-stats.php?next='.($this->next+50).'&perPage=50">+ <span class="small-text">50</span></a>');
+			if ( $this->MODE === "HOME"):
+				print ('<a href="view-stats.php?next='.($this->next-50).'&perPage=50">-<span class="small-text">50</span></a>');
+				print ('<a href="view-stats.php?next='.($this->next-10).'&perPage=10">-prev <span class="small-text">10</span></a>');
+				print ('<a href="view-stats.php?next='.($this->next+10).'&perPage=10">+next <span class="small-text">10</span></a>');
+				print ('<a href="view-stats.php?next='.($this->next+50).'&perPage=50">+ <span class="small-text">50</span></a>');
+			endif;
 
 		print ('</div>');
 		print ('<table>');
@@ -258,7 +339,8 @@ class ViewStatsHTML{
 			$cellsHead.='<td>id</td>';
 			$cellsHead.='<td>yearmovie</td>';
 			$cellsHead.='<td>rating</td>';
-			if ($this->MODE ==='SUMMARY')$cellsHead.='<td>@</td>';
+			if ($this->MODE ==='HOME')$cellsHead.='<td>results</td>';
+			if ($this->MODE ==='HOME')$cellsHead.='<td>health</td>';			
 		print ($cellsHead);
 		print ('</tr></thead>');
 
@@ -283,6 +365,17 @@ class ViewStatsHTML{
 				$cells .= '<td>'.$row['yearmovie'].'</td>';
 				$cells .= '<td>'.$row['rating'].'</td>';
 				if ($this->MODE ==='HOME')$cells .= '<td class="view-results white small-text underline" id="'.$row['imdb'].'">view results</td>';
+				
+				if ($this->MODE ==='HOME'){}
+				
+				$health=$this->checkHealth($row);
+				if($health['total']>0){
+					$cells .= '<td class="view-health white small-text underline">'.$health['total'].' results</td>';
+				} else {
+					$cells .= '<td class="white small-text">OK</td>';
+				}
+
+				
 			print $cells;
 			print ('</tr>');			
 		}

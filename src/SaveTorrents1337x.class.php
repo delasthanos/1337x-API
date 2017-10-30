@@ -41,8 +41,8 @@ class SaveTorrents1337x{
 				$downloadHTMLTorrent= new DownloadHTMLTorrentPage( $folder, $torrent ); //$folder==imdb, $t==torrent Array
 				$downloadHTMLTorrent->downloadTorrentHTMLPage();
 				unset($downloadHTMLTorrent);
-				
-				if (++$countDownloaded>TORRENTS_DOWNLOAD_LIMIT){ printColor(n."Break after 5 torrent pages. Still testing.".n,"red+bold"); break; }
+				// Download limit
+				//if (++$countDownloaded>TORRENTS_DOWNLOAD_LIMIT){ printColor(n."Break after 5 torrent pages. Still testing.".n,"red+bold"); break; }
 
 			endforeach; // Foreach torrent
 		endif;
@@ -97,7 +97,7 @@ class SaveTorrents1337x{
 
 		//var_dump($this->title);
 		//var_dump($this->JSON);
-		
+
 		//Warning check for double entries here ex: Love
 		//$select='select * from search_summary join search_results on search_summary.imdb=search_results.imdb WHERE search_summary.imdb="tt0337978";';
 		//$select="select * from 1337x.search_summary join 1337x.search_results on search_summary.id=search_results.summary_id WHERE search_summary.imdb='tt0337978'";
@@ -111,38 +111,16 @@ class SaveTorrents1337x{
 			if (!$stmt->execute() ){ var_dump( $stmt->errorInfo() ); exit(n.n."error inside saveTorrents()".n); }
 			else { $search_results = $stmt->fetchAll(PDO::FETCH_ASSOC); }
 		}
-		
+
 		$torrents=json_decode($this->JSON,true);
 		$imdb=$this->imdb;
-		print (n.n."Torrents from JSON are ".count($torrents['torrents']).n.n );
-		
+		print (n."Torrents from JSON are ".count($torrents['torrents'])."Inserting to database ... ".n.n );
 		//var_dump($torrents);
 		foreach ($torrents['torrents'] as $t):
-		
-			//print_r($t);
-/*
-			$parameters=array(
-				':1337x_id' => $t['1337x_id'],
-				':category' => 1,
-				':titlename' => $t['title'],
-				':hash' => $t['hash'],
-				':format_type' =>  $t['details']['Type'],
-				':language' => $t['details']['Language'],
-				':size' => $t['details']['Total-size'],
-				':seeds' => $t['details']['Seeders'],
-				':leeches' => $t['details']['Leechers'],
-				':uploader' => $t['details']['Uploaded-By'],
-				':uploaded' => $t['details']['Date-uploaded'],
-				':checked' => $t['details']['Last-checked'],
-				':downloads' => $t['details']['Downloads'],
-				':links' => $t['links'],
-				':images' => $t['images'],
-				':imdbmatch' => 0
-			);
-*/
+
 			$links=serialize($t['links']);
 			$images=serialize($t['images']);
-			$parameters=array(
+			$parameters=[
 				':1337x_id' => $t['1337x_id'],
 				':category' => 1,
 				':titlename' => $t['title'],
@@ -159,7 +137,7 @@ class SaveTorrents1337x{
 				':links' => $links,
 				':images' => $images,
 				':imdbmatch' => 0
-			);
+			];
 			
 			//print_r($parameters);
 			$insert="INSERT INTO 1337x.1337xtorrents 
@@ -167,26 +145,19 @@ class SaveTorrents1337x{
 			VALUES 
 			(:1337x_id,:category,:titlename,:hash,:format_type,:language,:size,:seeds,:leeches,:uploader,:uploaded,:checked,:downloads,:links,:images,:imdbmatch )";
 
-			
-
 			if ( !$stmt = $this->dbh->dbh->prepare($insert) ) { var_dump ( $dbh->dbh->errorInfo() ); } 
 			else { 
 	
 				if (!$stmt->execute($parameters) ){
 					if ( in_array( 1062, $stmt->errorInfo() ) ){ 
-						//return 1062;
-						printColor (n."1062: Exists".n, "yellow");
+						printColor ("#", "yellow");//return 1062; 
 					}
 					else { return $stmt->errorInfo(); }
 				} 
 				else {
-					print("ok"); 
-					//return 1; 
+					printColor("#","green"); //return 1; 
 				}
-			}	
-
-
-		
+			}
 		endforeach;
 
 		//if ( count($search_results)>0 ):
