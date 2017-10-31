@@ -77,7 +77,7 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 				array_push($HTMLFiles, $f);
 			}
 			$this->HTMLFiles=$HTMLFiles; // All html filenames for this folder
-			var_dump($this->HTMLFiles);
+			//var_dump($this->HTMLFiles);
 		}
 	}
 
@@ -208,7 +208,7 @@ class ParseSearch1337x extends Search1337xHelperFunctions{
 			if ( $t['seeds']>MIN_SEEDS ){++$activeTorrents;}
 			
 		endforeach;
-		print (n."\t[*]Active( and REMOVE DOUBLES): ".$activeTorrents." ( seeds>".MIN_SEEDS." )");
+		print (n."\t[*]Active( removed common torrents ): ".$activeTorrents." ( seeds>".MIN_SEEDS." )");
 		return $activeTorrents;
 
 	}

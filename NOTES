@@ -26,13 +26,13 @@ Files on disk:
 	Banned IP seems irreversable.
     Currently delay is set to 5 seconds between each search and 3 seconds to browse through results pages ( page 1,2,3 .. last )
     
-[!] You must encode title name (movie,tvshow), before search other wise you get a bad request.Use urlencode php function.
+[!] You must encode title name (movie,tvshow), before search other wise you get a bad request.Use urlencode function.
 
 [!] Issues & Problems:
 
 	Folders to save html files should be named by imdb codes to ensure data integrity.
 
-[!] Data is saved in downloaded files and in database. After testing is complete you can start delething folders.
+[!] Data is saved in downloaded files and in database. After testing is complete you can delete folders.
 
 
 [*] Steps to collect and import torrents from 1337x
@@ -58,12 +58,6 @@ STEPS:
 			2. Collect information about the above and download later in another script/server 
 
 	3. Import torrents into tm db. 
-
-Thoughts:
-
-Issues with Movies from 1337x:
-
-	-There are some movie names like "1964", "1959", "2006". You might consider add a match with the year of the movie when retrieving Search Results Pages
 
 Issues with Tvshows from 1337x:
 
