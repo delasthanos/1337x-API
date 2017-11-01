@@ -11,13 +11,14 @@ STEPS to search and collect torrents:
 	2. Pass the titles to Search1337x() factory class to search for results, save their html pages and a record for search in databse.
 
          -HTML result pages are saved inside HTML_SEARCH_FILES_PATH (config file) imdb folders.
-         -Search results records are saved in `search_results` table.
+         -Search results records are saved in `search_summary` table. ( imdb, number of pages, last searched, active torrents (seeds), etc. )
+         -Search results torrents are saved in `search_results` table. ( imdb, 1337x_id unique combination, link etc .)
          -Uses the following classes: 
            SearchResults1337x()
            ParseSearch1337x()
            SaveSearchResults()
 	
-	3. Use SaveTorrents1337x() factory class to downloadTorrents() , create a local JSON with their info, and save torrent info inside 1337xtorrents table
+	3. Use SaveTorrents1337x() factory class to download torrents (collected from `search_results` table), create a local JSON with their info, and save torrent info inside `1337xtorrents` table
 
 
 [!] Test Movies
