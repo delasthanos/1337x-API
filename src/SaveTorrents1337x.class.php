@@ -41,15 +41,17 @@ class SaveTorrents1337x{
 				$downloadHTMLTorrent= new DownloadHTMLTorrentPage( $folder, $torrent ); //$folder==imdb, $t==torrent Array
 				$downloadHTMLTorrent->downloadTorrentHTMLPage();
 				unset($downloadHTMLTorrent);
-				// Download limit
+				// Download limit for testing
 				//if (++$countDownloaded>TORRENTS_DOWNLOAD_LIMIT){ printColor(n."Break after 5 torrent pages. Still testing.".n,"red+bold"); break; }
 
 			endforeach; // Foreach torrent
 		endif;
 		
 	}
-// Previous reading from imdb folders Refactoring: save torrents out of imdb folder
-	//  Parse torrent HTML files, Save JSON file, Set class variable to prepare for the import ( $JSON, $title )
+
+	// Deprecated. Use createJSONFromDB instead.
+	// Previous reading from imdb folders Refactoring: save torrents out of imdb folder
+	// Parse torrent HTML files, Save JSON file, Set class variable to prepare for the import ( $JSON, $title )
 	public function createJSON($title){ //requires $summary_id from downloadTorrents()
 	
 		$folderName=$title['imdb'];
@@ -91,14 +93,13 @@ class SaveTorrents1337x{
 		//endforeach; // foreach folders
 	}
 
-// To be used after Refactoring: save torrents out of imdb folder
+	// To be used after Refactoring: save torrents out of imdb folder
 	//  Parse torrent HTML files, Save JSON file, Set class variable to prepare for the import ( $JSON, $title )
 	public function createJSONFromDB($title){ //requires $summary_id from downloadTorrents()
 	
 		$folderName=$title['imdb'];
 		$torrents=[];
 		$folder=HTML_TORRENTS_FILES_PATH;
-
 
 		if (file_exists(HTML_TORRENTS_FILES_PATH."/")):
 
@@ -113,8 +114,6 @@ class SaveTorrents1337x{
 			else { $files = $stmt->fetchAll(PDO::FETCH_ASSOC); }
 		}
 
-		
-		
 		if (count($files)>0):
 			foreach ($files as $f ):
 
@@ -214,9 +213,6 @@ class SaveTorrents1337x{
 			printColor ("_no_imdb_", "yellow");//return 1062; 
 		endif; //Imdb match
 		endforeach; //Foreach torrents
-
-		//if ( count($search_results)>0 ):
-		//endif;
 
 	}
 }
