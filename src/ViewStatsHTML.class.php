@@ -23,7 +23,6 @@ class ViewStatsHTML{
 	
 		$this->imdb=$imdb;
 		$this->showResults($imdb);
-		
 	}
 	
 	public function viewTorrent( $imdb, $_1337x_id ){
@@ -188,10 +187,50 @@ class ViewStatsHTML{
 
 		if ( $stmt->execute() ) {
 			$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-			
-			if (count($results)>0) $this->printResults($results, "torrents");
-			else print ('<h3>No results#</h3>');
 		}
+		
+		if (count($results)>0){
+		
+			//$collect1337x_ids=[];
+			$torrents=[];
+			foreach ( $results as $result ):
+
+				//array_push($collect1337x_ids,$result['1337x_id']);
+				$selectquery="select * from 1337x.1337xtorrents WHERE 1337x_id=:1337x_id AND imdbmatch=:imdb ORDER BY CAST(`seeds` as UNSIGNED) DESC";
+				if ( !$stmt = $this->dbh->dbh->prepare($selectquery) ) { var_dump ( $dbh->dbh->errorInfo() ); } 
+				$id=$result['1337x_id'];
+				$stmt->bindParam(':1337x_id', $id );
+				$stmt->bindParam(':imdb', $imdb );
+				if ( $stmt->execute() ) {
+					$torrent = $stmt->fetchAll(PDO::FETCH_ASSOC);
+					if (count($torrent)>0)array_push($torrents, $torrent[0]);					
+				}
+
+			endforeach;
+			
+			// Swap the two views below
+			$this->printTorrents($torrents);
+			$this->printResults($results, "torrents");
+		
+		}
+		else print ('<h3>No results#</h3>');
+		
+	}
+	
+	private function printTorrents($torrents){
+		if (count($torrents)>0):
+		
+			print ('<h3>'.count($torrents).' Torrents collected (match imdb in torrent page) </h3>');
+			$counter=0;
+			foreach ( $torrents as $torrent ):
+
+				//print('<pre>');var_dump($torrent);print('</pre>');
+				//print ( ++$counter.". ".$torrent[0]['titlename']."<br>");
+				print ( ++$counter.". ".$torrent['titlename']."<br>");				
+			
+			endforeach; // torrents
+		
+		endif; //count>0
 	}
 	
 	private function showTorrent( $imdb, $_1337x_id ){
@@ -269,7 +308,7 @@ class ViewStatsHTML{
 		print ('<pre id="terminal"><div id="download-torrent-results"></div></pre>');
 		
 		print ('<div class="'.$divClass.'">');
-		print ('<h3>1337x.search_results: '.count($rows).'</h3>');
+		print ('<h3>All 1337x.search_results: '.count($rows).'</h3>');
 		
 		/*
 			Create a new seach instance just to get download link for search results page.
@@ -279,15 +318,19 @@ class ViewStatsHTML{
 		
 		print ('<table>');
 		print ('<thead><tr>');
+		print('<td>');print('</td>');
 		foreach ( $getKeys as $key ){print('<td>');	print($key);print('</td>');}
 		print ('</tr></thead>');
 
 		print ('<tbody>');
-		$diff=false;		
+		$diff=false;
+		$counter=0;
 		foreach ( $rows as $row ){
 
 			if (!$diff){print ('<tr class="result-entry diff" id="'.$row['link'].'">');$diff=true;}
 			else if ($diff){print ('<tr class="result-entry" id="'.$row['link'].'">');$diff=false;}
+			
+			print('<td>');print( ++$counter );print('</td>');
 			
 			foreach ( $row as $k=>$v){print('<td>');print($v);print('</td>');}
 			/*
