@@ -196,21 +196,26 @@ class ViewStatsHTML{
 			foreach ( $results as $result ):
 
 				//array_push($collect1337x_ids,$result['1337x_id']);
-				$selectquery="select * from 1337x.1337xtorrents WHERE 1337x_id=:1337x_id AND imdbmatch=:imdb ORDER BY CAST(`seeds` as UNSIGNED) DESC";
+				$selectquery="select * from 1337x.1337xtorrents 
+				JOIN 1337x.search_results ON  1337x.search_results.1337x_id=1337xtorrents.1337x_id AND 1337x.search_results.imdb=1337xtorrents.imdbmatch 
+				WHERE 1337xtorrents.1337x_id=:1337x_id AND imdbmatch=:imdb ORDER BY 1337xtorrents.seeds DESC";
+
 				if ( !$stmt = $this->dbh->dbh->prepare($selectquery) ) { var_dump ( $dbh->dbh->errorInfo() ); } 
 				$id=$result['1337x_id'];
 				$stmt->bindParam(':1337x_id', $id );
 				$stmt->bindParam(':imdb', $imdb );
 				if ( $stmt->execute() ) {
 					$torrent = $stmt->fetchAll(PDO::FETCH_ASSOC);
-					if (count($torrent)>0)array_push($torrents, $torrent[0]);					
+					if (count($torrent)>0)array_push($torrents, $torrent[0]);
+				}else {
+					var_dump ( $stmt->errorInfo() );
 				}
 
 			endforeach;
 			
 			// Swap the two views below
 			$this->printTorrents($torrents);
-			$this->printResults($results, "torrents");
+			//$this->printResults($results, "torrents");
 		
 		}
 		else print ('<h3>No results#</h3>');
@@ -226,8 +231,10 @@ class ViewStatsHTML{
 
 				//print('<pre>');var_dump($torrent);print('</pre>');
 				//print ( ++$counter.". ".$torrent[0]['titlename']."<br>");
-				print ( ++$counter.". ".$torrent['titlename']."<br>");				
-			
+				print ( ++$counter.". ");
+				print ('<a rel="noreferrer" target="_blank" href="https://1337x.to/torrent/'.$torrent['1337x_id'].'/'.$torrent['link'].'/">'.$torrent['link'].'</a>');
+				print ("<br>");
+
 			endforeach; // torrents
 		
 		endif; //count>0
@@ -385,7 +392,7 @@ class ViewStatsHTML{
 			$cellsHead.='<td>yearmovie</td>';
 			$cellsHead.='<td>rating</td>';
 			if ($this->MODE ==='HOME')$cellsHead.='<td>results</td>';
-			if ($this->MODE ==='HOME')$cellsHead.='<td>health</td>';			
+			if ($this->MODE ==='HOME')$cellsHead.='<td>common</td>';			
 		print ($cellsHead);
 		print ('</tr></thead>');
 
