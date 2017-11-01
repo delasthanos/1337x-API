@@ -2,8 +2,9 @@ Development Notes:
 
 TODO:
 
-1.Save torrent pages outside of imdb folders to avoid common results. DONE. Now testing.
-2.Some images are not screenshots in pages. Try to eliminate them. Difficult to solve.
+- Save torrent pages outside of imdb folders to avoid common results. DONE. Now testing.
+- If imdb not found in torrent page do a strict match for title+year.
+- Some images are not screenshots in pages. Try to eliminate them. Difficult to solve.
 
 STEPS to search and collect torrents:
 
