@@ -26,12 +26,13 @@ class ParseTorrentPage{
 	private $imdb;
 	private $torrent=[];
 
-	public function __construct( $file ){
+	public function __construct( $file, $imdb ){
 		
 		$this->file=$file;
-		$split=explode('/',$file);
-		array_pop($split);
-		$this->imdb=array_pop($split);
+		//$split=explode('/',$file);
+		//array_pop($split);
+		//$this->imdb=array_pop($split);
+		$this->imdb=$imdb;
 	}
 	
 	public function parseTorrentPage(){
@@ -87,10 +88,10 @@ class ParseTorrentPage{
 	
 	private function matchImdb($htmlFile){
 		if ( strpos( $htmlFile, $this->imdb ) !== false ){
-			printColor ( n."IMDB code match!", "green+bold" );
+			printColor ( "IMDB", "green+bold" );
 			return true;
 		} else {
-			printColor ( n."IMDB not found!", "red+bold" );
+			printColor ( "IMDB", "red+bold" );
 			return false;
 		}
 	}

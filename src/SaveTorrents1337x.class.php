@@ -48,7 +48,7 @@ class SaveTorrents1337x{
 		endif;
 		
 	}
-	
+// Previous reading from imdb folders Refactoring: save torrents out of imdb folder
 	//  Parse torrent HTML files, Save JSON file, Set class variable to prepare for the import ( $JSON, $title )
 	public function createJSON($title){ //requires $summary_id from downloadTorrents()
 	
@@ -90,6 +90,56 @@ class SaveTorrents1337x{
 		endif;//filexists
 		//endforeach; // foreach folders
 	}
+
+// To be used after Refactoring: save torrents out of imdb folder
+	//  Parse torrent HTML files, Save JSON file, Set class variable to prepare for the import ( $JSON, $title )
+	public function createJSONFromDB($title){ //requires $summary_id from downloadTorrents()
+	
+		$folderName=$title['imdb'];
+		$torrents=[];
+		$folder=HTML_TORRENTS_FILES_PATH;
+
+
+		if (file_exists(HTML_TORRENTS_FILES_PATH."/")):
+
+		$collectTorrents=[];
+		$files=[];//torrent 1337x_id filenames
+		
+		$select="SELECT 1337x_id FROM 1337x.search_results WHERE imdb=:imdb";
+		if ( !$stmt = $this->dbh->dbh->prepare($select) ) { var_dump ( $dbh->dbh->errorInfo() ); } 
+		else{
+			$stmt->bindParam(':imdb', $folderName );
+			if (!$stmt->execute() ){ var_dump( $stmt->errorInfo() ); exit(n.n."error inside createJSONFromDB()".n); }
+			else { $files = $stmt->fetchAll(PDO::FETCH_ASSOC); }
+		}
+
+		
+		
+		if (count($files)>0):
+			foreach ($files as $f ):
+
+				$parseTorrent = new ParseTorrentPage(HTML_TORRENTS_FILES_PATH."/".$f['1337x_id'], $folderName);//saved torrent page, imdb code
+				$torrent = $parseTorrent->parseTorrentPage();
+				array_push($collectTorrents, $torrent);
+
+			endforeach;
+	
+			// Prepare to save JSON and private variables in this class | Required to finally import torrent into db.
+			// Json Master keys
+			$torrents['imdb'] = $folderName;
+			$torrents['search_summary_id'] = $this->summary_id;
+			$torrents['torrents'] = $collectTorrents;
+
+			$this->title=$title;
+			$this->imdb=$title['imdb'];
+			$json=json_encode($torrents);
+			$this->JSON=$json;
+			if (!file_exists(JSON_FILE_PATH)) mkdir(JSON_FILE_PATH, 0777, true);
+			file_put_contents(JSON_FILE_PATH.'/'.$folderName,  $json);
+		endif;
+		endif;//filexists
+	}
+
 	
 	public function saveTorrents(){
 

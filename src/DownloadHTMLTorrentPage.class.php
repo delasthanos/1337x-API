@@ -62,7 +62,9 @@ class DownloadHTMLTorrentPage{
 
 	private function createHTMLTorrentFolder($folder){
 
-		$filename = HTML_TORRENTS_FILES_PATH."/".$folder;
+		// Refactoring: save torrents out of imdb folder
+		//$filename = HTML_TORRENTS_FILES_PATH."/".$folder;
+		$filename = HTML_TORRENTS_FILES_PATH."/";
 		if ( !file_exists($filename) ) {
 			$mkdir = mkdir( $filename, 0777, true); 
 			//if ( !$mkdir ) { print ("\nError creating root folder.\n".TVI_DATA_PATH.$current_series_name."\n\n" ); exit(); }
@@ -71,6 +73,8 @@ class DownloadHTMLTorrentPage{
 	}
 	
 	private function constructTorrentPageURL($torrentURL){ return TORRENT_URL_PREFIX.$torrentURL; }
-	private function constructHTMLFilename(){ return HTML_TORRENTS_FILES_PATH."/".$this->imdbFolderName."/".$this->torrentid; }
+	// Refactoring: save torrents out of imdb folder
+	//private function constructHTMLFilename(){ return HTML_TORRENTS_FILES_PATH."/".$this->imdbFolderName."/".$this->torrentid; }
+	private function constructHTMLFilename(){ return HTML_TORRENTS_FILES_PATH."/".$this->torrentid; }	
 }
 ?>

@@ -40,6 +40,7 @@ class ImdbList extends dbhandler{
 		$selectquery = "SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2015' AND moviename='A Tale of Love and Darkness'";
 		//$selectquery = "SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND yearmovie='2014' AND moviename like '%mercy%'";
 		$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%Max%' and yearmovie=2015";
+		//$selectquery ="SELECT * FROM imdb.movies_list WHERE 1 AND enabled=1 AND moviename LIKE '%A Good Day to Die Hard%'";
 		
 		printColor(n.$selectquery." ", "green");
 		$dbh = $this->getInstance(); 

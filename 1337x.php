@@ -79,9 +79,11 @@ if ($allowedArgs['search']):
 		// Parse search, collect torrents , download html pages and save to db has moved inside SaveTorrents1337x factory class
 		$saveTorrents=new SaveTorrents1337x();
 		$saveTorrents->downloadTorrents($title);
-		$saveTorrents->createJSON($title);
+		// Refactoring: save torrents out of imdb folder		
+		//$saveTorrents->createJSON($title);
+		$saveTorrents->createJSONFromDB($title);
 		$saveTorrents->saveTorrents();
-		//unset($saveTorrents);
+		unset($saveTorrents);
 
 	endforeach; // Foreach titles
 
