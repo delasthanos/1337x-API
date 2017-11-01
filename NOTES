@@ -2,12 +2,25 @@ Development Notes:
 
 TODO:
 
-1.Save torrent pages outside of imdb folders to avoid common results.
+1.Save torrent pages outside of imdb folders to avoid common results. DONE. Now testing.
 2.Some images are not screenshots in pages. Try to eliminate them. Difficult to solve.
 
+STEPS to search and collect torrents:
+
+	1. Get a list with titles with ImdbList() class to start searching. You need a database with Movies and Tv Shows information with their imdb codes
+	2. Pass the titles to Search1337x() factory class to search for results, save their html pages and a record for search in databse.
+
+         -HTML result pages are saved inside HTML_SEARCH_FILES_PATH (config file) imdb folders.
+         -Search results records are saved in `search_results` table.
+         -Uses the following classes: 
+           SearchResults1337x()
+           ParseSearch1337x()
+           SaveSearchResults()
+	
+	3. Use SaveTorrents1337x() factory class to downloadTorrents() , create a local JSON with their info, and save torrent info inside 1337xtorrents table
 
 
-[!] NOTE for Movies:
+[!] Test Movies
 	
 	###########################################################################################################
 	Movienames that return too much irrelevant results: 
@@ -26,8 +39,11 @@ TODO:
 
 	###########################################################################################################
 	
-Files on disk:
-2000 saved movies search results =~ 500mb
+[!] Test TV Shows
+	-Tvshow Daredevil has Marvel in front of it. Take that into consideration when doing a match of imdb
+
+	
+[!] 2000 saved movies search results =~ 500mb
 
 [!] You must add a delay between each request, otherwise ip is going to be banned. If you are banned you have to get a new ip/server. 
 	Banned IP seems irreversable.
@@ -40,32 +56,3 @@ Files on disk:
 	Folders to save html files should be named by imdb codes to ensure data integrity.
 
 [!] Data is saved in downloaded files and in database. After testing is complete you can delete folders.
-
-
-[*] Steps to collect and import torrents from 1337x
-
-STEPS:	
-
-	1. You need a movies list to start searching for results at 1337x. 
-	   Search for imdb-movies-list php script on github or check movies_list table in tm database
-	   Get the list and start searching with Search1337x class.
-	   Folders are created for each movie and results pages are saved in them.
-	   example: 
-			moviename: Independence Day: Resurgence
-			folder: Independence_Day_Resurgence
-			html file: Independence_Day_Resurgence_1, Independence_Day_Resurgence_2 , etc for each results pages
-
-	2. Iterate through results pages, and download or parse HTML files for each torrent. 
-	   You shuld match at least imdb and or year of the movie.
-	   
-	   There are 2 options here:
-	   
-			1. Collect all required data ( hash, torrent name, seeders/leechers, imdb codes , screenshots, torrent files, magnet links , etc... )
-			or
-			2. Collect information about the above and download later in another script/server 
-
-	3. Import torrents into tm db. 
-
-Issues with Tvshows from 1337x:
-
-	-Tvshow Daredevil has Marvel in front of it. Take that into consideration when doing a match of imdb
