@@ -99,19 +99,15 @@ class SaveTorrents1337x{
 		endif;//filexists
 	}
 
-	
 	public function saveTorrents(){
 
 		printColor (n."\t[!]Class::SaveTorrents1337x()::saveTorrents()".n.n,"green+bold");
-
-		//var_dump($this->title);
-		//var_dump($this->JSON);
-
+		//var_dump($this->title);//var_dump($this->JSON);
 		$select="select * from 1337x.search_summary join 1337x.search_results on search_summary.id=search_results.summary_id WHERE search_summary.imdb=:imdb";
-		
 		$summary_id=-1;
-		$getSummaryId="SELECT id FROM 1337x.search_summary WHERE imdb=:imdb"; 
-		if ( !$stmt = $this->dbh->dbh->prepare($select) ) { var_dump ( $dbh->dbh->errorInfo() ); } 
+		$getSummaryId="SELECT id FROM 1337x.search_summary WHERE imdb=:imdb";
+
+		if ( !$stmt = $this->dbh->dbh->prepare($select) ) { var_dump ( $dbh->dbh->errorInfo() ); }
 		else{
 			$stmt->bindParam(':imdb', $this->imdb );
 			if (!$stmt->execute() ){ var_dump( $stmt->errorInfo() ); exit(n.n."error inside saveTorrents()".n); }
@@ -120,8 +116,8 @@ class SaveTorrents1337x{
 
 		$torrents=json_decode($this->JSON,true);
 		$imdb=$this->imdb;
-		print (n."Torrents from JSON are ".count($torrents['torrents']).". Inserting to database ... ".n.n );
-		//var_dump($torrents);
+		print (n."Torrents from JSON are ".count($torrents['torrents']).". Inserting to database ... ".n.n );//var_dump($torrents);
+
 		foreach ($torrents['torrents'] as $t):
 		if ( $t['imdbMatch'] != 'not found'):
 			$links=serialize($t['links']);
