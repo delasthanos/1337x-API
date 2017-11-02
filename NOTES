@@ -4,6 +4,7 @@ TODO:
 
 - Save torrent pages outside of imdb folders to avoid common results. DONE. Now testing.
 - If imdb not found in torrent page do a strict match for title+year.
+- Test tvshows after refactoring. Most of them are missing imdb codes. Find another way to identify them
 - Some images are not screenshots in pages. Try to eliminate them. Difficult to solve.
 
 STEPS to search and collect torrents:
