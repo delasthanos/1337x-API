@@ -1,11 +1,11 @@
 <?php 
 /*
 	NOTE: FIX THIS
-	git authno and email was not set until recently.
+	git auth and email was not set until recently.
 	Fix old commits from root author to delasthanos
 	
 	App is still under refactoring.
-	Breakpoint on search.
+	Removed prvious arguments. All steps are combined into search
 	Search results are saved into db now.
 */
 error_reporting(E_ALL);
@@ -22,29 +22,21 @@ spl_autoload_register(function ($class_name) {
 });
 
 if (CLI) system('clear');
-///////////////////////////////
+
 // Parse command line arguments
 if (CLI):
-$allowedArgs=['search'=>false, 'save-html-torrents'=>false, 'parse-torrent'=>false];
+$allowedArgs=['search'=>false];
 //if (!array_key_exists($argv[1], $allowedArgs)) commandLineHelp();
 if ( count($argv)===2 ){
 	switch($argv[1]):
 		case "search":
 			$allowedArgs['search']=true;
 			break;
-		case "save-html-torrents":
-			$allowedArgs['save-html-torrents']=true;
-			break;
-		case "parse-torrent":
-			$allowedArgs['parse-torrent']=true;
-			break;
 		default:
 		commandLineHelp();	
 	endswitch;
 } else { commandLineHelp(); }
 endif; //CLI
-// Parse command line arguments
-///////////////////////////////
 
 /*
  *  Search results foreach movie from 1337x
