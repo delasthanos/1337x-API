@@ -49,53 +49,10 @@ class SaveTorrents1337x{
 		
 	}
 
-	// Deprecated. Use createJSONFromDB instead.
-	// Previous reading from imdb folders Refactoring: save torrents out of imdb folder
+	// To be used after Refactoring: save torrents out of imdb folder and collect them from db
 	// Parse torrent HTML files, Save JSON file, Set class variable to prepare for the import ( $JSON, $title )
-	public function createJSON($title){ //requires $summary_id from downloadTorrents()
-	
-		$folderName=$title['imdb'];
-		$torrents=[];
-		$folder=HTML_TORRENTS_FILES_PATH;
-		if (!file_exists($folder)){ exit("No html files found.Please run search first."); }
-		$folders=array_diff( scandir($folder), array('.','..'));
-
-		//foreach ($folders as $folderName ):
-
-		if (file_exists(HTML_TORRENTS_FILES_PATH."/".$folderName."/")):
-
-		$collectTorrents=[];
-		$files=array_diff( scandir(HTML_TORRENTS_FILES_PATH."/".$folderName."/"), array('.','..'));
-		
-		if (count($files)>0):
-			foreach ($files as $f ):
-
-				$parseTorrent = new ParseTorrentPage(HTML_TORRENTS_FILES_PATH."/".$folderName."/".$f);
-				$torrent = $parseTorrent->parseTorrentPage();
-				array_push($collectTorrents, $torrent);
-
-			endforeach;
-	
-			// Prepare to save JSON and private variables in this class | Required to finally import torrent into db.
-			// Json Master keys
-			$torrents['imdb'] = $folderName;
-			$torrents['search_summary_id'] = $this->summary_id;
-			$torrents['torrents'] = $collectTorrents;
-
-			$this->title=$title;
-			$this->imdb=$title['imdb'];
-			$json=json_encode($torrents);
-			$this->JSON=$json;
-			if (!file_exists(JSON_FILE_PATH)) mkdir(JSON_FILE_PATH, 0777, true);
-			file_put_contents(JSON_FILE_PATH.'/'.$folderName,  $json);
-		endif;
-		endif;//filexists
-		//endforeach; // foreach folders
-	}
-
-	// To be used after Refactoring: save torrents out of imdb folder
-	//  Parse torrent HTML files, Save JSON file, Set class variable to prepare for the import ( $JSON, $title )
-	public function createJSONFromDB($title){ //requires $summary_id from downloadTorrents()
+	// createJSONFromDB renamed to collectAndParseTorrents
+	public function collectAndParseTorrents($title){ //requires $summary_id from downloadTorrents()
 	
 		$folderName=$title['imdb'];
 		$torrents=[];
@@ -133,8 +90,11 @@ class SaveTorrents1337x{
 			$this->imdb=$title['imdb'];
 			$json=json_encode($torrents);
 			$this->JSON=$json;
-			if (!file_exists(JSON_FILE_PATH)) mkdir(JSON_FILE_PATH, 0777, true);
-			file_put_contents(JSON_FILE_PATH.'/'.$folderName,  $json);
+
+			// Save parsed torrents to a JSON file for inspection
+			//if (!file_exists(JSON_FILE_PATH)) mkdir(JSON_FILE_PATH, 0777, true);
+			//file_put_contents(JSON_FILE_PATH.'/'.$folderName,  $json);
+
 		endif;
 		endif;//filexists
 	}
@@ -147,9 +107,6 @@ class SaveTorrents1337x{
 		//var_dump($this->title);
 		//var_dump($this->JSON);
 
-		//Warning check for double entries here ex: Love
-		//$select='select * from search_summary join search_results on search_summary.imdb=search_results.imdb WHERE search_summary.imdb="tt0337978";';
-		//$select="select * from 1337x.search_summary join 1337x.search_results on search_summary.id=search_results.summary_id WHERE search_summary.imdb='tt0337978'";
 		$select="select * from 1337x.search_summary join 1337x.search_results on search_summary.id=search_results.summary_id WHERE search_summary.imdb=:imdb";
 		
 		$summary_id=-1;
@@ -213,7 +170,50 @@ class SaveTorrents1337x{
 			printColor ("_no_imdb_", "yellow");//return 1062; 
 		endif; //Imdb match
 		endforeach; //Foreach torrents
+	}
+	
+	// Deprecated. Use collectAndParseTorrents instead.
+	// Previous reading from imdb folders Refactoring: save torrents out of imdb folder
+	// Parse torrent HTML files, Save JSON file, Set class variable to prepare for the import ( $JSON, $title )
+	public function createJSON($title){ //requires $summary_id from downloadTorrents()
+	
+		$folderName=$title['imdb'];
+		$torrents=[];
+		$folder=HTML_TORRENTS_FILES_PATH;
+		if (!file_exists($folder)){ exit("No html files found.Please run search first."); }
+		$folders=array_diff( scandir($folder), array('.','..'));
 
+		//foreach ($folders as $folderName ):
+
+		if (file_exists(HTML_TORRENTS_FILES_PATH."/".$folderName."/")):
+
+		$collectTorrents=[];
+		$files=array_diff( scandir(HTML_TORRENTS_FILES_PATH."/".$folderName."/"), array('.','..'));
+		
+		if (count($files)>0):
+			foreach ($files as $f ):
+
+				$parseTorrent = new ParseTorrentPage(HTML_TORRENTS_FILES_PATH."/".$folderName."/".$f);
+				$torrent = $parseTorrent->parseTorrentPage();
+				array_push($collectTorrents, $torrent);
+
+			endforeach;
+	
+			// Prepare to save JSON and private variables in this class | Required to finally import torrent into db.
+			// Json Master keys
+			$torrents['imdb'] = $folderName;
+			$torrents['search_summary_id'] = $this->summary_id;
+			$torrents['torrents'] = $collectTorrents;
+
+			$this->title=$title;
+			$this->imdb=$title['imdb'];
+			$json=json_encode($torrents);
+			$this->JSON=$json;
+			if (!file_exists(JSON_FILE_PATH)) mkdir(JSON_FILE_PATH, 0777, true);
+			file_put_contents(JSON_FILE_PATH.'/'.$folderName,  $json);
+		endif;
+		endif;//filexists
+		//endforeach; // foreach folders
 	}
 }
 ?>

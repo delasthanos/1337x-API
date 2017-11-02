@@ -71,7 +71,7 @@ if ($allowedArgs['search']):
 		$saveTorrents->downloadTorrents($title);
 		// Refactoring: save torrents out of imdb folder		
 		//$saveTorrents->createJSON($title);
-		$saveTorrents->createJSONFromDB($title);
+		$saveTorrents->collectAndParseTorrents($title);
 		$saveTorrents->saveTorrents();
 		unset($saveTorrents);
 
