@@ -3,6 +3,7 @@ Development Notes:
 TODO:
 
 - Save torrent pages outside of imdb folders to avoid common results. DONE. Now testing.
+- FIX: Warning:  Invalid argument supplied for foreach() in /var/www/html/1337x-API/src/SaveTorrents1337x.class.php on line 121
 - If imdb not found in torrent page do a strict match for title+year.
 - Test tvshows after refactoring. Most of them are missing imdb codes. Find another way to identify them
 - Some images are not screenshots in pages. Try to eliminate them. Difficult to solve.

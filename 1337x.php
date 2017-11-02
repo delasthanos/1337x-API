@@ -3,10 +3,16 @@
 	NOTE: FIX THIS
 	git auth and email was not set until recently.
 	Fix old commits from root author to delasthanos
+
+	-Results from crawling are saved into HTML files and in database, so that you can run each step on a different server.(Search, Download torrents, Import)
+
+	-You have to always get a titles object from the database to proceed. Search by keyword is not accepred as an argument.To search for as single title add a mysql query with LIKE "% movie name %" insdide ImdbList class.
+
+	-Use two main factory classes:
 	
-	App is still under refactoring.
-	Removed prvious arguments. All steps are combined into search
-	Search results are saved into db now.
+	  --Search1337x class to search for an array of titles.
+	  --SaveTorrents1337x class to parse search pages, download torrent pages, parse them and import them to db.
+	
 */
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
